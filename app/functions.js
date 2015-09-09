@@ -1,12 +1,11 @@
 
-//Global Functions
 
 //Set up a prototype for the String class to convert seconds (float) to HHMMSS format for display
-String.prototype.toHHMMSS = function() {
-    var sec_num = parseInt(this, 10);
-    var hours = Math.floor(sec_num / 3600);
-    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+    export function toHHMMSS(theInt){
+    var secNum = parseInt(theInt, 10);
+    var hours = Math.floor(secNum / 3600);
+    var minutes = Math.floor((secNum - (hours * 3600)) / 60);
+    var seconds = secNum - (hours * 3600) - (minutes * 60);
 
     if (hours < 10) {
         hours = "0" + hours;
@@ -21,33 +20,33 @@ String.prototype.toHHMMSS = function() {
     return time;
 };
 
-function appendHTML(selector,text,start){
+export function appendHTML(selector,text,start){
     $(selector).append('<div href="#" class="sceneChangeMark"><div class="sceneChangeText">' + text + '&nbsp' + start.toHHMMSS() + '</div><div class="sceneChangeTimeSec">'+ start +'</div></div>');
     return this;
     };
 
-function changeHTML(selector,text,start){
+export function changeHTML(selector,text,start){
     $(selector).html('<h4 class="recentMarker">Most Recent Marker Selected: &nbsp;</h2><div href="#" class="sceneChangeMark"><div class="sceneChangeText">' + text + '&nbsp' + start.toHHMMSS() + '</div><div class="sceneChangeTimeSec">'+ start +'</div></div>');
     return this;
     };
 
-function iteratorCallback(selector,sliceMin,sliceMax) {
+export function iteratorCallback(selector,sliceMin,sliceMax) {
     return function() {
         $(selector).hide();
         $(selector).slice(sliceMin,sliceMax).show();
-        
+
         };
     };
 
 
-function addPagination(selector,maxResults){
-    
+export function addPagination(selector,maxResults){
+
     var $maxNoOfResults = maxResults;
     var $totalResults = $(selector).length;
     var $totalPages = Math.ceil($totalResults / $maxNoOfResults);
-                 
+
     $(selector).hide();
-    
+
     console.log('Total pages'+' '+$totalPages);
 
     for (i=0; i < $totalPages; i++) {
@@ -55,19 +54,19 @@ function addPagination(selector,maxResults){
         var $pageOne = i + 1;
         $pageButton = '#page-' + i + '-button';
         if(i === 0) {
-                            
+
             console.log('Should be first loop');
             console.log('0 '+$maxNoOfResults);
             $('.markerSelectButtons').append('<a id="page-'+i+'-button">Page '+$pageOne+'</a>');
             $('.markerSelectButtons').on('click', '#page-'+i+'-button', iteratorCallback(selector,0,$tempNo));
-                               
+
         }
 
         if (i > 0) {
             $tempNo = i + 1;
             $sliceMax = ($tempNo * $maxNoOfResults) + 1;
             $sliceMin = $sliceMax - $maxNoOfResults;
-                            
+
             $('.page-'+i).css('display', 'none');
             console.log('Should be loop'+' '+i);
             console.log($sliceMin, $sliceMax);
@@ -76,14 +75,14 @@ function addPagination(selector,maxResults){
 
         }
     };
-              
+
     return this;
     }
-   
-    
+
+
 //Popcorn functions
 
-function scrubMode(selector) {
+export function scrubMode(selector) {
     popcorn.on( "timeupdate", function() {
             var time = popcorn.currentTime();
 
@@ -91,12 +90,12 @@ function scrubMode(selector) {
                 console.log(time);
                 $(selector+':contains('+time+')').css({'color': 'red'});
                 }
-            
+
         });
 
 };
 
-function timeScrubbing(selector1,selector2) {
+export function timeScrubbing(selector1,selector2) {
        $(selector1).on('click', selector2, function () {
             var $timeSec = $(this).find('.sceneChangeTimeSec').text();
             console.log($timeSec);
@@ -106,17 +105,17 @@ function timeScrubbing(selector1,selector2) {
                 return this;
 };
 
-function addFootnote(start,end,text,target){
+export function addFootnote(start,end,text,target){
     popcorn.footnote({
                                 start: start,
                                 end: end,
                                 text: text + '&nbsp;' + '|' + '&nbsp',
-                                target: target 
+                                target: target
                             });
 }
 
-function markerHighlight(selector,start,end,text,i) {
-    
+export function markerHighlight(selector,start,end,text,i) {
+
      popcorn.code({
                     start: start,
                     end: end,
@@ -128,14 +127,11 @@ function markerHighlight(selector,start,end,text,i) {
                                    },
                     onEnd: function() {
                                     $(selector).css({'color': '#000'});
-                                   } 
+                                   }
                              });
 
 }
-     
-    
-    
 
-
-
-
+export function hello() {
+  console.log('hello');
+}
