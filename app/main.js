@@ -1,5 +1,5 @@
 import * as functions from './functions';
-import * as playback from './playbckTools'
+import * as playback from './playbackTools'
 functions.hello();
 
 var myText = 2003;
