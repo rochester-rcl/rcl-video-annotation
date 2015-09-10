@@ -12,13 +12,9 @@ module.exports = {
     loaders: [
       {
         loaders: ['babel'],
-        include: path.resolve[ROOT_PATH, 'app']
-
-    externals: {
-      "jquery": "jQuery",
-      "popcorn": "Popcorn"
-    }
+        include: path.resolve[ROOT_PATH, 'app'],
       }
     ]
+    
   }
 };

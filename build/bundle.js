@@ -52,6 +52,10 @@
 
 	var functions = _interopRequireWildcard(_functions);
 
+	var _playbackTools = __webpack_require__(2);
+
+	var playback = _interopRequireWildcard(_playbackTools);
+
 	functions.hello();
 
 	var myText = 2003;
@@ -189,10 +193,7 @@
 	;
 
 	function appendHTML(selector, text, start) {
-	    var selector = document.getElementsByClassName(selector);
-	    var appendDiv = '<div href="#" class="sceneChangeMark"><div class="sceneChangeText">' + text + '&nbsp' + start.toHHMMSS() + '</div><div class="sceneChangeTimeSec">' + start + '</div></div>';
-	    selector.innerHTML(appendDiv);
-	    //$(selector).append('<div href="#" class="sceneChangeMark"><div class="sceneChangeText">' + text + '&nbsp' + start.toHHMMSS() + '</div><div class="sceneChangeTimeSec">'+ start +'</div></div>');
+	    $(selector).append('<div href="#" class="sceneChangeMark"><div class="sceneChangeText">' + text + '&nbsp' + start.toHHMMSS() + '</div><div class="sceneChangeTimeSec">' + start + '</div></div>');
 	    return this;
 	}
 
@@ -307,6 +308,58 @@
 	function hello() {
 	    console.log('hello');
 	}
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	//Global variables
+	"use strict";
+
+	var frame = 1 / 24; //Most will be 29.97 fps
+	var play = true;
+	var popcorn = Popcorn("#testVideo");
+
+	/*popcorn.on( "timeupdate", function() {
+	    var time = this.currentTime();
+	    var timeToString = time.toString();
+	    var timeHHMMSS = timeToString.toHHMMSS();
+	    
+	    console.log(timeHHMMSS);
+	});*/
+
+	$(document).ready(function () {
+
+	    $(document).keydown(function (e) {
+	        switch (e.keyCode) {
+
+	            case 37:
+	                if (popcorn.currentTime() > 0) {
+	                    $decrement = popcorn.currentTime() - frame;
+	                    popcorn.currentTime($decrement);
+	                }
+	                break;
+
+	            case 39:
+	                if (popcorn.currentTime() < popcorn.duration()) {
+	                    $increment = Math.min(popcorn.duration(), popcorn.currentTime() + frame);
+	                    popcorn.currentTime($increment);
+	                }
+	                break;
+
+	            case 32:
+	                if (play) {
+	                    popcorn.pause();
+	                    play = false;
+	                } else {
+	                    popcorn.play();
+	                    play = true;
+	                }
+	                break;
+
+	        }
+	    });
+	});
 
 /***/ }
 /******/ ]);
