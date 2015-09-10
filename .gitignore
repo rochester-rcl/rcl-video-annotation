@@ -2,5 +2,8 @@ php/config.php
 php/.DS_Store
 js/.DS_Store
 joyCommercials.mov
+build/
+nbproject/
 **\.DS_Store
 node_modules
+/nbproject/private/
