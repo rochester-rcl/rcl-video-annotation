@@ -15,13 +15,11 @@ class User {
     
     public function __construct($userId, 
             $userEmail, 
-            $userFilmId, 
             $userName, 
             $password){
         
         $this->userId = $userId;
         $this->userEmail = $userEmail;
-        $this->userFilmId = $userFilmId;
         $this->username = $userName;
         $this->password = $password;
     }
@@ -46,14 +44,6 @@ class User {
         return $this->userEmail;
     }
 
-    public function setUserFilmId($userFilmId) {
-        $this->userFilmId = $userFilmId;
-    }
-
-    public function getUserFilmId() {
-        return $this->userFilmId;
-    }
-
     public function setUsername($username) {
         $this->username = $username;
     }
@@ -72,14 +62,12 @@ class User {
 
     public function setAllFromArray(Array $arr) {
 
-
         $this->setUsername($arr['username']);
 
         $this->setPassword($arr['user_password']);
 
         $this->setUserEmail($arr['user_email']);
 
-        $this->setUserFilmId($arr['user_film_id']);
     }
 
 }
@@ -87,11 +75,11 @@ class User {
 class UserDAO{
     
     public static function add(User $user){
-        $insertUser = Db::pdoConnect()->prepare("INSERT INTO user SET username=:username, user_password=:user_password, user_email=:user_email, user_film_id=:user_film_id");
+        $insertUser = Db::pdoConnect()->prepare("INSERT INTO user SET username=:username, user_password=:user_password, user_email=:user_email");
         $insertUser->bindValue(':username', $user->getUsername(), PDO::PARAM_STR);
         $insertUser->bindValue(':user_password', $user->getPassword(), PDO::PARAM_STR);
         $insertUser->bindValue(':user_email', $user->getUserEmail(), PDO::PARAM_STR);
-        $insertUser->bindValue(':user_film_id', $user->getUserFilmId(), PDO::PARAM_INT);
+        
         $insertUser->execute();
         $lastId = Db::pdoConnect()->lastInsertId();
         $user->setId($lastId);

@@ -81,11 +81,23 @@ CREATE TABLE `user` (
   `username` varchar(30) NOT NULL,
   `user_password` varchar(30) NOT NULL,
   `user_email` varchar(30) NOT NULL,
-  `user_film_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+
+DROP TABLE IF EXISTS `user_film`;
+
+CREATE TABLE `user_film` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(30) NOT NULL,
+  `film_id` varchar(30) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_user_film_id` (`user_film_id`),
-  CONSTRAINT `fk_user_film_id` FOREIGN KEY (`user_film_id`) REFERENCES `film` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  FOREIGN KEY (film_id) REFERENCES film(id),
+  FOREIGN KEY (user_id) REFERENCES `user`(id),
+  UNIQUE `user_film_id` (`user_id`, `film_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
