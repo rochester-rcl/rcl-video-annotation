@@ -91,10 +91,10 @@ DROP TABLE IF EXISTS `user_film`;
 
 CREATE TABLE `user_film` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(30) NOT NULL,
-  `film_id` varchar(30) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `film_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (film_id) REFERENCES film(id),
+  FOREIGN KEY (film_id) REFERENCES `film`(id),
   FOREIGN KEY (user_id) REFERENCES `user`(id),
   UNIQUE `user_film_id` (`user_id`, `film_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
