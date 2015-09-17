@@ -1,7 +1,78 @@
 <?php
 
 include_once 'db.php';
-/**Class that represents a film marker **/
+/**Class that represents a Marker Type **/
+
+class MarkerType {
+    protected $markerCode;
+    protected $name;
+    protected $description;
+
+    public function __construct($markerCode, $name, $description) {
+      $this->markerCode = $markerCode;
+      $this->name = $name;
+      $this->description = $description;
+    }
+
+    public function setMarkerCode() {
+      $this->markerCode = $markerCode;
+    }
+
+    public function getMarkerCode() {
+      return $this->markerCode;
+    }
+
+    public function setName() {
+      $this->name = $name;
+    }
+
+    public function getName() {
+      return $this->name;
+    }
+
+    public function setDesc() {
+      $this->description = $description;
+    }
+
+    public function getDesc() {
+      return $this->description;
+    }
+
+}
+
+class MarkerTypeDAO {
+  /**
+   * Insert a new marker type
+   *
+   * @param MarkerType $markerTypeObj
+   * @return type
+   */
+   public static function insertMarkerType(MarkerType $markerTypeObj) {
+
+       if ($markerTypeObj->getMarkerCode() != '') {
+
+           $insert = Db::pdoConnect()->prepare("INSERT INTO marker_type SET marker_code=:marker_code, name=:name, description=:description");
+
+           $markerCode = $markerTypeObj->getMarkerCode();
+           $name = $markerTypeObj->getName();
+           $description = $markerTypeObj->getDesc();
+
+           $insert->bindValue(':marker_code', $markerCode, PDO::PARAM_INT);
+           $insert->bindValue(':name', $name, PDO::PARAM_STR);
+           $insert->bindValue(':description', $description, PDO::PARAM_STR);
+
+
+           return $insert->execute();
+
+           echo 'MarkerType' . $name . 'inserted';
+       } else {
+           echo 'Marker Code Required';
+       }
+
+   }
+
+
+}
 
 class FilmMarker {
 
@@ -11,16 +82,6 @@ class FilmMarker {
     protected $end;
     protected $text;
     protected $target;
-
-    public function __construct($filmId, $markerType, $start, $end, $text, $target) {
-        $this->filmId = $filmId;
-        $this->markerType = $markerType;
-        $this->start = $start;
-        $this->end = $end;
-        $this->text = $text;
-        $this->target = $target;
-
-    }
 
     public function setFilmId($filmId) {
         $this->filmId = $filmId;
@@ -87,15 +148,15 @@ class FilmMarker {
 
 }
 
-Class MarkerDAO {
+
+
+Class FilmMarkerDAO {
   /**
-   * Insert a new film
+   * Insert a new film marker
    *
    * @param FilmMarker $filmMarkerObj
    * @return type
    */
-
-
 
     public static function insertMarker(FilmMarker $filmMarkerObj) {
 
@@ -112,8 +173,8 @@ Class MarkerDAO {
 
             $insert->bindValue(':film_id', $filmId, PDO::PARAM_INT);
             $insert->bindValue(':marker_type_id', $markerType, PDO::PARAM_INT);
-            $insert->bindValue(':start', $start);
-            $insert->bindValue(':end', $end);
+            $insert->bindValue(':start', $start, PDO::PARAM_STR);
+            $insert->bindValue(':end', $end, PDO::PARAM_STR);
             $insert->bindValue(':text', $text, PDO::PARAM_STR);
             $insert->bindValue(':target', $target, PDO::PARAM_STR);
 
@@ -160,7 +221,7 @@ Class MarkerDAO {
         return $resultsJSON;
     }
 
-    public function getAllMarkers(FilmMarker $filmMarkerObj) {
+    public function getAllMarkers() {
 
         $myResult = Db::pdoConnect()->prepare("SELECT * FROM film_marker ORDER BY start");
 
