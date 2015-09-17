@@ -86,8 +86,8 @@ class Db {
     protected static $connection;
     private static $hasConnection = false;
 
-    
-    
+
+
     //Main connection method
     public static function pdoConnect() {
         global $server;
@@ -95,7 +95,7 @@ class Db {
         global $password;
         try {
             if (!self::$hasConnection) {
-            
+
                 self::$connection = new PDO("mysql:host=$server;dbname=video_annotation", $username, $password);
 
                 self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -184,8 +184,6 @@ class Db {
 
         return $resultsJSON;
     }
-
-//Write some methods for handling users - specifically the user login
 }
 
 //$myMarker = new FilmMarker();

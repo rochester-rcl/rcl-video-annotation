@@ -2,10 +2,10 @@
 
 //Set up a prototype for the String class to convert seconds (float) to HHMMSS format for display
     export function toHHMMSS(theInt){
-    var secNum = parseInt(theInt, 10);
-    var hours = Math.floor(secNum / 3600);
-    var minutes = Math.floor((secNum - (hours * 3600)) / 60);
-    var seconds = secNum - (hours * 3600) - (minutes * 60);
+    let secNum = parseInt(theInt, 10);
+    let hours = Math.floor(secNum / 3600);
+    let minutes = Math.floor((secNum - (hours * 3600)) / 60);
+    let seconds = secNum - (hours * 3600) - (minutes * 60);
 
     if (hours < 10) {
         hours = "0" + hours;
@@ -16,7 +16,7 @@
      if (seconds < 10) {
         seconds = "0" + seconds;
     }
-    var time = hours + ":" + minutes + ":" + seconds;
+    let time = hours + ":" + minutes + ":" + seconds;
     return time;
 };
 
@@ -41,17 +41,17 @@ export function iteratorCallback(selector,sliceMin,sliceMax) {
 
 export function addPagination(selector,maxResults){
 
-    var $maxNoOfResults = maxResults;
-    var $totalResults = $(selector).length;
-    var $totalPages = Math.ceil($totalResults / $maxNoOfResults);
+    let $maxNoOfResults = maxResults;
+    let $totalResults = $(selector).length;
+    let $totalPages = Math.ceil($totalResults / $maxNoOfResults);
 
     $(selector).hide();
 
     console.log('Total pages'+' '+$totalPages);
 
     for (i=0; i < $totalPages; i++) {
-        var $tempNo = $maxNoOfResults + 1;
-        var $pageOne = i + 1;
+        let $tempNo = $maxNoOfResults + 1;
+        let $pageOne = i + 1;
         $pageButton = '#page-' + i + '-button';
         if(i === 0) {
 
@@ -78,60 +78,3 @@ export function addPagination(selector,maxResults){
 
     return this;
     }
-
-
-//Popcorn functions
-
-export function scrubMode(selector) {
-    popcorn.on( "timeupdate", function() {
-            var time = popcorn.currentTime();
-
-            if ($(selector+':contains('+time+')')){
-                console.log(time);
-                $(selector+':contains('+time+')').css({'color': 'red'});
-                }
-
-        });
-
-};
-
-export function timeScrubbing(selector1,selector2) {
-       $(selector1).on('click', selector2, function () {
-            var $timeSec = $(this).find('.sceneChangeTimeSec').text();
-            console.log($timeSec);
-            popcorn.currentTime($timeSec);
-
-            });
-                return this;
-};
-
-export function addFootnote(start,end,text,target){
-    popcorn.footnote({
-                                start: start,
-                                end: end,
-                                text: text + '&nbsp;' + '|' + '&nbsp',
-                                target: target
-                            });
-}
-
-export function markerHighlight(selector,start,end,text,i) {
-
-     popcorn.code({
-                    start: start,
-                    end: end,
-                    onStart: function() {
-                                    var $tempNo = i + 1;
-                                    changeHTML('#markersDiv2',text,start);
-                                    $(selector+':nth-child('+$tempNo+')').css({'color': 'red'});
-                                    console.log(selector+':nth-child('+$tempNo+')');
-                                   },
-                    onEnd: function() {
-                                    $(selector).css({'color': '#000'});
-                                   }
-                             });
-
-}
-
-export function hello() {
-  console.log('hello');
-}
