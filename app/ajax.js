@@ -40,20 +40,13 @@ export class Ajax {
       type: 'POST',
       cache: 'false',
       data: {'action': this.action},
-      dataType: 'json',
-      success: function(json) {
-        if (json) {
-          console.log(json),
-          $.each(json, function(i, item) {
-            let $markerId = item.id;
-            let $markerCode = item.marker_code;
-            let $name = item.name;
-            let $description = item.description;
-            let $category = item.category;
+      dataType: 'html',
+      success: function(html) {
+        if (html) {
+          console.log(html),
 
-            $time = $markerId.toHHMMSS();
+            $('.markerControl').append(html);
 
-          });
         }
       }
     });
