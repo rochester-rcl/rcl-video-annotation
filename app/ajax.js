@@ -1,6 +1,6 @@
-class Ajax {
+export class Ajax {
 
-  constructor(action, filmId, markerType, start, target) {
+  constructor(action, filmId, markerType, start, text, target) {
 
      self.action = action;
      self.filmId = filmId;
@@ -12,8 +12,13 @@ class Ajax {
 
    }
 
+
   setAction(action) {
     self.action = action;
+  }
+
+  getAction() {
+    return self.action;
   }
 
   setFilmId(filmId) {
@@ -22,6 +27,32 @@ class Ajax {
 
   setMarkerType(markerType) {
     self.markerType = markerType;
+  }
+
+  setStart(start) {
+    self.start = start;
+  }
+
+  getForm() {
+    $.ajax({
+      url: 'php/controllers/form.php',
+      type: 'POST',
+      cache: 'false',
+      data: {'action': self.action},
+      dataType: 'json',
+      success: function(json) {
+        if (json) {
+          console.log(json),
+          $.each(json, function(i, item) {
+            let $markerId = item.id;
+            let $markerCode = item.marker_code;
+            let $name = item.name;
+            let $description = item.description;
+            let $category = item.category;
+          })
+        }
+      }
+    })
   }
 
   retrieveMarker() {

@@ -6,6 +6,9 @@ export class VideoController {
           self.popcornInstance = Popcorn(self.popcornSelector);
       }
 
+      getTime() {
+        return self.popcornInstance.currentTime();
+      }
 
       initControls() {
         let play = true;

@@ -65,6 +65,7 @@ CREATE TABLE `marker_type` (
   `marker_code` int(5) NOT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `category` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

@@ -30,12 +30,6 @@ module.exports = {
 
         include: path.resolve[ROOT_PATH, 'app']
 
-      },
-      {
-        test: /\.html$/,
-
-        loader: 'mustache'
-
       }
     ]
 
