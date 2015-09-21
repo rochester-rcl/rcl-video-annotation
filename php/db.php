@@ -24,7 +24,7 @@ class Db {
 
                 self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 self::$hasConnection = true;
-                echo "Connected successfully";
+                //echo "Connected successfully";
             }
             return self::$connection;
         } catch (PDOException $e) {

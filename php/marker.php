@@ -71,6 +71,17 @@ class MarkerTypeDAO {
 
    }
 
+   public static function getMarkerForm() { //Returns everything from the marker_type table so we can generate a form from it.
+     $statement = Db::pdoConnect()->prepare("SELECT * FROM marker_type");
+
+     $statement->execute();
+
+     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+     $resultsJSON = json_encode($results);
+
+     return $resultsJSON;
+   }
+
 
 }
 
@@ -158,7 +169,7 @@ Class FilmMarkerDAO {
    * @return type
    */
 
-    public static function insertMarker(FilmMarker $filmMarkerObj) {
+    public function insertMarker(FilmMarker $filmMarkerObj) {
 
         if ($filmMarkerObj->getFilmId() != '') {
 

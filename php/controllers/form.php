@@ -6,13 +6,11 @@ header("content-type:application/json");
 error_reporting(E_ALL | E_STRICT);
     ini_set("display_errors", 2);
 
-$postAction = filter_input(INPUT_POST,'action');
+$postAction = 'getForm';
 
-if ($postAction == "getForm") {
+if ($postAction == 'getForm') {
 
-  $getForm = New MarkerTypeDAO();
-
-  $myForm = $getForm->getMarkerForm();
+  $myForm = MarkerTypeDAO::getMarkerForm();
 
   echo($myForm);
 

@@ -1,3 +1,4 @@
+import * as functions from './functions';
 export class Ajax {
 
   constructor(action, filmId, markerType, start, text, target) {
@@ -38,7 +39,7 @@ export class Ajax {
       url: 'php/controllers/form.php',
       type: 'POST',
       cache: 'false',
-      data: {'action': self.action},
+      data: {'action': this.action},
       dataType: 'json',
       success: function(json) {
         if (json) {
@@ -49,10 +50,13 @@ export class Ajax {
             let $name = item.name;
             let $description = item.description;
             let $category = item.category;
-          })
+
+            $time = $markerId.toHHMMSS();
+
+          });
         }
       }
-    })
+    });
   }
 
   retrieveMarker() {
@@ -60,7 +64,7 @@ export class Ajax {
      url: 'php/pdoConnect.php',
         type: 'POST',
         cache: 'false',
-        data: {'action': self.action, 'filmId': self.filmId},
+        data: {'action': this.action, 'filmId': this.filmId},
         dataType:'json',
         success: function(json) {
                 if (json) {
