@@ -1,5 +1,5 @@
 import * as functions from './functions';
-import {VideoController} from './playbackTools';
+import {VideoController} from './videoTools';
 import {Ajax} from './ajax';
 let popcorn = require('popcorn');
 let footnote = require('footnote');
