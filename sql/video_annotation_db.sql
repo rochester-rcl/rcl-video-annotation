@@ -53,6 +53,16 @@ CREATE TABLE `film_marker` (
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
+DROP TABLE IF EXISTS `marker_category`;
+
+CREATE TABLE `marker_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL UNIQUE,
+  `description` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Table structure for table `marker_type`
 --
@@ -62,11 +72,12 @@ DROP TABLE IF EXISTS `marker_type`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `marker_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `marker_code` int(5) NOT NULL,
+  `marker_category_id` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `category` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `description` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  FOREIGN KEY (`marker_category_id`) REFERENCES `marker_category` (`id`),
+  PRIMARY KEY (`id`),
+  UNIQUE(marker_category_id, name)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
