@@ -20,7 +20,7 @@ if ($postAction == 'getForm') {
 
       $lowerName = strtolower($name);
 
-      echo '<a class="category_' . $lowerName . '">' . $name . '</a>';
+      echo '<a href="#" class="category" id="' . $lowerName . '">' . $name . '</a>';
 
     }
 
