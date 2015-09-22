@@ -37,6 +37,7 @@ ___________________________________________________
 
 html {
     font-family: 'Raleway', sans-serif;
+    height: 100%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -50,6 +51,7 @@ html {
 
 body {
     min-width: 1100px;
+    height: 100%;
     background-color: #282c34;
   }
   * {
@@ -64,8 +66,8 @@ body {
 
 /*div {outline: 1px solid red;}*/
 
-.grid      { width: 100%; min-width: 930px;padding-top: 0px;}
-.col100    { width: 25%; float: left;}
+.grid      { width: 100%; height: 100%; min-width: 930px;padding-top: 30px;}
+.col100    { width: 25%; float: left; }
 .col200    { width: 75%; float: left; min-height: 100%;}
 .clear     { clear: both;}
 
@@ -82,6 +84,8 @@ body {
   padding: 7px 0px 0px 17px;
   font-size: 13px;
   font-weight: 100;
+  position: fixed;
+  width: 100%;
 }
 
 .logo{
@@ -100,6 +104,10 @@ body {
   width: 100%;
 }
 
+
+/* Buttons
+––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
 .annotate-btn {
   z-index: 3;
   position: absolute;
@@ -109,6 +117,7 @@ body {
   background-color: black;
   color: white;
   opacity: 0.5;
+  border-radius: 5px;
 }
 .annotate-btn:hover {
   opacity: 1;
@@ -116,14 +125,20 @@ body {
 }
 
 
+/* Annotation Col
+––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
 
- /*annotation-list*/
 .annotation-list{
   overflow-y: auto;
   max-height: 100%;
+  min-height: 100%;
+  min-width: 400px;
   color: #9da4b4;
+  font-size: 15px;
   min-width: 263px;
   background-color: #21252b;
+  border-right: 1px solid #4f4f4f;
 }
 .annotation-list ul {
   list-style-type: none;
@@ -136,15 +151,19 @@ body {
   }
 
 .sub-cat-label{
-  font-size: 12px;
+  font-size: 14px;
   color: lightgray;
+  font-style: italic;
 }
 
 .sub-cat-label-active{
 
 }
 
-.icon-right{float: right; padding-right: 20px;}
+.icon-right{
+  float: right;
+  padding-right: 20px;
+}
 
 .time-stamp{
   font-family: Helvetica, arial;
@@ -154,6 +173,27 @@ body {
   display: inline-block;
   width: 50px;
   text-align: right;
+}
+
+
+.helptext{
+  font-size: 12px;
+  color:#5c6270;
+  padding: 10px;
+  text-align: right;
+
+}
+.helptext ul li{
+  display: inline;
+  padding-right: 20px;
+}
+.keys{
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: black;
+  border-radius: 3px;
+  padding: 2px 5px;
+  line-height: 1.7;
 }
 
 /*Color Labels
@@ -175,7 +215,105 @@ ____________________________________________________
 #characters-color     { border-left: 6px solid red; }
 
 
+/* Annotation Popup
+"Basically" (wink) what happens after you click "annotate button"
+____________________________________________________
+*/
 
+
+.box {
+  width: 40%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+.button {
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.button:hover {
+  background: #06D85F;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+
+
+
+
+
+
+
+
+/* Media Queries
+____________________________________________________
+*/
+@media only screen and (max-width: 1100px) {
+
+/* Changing the annotation text to be more compact on smaller screens */
+  .annotation-list{
+     font-size: 13px;
+    }
+  .sub-cat-label{
+     font-size: 13px;
+    }
+
+}
 
 /*
 
