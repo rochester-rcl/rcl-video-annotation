@@ -79,9 +79,9 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(30) NOT NULL,
-  `user_password` varchar(30) NOT NULL,
-  `user_email` varchar(30) NOT NULL,
+  `full_name` varchar(30) NOT NULL,
+  `user_password` varchar(500) NOT NULL,
+  `user_email` varchar(30) NOT NULL UNIQUE,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

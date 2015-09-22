@@ -2,4 +2,5 @@
     $server = "localhost";
     $username = "student";
     $password = "tasteOfCherry";
+    $database = "video_annotation";
 ?>

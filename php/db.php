@@ -17,39 +17,19 @@ class Db {
         global $server;
         global $username;
         global $password;
+        global $database;
         try {
             if (!self::$hasConnection) {
-
-                self::$connection = new PDO("mysql:host=$server;dbname=video_annotation", $username, $password);
-
+                self::$connection = new PDO("mysql:host=$server;dbname=".$database, $username, $password);
                 self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 self::$hasConnection = true;
-                //echo "Connected successfully";
             }
             return self::$connection;
         } catch (PDOException $e) {
-                echo "Connection failed: " . $e->getMessage();
+            echo "Connection failed: " . $e->getMessage();
         }
     }
 
 
 }
 
-//$myMarker = new FilmMarker();
-//$myMarker -> setAllFromArray($testArray);
-
-//$myConnection = new Db();
-
-//$myConnection->pdoConnect();
-
-//$myConnection->insertMarker($myMarker);
-
-//$mostRecent = $myConnection->getAllMarkers($myMarker);
-
-
-
-//$results = $dbConnect -> getAllMarkers($myMarker);
-
-//$return = json_decode($mostRecent);
-
-//var_dump($return);
