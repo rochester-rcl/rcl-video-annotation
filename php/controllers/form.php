@@ -6,15 +6,24 @@ header("content-type:application/json");
 error_reporting(E_ALL | E_STRICT);
     ini_set("display_errors", 2);
 
-$postAction = filter_input(INPUT_POST,'action');
+$postAction = 'getForm';
 
-if ($postAction == "getForm") {
+if ($postAction == 'getForm') {
 
-  $getForm = New MarkerTypeDAO();
+  $myForm = MarkerTypeDAO::getMarkerForm();
 
-  $myForm = $getForm->getMarkerForm();
+  foreach ($myForm as $form){
+    
+      $cat = $form['category'];
+      $markerCode = $form['marker_code'];
+      $name = $form['name'];
+      $desc = $form['description'];
 
-  echo($myForm);
+      echo '<button value="' . $markerCode . '" class="' . $cat . '" title="' . $desc . '">' . $name . '</button>';
+
+    }
+
+  echo '<a href="#" id="insertMarkerButton">Insert Marker</a>';
 
 } else {
   echo "Can't connect to Database.";

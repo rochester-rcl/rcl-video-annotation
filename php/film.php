@@ -61,6 +61,7 @@ class FilmDAO{
         
         $lastId = Db::pdoConnect()->lastInsertId();
         $film->setId($lastId);
+        return $film;
         
     }
     

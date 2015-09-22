@@ -10,4 +10,5 @@ To get started once you have checked out the project
 4.  To set up popcorn-js
     cd resources
     git clone https://github.com/mozilla/popcorn-js.git
+5.  Copy config.php.default to config.php and update database configuration files
     

@@ -1,5 +1,5 @@
 import * as functions from './functions';
-import {VideoController} from './playbackTools';
+import {VideoController} from './videoTools';
 import {Ajax} from './ajax';
 let popcorn = require('popcorn');
 let footnote = require('footnote');
@@ -27,9 +27,7 @@ controls.initControls();
 
 let myAjax = new Ajax(action, filmId, markerType, start, text, target);
 
-let meh = myAjax.getAction();
+myAjax.getForm();
 
-let form = myAjax.getForm();
 
-console.log(meh);
 });

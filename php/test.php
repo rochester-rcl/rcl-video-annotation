@@ -1,6 +1,7 @@
 <?php
 
 include_once 'film.php';
+include_once 'user.php';
 
 /**
  * Simple class for testing php code
@@ -18,8 +19,28 @@ class Test {
         var_dump($numDeleted);
     }
     
+    public static function addUser(){
+        
+        $user = new User(null, 
+            "test@test.com", 
+            "john doe", 
+            User::hash("password"));
+        
+        $updatedUser = UserDAO::add($user);
+        
+        $emailUser = UserDAO::loginUser("test@test.com", "bad");
+        
+        var_dump($emailUser);
+        
+      
+        
+        $numDeleted = UserDAO::delete($updatedUser->getUserId());
+        
+        var_dump($numDeleted);
+    }
+    
    
     
 }
 
-Test::addFilm();
+Test::addUser();

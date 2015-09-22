@@ -4,25 +4,17 @@ include_once 'db.php';
 /**Class that represents a Marker Type **/
 
 class MarkerType {
-    protected $markerCode;
     protected $name;
     protected $description;
+    protected $categoryId;
 
-    public function __construct($markerCode, $name, $description) {
-      $this->markerCode = $markerCode;
+    public function __construct($name, $description, $categoryId) {
       $this->name = $name;
       $this->description = $description;
+      $this->categoryId = $categoryId;
     }
 
-    public function setMarkerCode() {
-      $this->markerCode = $markerCode;
-    }
-
-    public function getMarkerCode() {
-      return $this->markerCode;
-    }
-
-    public function setName() {
+    public function setName($name) {
       $this->name = $name;
     }
 
@@ -30,12 +22,16 @@ class MarkerType {
       return $this->name;
     }
 
-    public function setDesc() {
+    public function setDescscription($description) {
       $this->description = $description;
     }
 
-    public function getDesc() {
+    public function getDescription() {
       return $this->description;
+    }
+
+    public function getCategoryId() {
+      return $this->categoryId;
     }
 
 }
@@ -51,15 +47,15 @@ class MarkerTypeDAO {
 
        if ($markerTypeObj->getMarkerCode() != '') {
 
-           $insert = Db::pdoConnect()->prepare("INSERT INTO marker_type SET marker_code=:marker_code, name=:name, description=:description");
+           $insert = Db::pdoConnect()->prepare("INSERT INTO marker_type SET name=:name, description=:description, category_id=:categoryId");
 
-           $markerCode = $markerTypeObj->getMarkerCode();
            $name = $markerTypeObj->getName();
-           $description = $markerTypeObj->getDesc();
+           $description = $markerTypeObj->getDescription();
+           $categoryId = $markerTypeObj->getCategoryId();
 
-           $insert->bindValue(':marker_code', $markerCode, PDO::PARAM_INT);
            $insert->bindValue(':name', $name, PDO::PARAM_STR);
            $insert->bindValue(':description', $description, PDO::PARAM_STR);
+           $insert->bindValue(':category_id', $categoryId, PDO::PARAM_STR);
 
 
            return $insert->execute();
@@ -69,6 +65,16 @@ class MarkerTypeDAO {
            echo 'Marker Code Required';
        }
 
+   }
+
+   public static function getMarkerForm() { //Returns everything from the marker_type table so we can generate a form from it.
+     $statement = Db::pdoConnect()->prepare("SELECT * FROM marker_type");
+
+     $statement->execute();
+
+     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+     return $results;
    }
 
 
@@ -158,7 +164,7 @@ Class FilmMarkerDAO {
    * @return type
    */
 
-    public static function insertMarker(FilmMarker $filmMarkerObj) {
+    public function insertMarker(FilmMarker $filmMarkerObj) {
 
         if ($filmMarkerObj->getFilmId() != '') {
 
