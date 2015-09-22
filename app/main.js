@@ -15,7 +15,7 @@ let action = 'getForm';
 
 let filmId = 0;
 
-let markerType = 0;
+let markerId = 0;
 
 let start = 0;
 
@@ -25,7 +25,7 @@ let target = '.markerControl';
 
 controls.initControls();
 
-let myAjax = new Ajax(action, filmId, markerType, start, text, target);
+let myAjax = new Ajax(action, filmId, markerId, start, text, target);
 
 myAjax.getForm();
 

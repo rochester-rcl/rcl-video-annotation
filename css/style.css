@@ -50,7 +50,7 @@ html {
 
 body {
     min-width: 1100px;
-    background-color: #272b30;
+    background-color: #282c34;
   }
   * {
     margin:0;
@@ -66,7 +66,7 @@ body {
 
 .grid      { width: 100%; min-width: 930px;padding-top: 0px;}
 .col100    { width: 25%; float: left;}
-.col200    { width: 75%; float: left}
+.col200    { width: 75%; float: left; min-height: 100%;}
 .clear     { clear: both;}
 
 
@@ -120,8 +120,10 @@ body {
  /*annotation-list*/
 .annotation-list{
   overflow-y: auto;
-  height: 100%;
-  color: #FFF;
+  max-height: 100%;
+  color: #9da4b4;
+  min-width: 263px;
+  background-color: #21252b;
 }
 .annotation-list ul {
   list-style-type: none;
@@ -142,12 +144,16 @@ body {
 
 }
 
-.icon-right{float: right;}
+.icon-right{float: right; padding-right: 20px;}
+
 .time-stamp{
   font-family: Helvetica, arial;
   font-size: 12px;
-  color: gray;
-  padding: 0px 5px 0px 0px;
+  color: #5c6270;
+  padding: 0px 10px 0px 0px;
+  display: inline-block;
+  width: 50px;
+  text-align: right;
 }
 
 /*Color Labels
@@ -155,18 +161,18 @@ Not so DRY. Couldn't find a way to sperate the border-left
 color from the 6px & solid.
 ____________________________________________________
 */
-#shot-color           { border-right: 6px solid #1f8dd6; }
-#credits-color        { border-right: 6px solid rgb(128, 88, 165); }
-#beat-color           { border-right: 6px solid #5eb95e; }
-#scene-color          { border-right: 6px solid rgb(243, 123, 29); }
-#sequence-color       { border-right: 6px solid rgb(250, 210, 50); }
-#act-color            { border-right: 6px solid #FF85CB; }
-#turning-points-color { border-right: 6px solid #BFF073; }
-#plot-color           { border-right: 6px solid #638CA6; }
-#time-color           { border-right: 6px solid #5F9DA1; }
-#transition-color     { border-right: 6px solid red; }
-#space-color          { border-right: 6px solid red; }
-#characters-color     { border-right: 6px solid red; }
+#shot-color           { border-left: 6px solid #1f8dd6; }
+#credits-color        { border-left: 6px solid rgb(128, 88, 165); }
+#beat-color           { border-left: 6px solid #5eb95e; }
+#scene-color          { border-left: 6px solid rgb(243, 123, 29); }
+#sequence-color       { border-left: 6px solid rgb(250, 210, 50); }
+#act-color            { border-left: 6px solid #FF85CB; }
+#turning-points-color { border-left: 6px solid #BFF073; }
+#plot-color           { border-left: 6px solid #638CA6; }
+#time-color           { border-left: 6px solid #5F9DA1; }
+#transition-color     { border-left: 6px solid red; }
+#space-color          { border-left: 6px solid red; }
+#characters-color     { border-left: 6px solid red; }
 
 
 

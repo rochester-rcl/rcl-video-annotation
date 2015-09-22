@@ -67,8 +67,19 @@ class MarkerTypeDAO {
 
    }
 
-   public static function getMarkerForm() { //Returns everything from the marker_type table so we can generate a form from it.
-     $statement = Db::pdoConnect()->prepare("SELECT * FROM marker_type");
+   public static function getMarkerFormTopLevel() { //Returns everything from the marker_type table so we can generate a form from it.
+     $statement = Db::pdoConnect()->prepare("SELECT name FROM marker_category ORDER BY marker_category.id");
+
+     $statement->execute();
+
+     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+     return $results;
+   }
+
+   public static function getMarkerFormButtons() {
+     $statement = Db::pdoConnect()->prepare("SELECT marker_type.id, marker_type.name, marker_type.description, marker_category.name AS category
+     FROM marker_type INNER JOIN marker_category ON marker_category.id = marker_type.marker_category_id");
 
      $statement->execute();
 
@@ -83,7 +94,7 @@ class MarkerTypeDAO {
 class FilmMarker {
 
     protected $filmId;
-    protected $markerType;
+    protected $markerId;
     protected $start;
     protected $end;
     protected $text;
@@ -97,12 +108,12 @@ class FilmMarker {
         return $this->filmId;
     }
 
-    public function setMarkerType($markerType) {
-        $this->markerType = $markerType;
+    public function setMarkerType($markerId) {
+        $this->markerId = $markerId;
     }
 
-    public function getMarkerType() {
-        return $this->markerType;
+    public function getMarkerId() {
+        return $this->markerId;
     }
 
     public function setStart($start) {
@@ -141,7 +152,7 @@ class FilmMarker {
 
         $this->setFilmId($arr['filmId']);
 
-        $this->setMarkerType($arr['markerType']);
+        $this->setMarkerType($arr['markerId']);
 
         $this->setStart($arr['start']);
 
@@ -171,14 +182,14 @@ Class FilmMarkerDAO {
             $insert = Db::pdoConnect()->prepare("INSERT INTO film_marker SET film_id=:film_id, marker_type_id=:marker_type_id, start=:start, end=:end, text=:text, target=:target");
 
             $filmId = $filmMarkerObj->getFilmId();
-            $markerType = $filmMarkerObj->getMarkerType();
+            $markerId = $filmMarkerObj->getMarkerId();
             $start = $filmMarkerObj->getStart();
             $end = $filmMarkerObj->getEnd();
             $text = $filmMarkerObj->getText();
             $target = $filmMarkerObj->getTarget();
 
             $insert->bindValue(':film_id', $filmId, PDO::PARAM_INT);
-            $insert->bindValue(':marker_type_id', $markerType, PDO::PARAM_INT);
+            $insert->bindValue(':marker_type_id', $markerId, PDO::PARAM_INT);
             $insert->bindValue(':start', $start, PDO::PARAM_STR);
             $insert->bindValue(':end', $end, PDO::PARAM_STR);
             $insert->bindValue(':text', $text, PDO::PARAM_STR);
@@ -194,12 +205,12 @@ Class FilmMarkerDAO {
     public function getMostRecent(FilmMarker $filmMarkerObj) {
 
         $filmId = $filmMarkerObj->getFilmId();
-        $markerType = $filmMarkerObj->getMarkerType();
+        $markerId = $filmMarkerObj->getMarkerId();
 
         $myResult = Db::pdoConnect()->prepare("SELECT * FROM film_marker WHERE film_id = film_id=:film_id AND marker_type_id = marker_type_id=:marker_type_id ORDER BY id DESC LIMIT 1");
 
         $myResult->bindValue(':film_id', $filmId, PDO::PARAM_INT);
-        $myResult->bindValue(':marker_type_id', $markerType, PDO::PARAM_STR);
+        $myResult->bindValue(':marker_type_id', $markerId, PDO::PARAM_STR);
 
         $myResult->execute();
 
@@ -212,12 +223,12 @@ Class FilmMarkerDAO {
     public function getMarkerByType(FilmMarker $filmMarkerObj) {
 
         $filmId = $filmMarkerObj->getFilmId();
-        $markerType = $filmMarkerObj->getMarkerType();
+        $markerId = $filmMarkerObj->getMarkerId();
 
         $myResult = Db::pdoConnect()->prepare("SELECT * FROM film_marker WHERE film_id = film_id=:film_id AND marker_type_id = marker_type_id=:marker_type_id ORDER BY start");
 
         $myResult->bindValue(':film_id', $filmId, PDO::PARAM_INT);
-        $myResult->bindValue(':marker_type', $markerType, PDO::PARAM_INT);
+        $myResult->bindValue(':marker_type', $markerId, PDO::PARAM_INT);
 
         $myResult->execute();
 
