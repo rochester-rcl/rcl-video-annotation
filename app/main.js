@@ -27,9 +27,7 @@ controls.initControls();
 
 let myAjax = new Ajax(action, filmId, markerType, start, text, target);
 
-let meh = myAjax.getAction();
+myAjax.getForm();
 
-let form = myAjax.getForm();
 
-console.log(meh);
 });
