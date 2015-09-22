@@ -7,11 +7,13 @@ class MarkerType {
     protected $markerCode;
     protected $name;
     protected $description;
+    protected $category;
 
-    public function __construct($markerCode, $name, $description) {
+    public function __construct($markerCode, $name, $description, $category) {
       $this->markerCode = $markerCode;
       $this->name = $name;
       $this->description = $description;
+      $this->category = $category;
     }
 
     public function setMarkerCode() {
@@ -38,6 +40,10 @@ class MarkerType {
       return $this->description;
     }
 
+    public function getCat() {
+      return $this->category;
+    }
+
 }
 
 class MarkerTypeDAO {
@@ -51,15 +57,17 @@ class MarkerTypeDAO {
 
        if ($markerTypeObj->getMarkerCode() != '') {
 
-           $insert = Db::pdoConnect()->prepare("INSERT INTO marker_type SET marker_code=:marker_code, name=:name, description=:description");
+           $insert = Db::pdoConnect()->prepare("INSERT INTO marker_type SET marker_code=:marker_code, name=:name, description=:description, category=:category");
 
            $markerCode = $markerTypeObj->getMarkerCode();
            $name = $markerTypeObj->getName();
            $description = $markerTypeObj->getDesc();
+           $category = $markerTypeObj->getCat();
 
            $insert->bindValue(':marker_code', $markerCode, PDO::PARAM_INT);
            $insert->bindValue(':name', $name, PDO::PARAM_STR);
            $insert->bindValue(':description', $description, PDO::PARAM_STR);
+           $insert->bindValue(':category', $category, PDO::PARAM_STR);
 
 
            return $insert->execute();
@@ -77,9 +85,8 @@ class MarkerTypeDAO {
      $statement->execute();
 
      $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-     $resultsJSON = json_encode($results);
 
-     return $resultsJSON;
+     return $results;
    }
 
 
