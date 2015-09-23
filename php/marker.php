@@ -92,13 +92,34 @@ class MarkerTypeDAO {
 }
 
 class FilmMarker {
-
+    /**
+    * Class that represents a film marker
+    * @param Array $array
+    * @return type
+    */
     protected $filmId;
     protected $markerId;
     protected $start;
     protected $end;
     protected $text;
     protected $target;
+
+
+    public function __construct(Array $array){
+
+      $this->filmId = $arr['filmId'];
+
+      $this->markerId = $arr['markerId'];
+
+      $this->start = $arr['start'];
+
+      $this->end = $arr['end'];
+
+      $this->text = $arr['text'];
+
+      $this->target = $arr['target'];
+
+    }
 
     public function setFilmId($filmId) {
         $this->filmId = $filmId;
@@ -146,21 +167,6 @@ class FilmMarker {
 
     public function getTarget() {
         return $this->target;
-    }
-
-    public function setAllFromArray(Array $arr) {
-
-        $this->setFilmId($arr['filmId']);
-
-        $this->setMarkerType($arr['markerId']);
-
-        $this->setStart($arr['start']);
-
-        $this->setEnd($arr['end']);
-
-        $this->setText($arr['text']);
-
-        $this->setTarget($arr['target']);
     }
 
 }
