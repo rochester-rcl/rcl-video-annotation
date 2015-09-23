@@ -201,7 +201,7 @@ Class FilmMarkerDAO {
             $insert->bindValue(':text', $text, PDO::PARAM_STR);
             $insert->bindValue(':target', $target, PDO::PARAM_STR);
 
-            return $insert->execute();
+            $insert->execute();
         } else {
             echo 'Film ID required';
         }
