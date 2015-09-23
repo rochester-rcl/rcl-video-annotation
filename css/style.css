@@ -75,8 +75,8 @@ button {
 /*div {outline: 1px solid red;}*/
 
 .grid      { width: 100%; height: 100%; min-width: 930px;padding-top: 30px;}
-.col100    { width: 25%; float: left; }
-.col200    { width: 75%; float: left; min-height: 100%;}
+.col100    { width: 33%; float: left; }
+.col200    { width: 67%; float: left; min-height: 100%;}
 .clear     { clear: both;}
 
 
@@ -159,20 +159,30 @@ ul li button {
 ––––––––––––––––––––––––––––––––––––––––––––––––––
 */
 
+.annotation-filter{
+  width: 33%;
+  height: 40px;
+  background-color: #1b1c23;
+  position: fixed;
+}
+
+
 .annotation-list{
   overflow-y: auto;
   max-height: 100%;
   min-height: 100%;
   min-width: 400px;
-  color: #9da4b4;
+  color: lightgray;
   font-size: 15px;
   min-width: 263px;
   background-color: #21252b;
-  border-right: 1px solid #4f4f4f;
+  border-right: 1px solid #1b1c23;
+  margin-top: 40px;
 }
 /* hides arrow icon-right */
 .annotation-list i {
   opacity: 0;
+  float: right;
 }
 .annotation-list ul {
   list-style-type: none;
@@ -180,7 +190,7 @@ ul li button {
   padding: 0;
  }
 .annotation-list ul li {
-   padding: 10px 0px 10px 15px;
+   padding: 10px 30px 10px 15px;
    border-bottom: 2px solid #1b1c23;
   }
 .annotation-list ul li:hover {
@@ -191,10 +201,21 @@ ul li button {
  .annotation-list ul li:hover i{
    opacity: 0.5;
 }
+ .annotation-list ul li i:hover{
+   opacity: 1;
+   color: red;
+}
+/* Just to show an active play state */
+ .annotation-list ul li i:nth-child(5) {
+  background-color:#282c34;
+  opacity: 1;
+}
+
+
+
+
 .sub-cat-label{
-  font-size: 14px;
-  color: lightgray;
-  font-style: italic;
+  color: #9DA4AB;
 }
 
 .sub-cat-label-active{
@@ -217,6 +238,31 @@ ul li button {
 }
 
 
+/* Annotation Author UI element */
+.annotation-author-me {
+  font-size: 12px;
+  font-weight: bold;
+  background-color: black;
+  border-radius: 5px;
+  padding: 6px;
+  margin-right: 15px;
+}
+.annotation-author-others {
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #5C6275;
+  border-radius: 5px;
+  padding: 6px;
+  color: #bfc4d6;
+  margin-right: 15px;
+}
+
+
+
+
+/* Help Text
+________________________________________________*/
+
 .helptext{
   font-size: 12px;
   color:#5c6270;
@@ -236,6 +282,8 @@ ul li button {
   padding: 2px 5px;
   line-height: 1.7;
 }
+
+
 
 
 /*Color Labels
@@ -304,7 +352,7 @@ ____________________________________________________
 
 /* Popup Content */
 .popup {
-  padding: 20px;
+  padding: 40px 20px 20px 30px;
   width: 100%;
   position: absolute;
   right: 10px;
@@ -320,8 +368,8 @@ ____________________________________________________
 /* Close Button */
 .popup .close {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: -12px;
+  right: 35px;
   /* transition: all 200ms; */
   font-size: 50px;
   color: white;
