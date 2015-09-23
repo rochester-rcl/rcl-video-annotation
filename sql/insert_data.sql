@@ -202,4 +202,4 @@ WHERE name = 'Space';
 
 INSERT INTO marker_type (marker_category_id, name, description)  
 SELECT id, 'Characters', '' FROM marker_category 
-WHERE name = 'Space';
+WHERE name = 'Characters';

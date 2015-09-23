@@ -59,7 +59,7 @@ DROP TABLE IF EXISTS `marker_category`;
 CREATE TABLE `marker_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL UNIQUE,
-  `description` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -74,7 +74,7 @@ CREATE TABLE `marker_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `marker_category_id` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
   FOREIGN KEY (`marker_category_id`) REFERENCES `marker_category` (`id`),
   PRIMARY KEY (`id`),
   UNIQUE(marker_category_id, name)
