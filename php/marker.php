@@ -3,124 +3,52 @@
 include_once 'db.php';
 /**Class that represents a Marker Type **/
 
-class MarkerType {
-    protected $name;
-    protected $description;
-    protected $categoryId;
-
-    public function __construct($name, $description, $categoryId) {
-      $this->name = $name;
-      $this->description = $description;
-      $this->categoryId = $categoryId;
-    }
-
-    public function setName($name) {
-      $this->name = $name;
-    }
-
-    public function getName() {
-      return $this->name;
-    }
-
-    public function setDescscription($description) {
-      $this->description = $description;
-    }
-
-    public function getDescription() {
-      return $this->description;
-    }
-
-    public function getCategoryId() {
-      return $this->categoryId;
-    }
-
-}
-
-class MarkerTypeDAO {
-  /**
-   * Insert a new marker type
-   *
-   * @param MarkerType $markerTypeObj
-   * @return type
-   */
-   public static function insertMarkerType(MarkerType $markerTypeObj) {
-
-       if ($markerTypeObj->getMarkerCode() != '') {
-
-           $insert = Db::pdoConnect()->prepare("INSERT INTO marker_type SET name=:name, description=:description, category_id=:categoryId");
-
-           $name = $markerTypeObj->getName();
-           $description = $markerTypeObj->getDescription();
-           $categoryId = $markerTypeObj->getCategoryId();
-
-           $insert->bindValue(':name', $name, PDO::PARAM_STR);
-           $insert->bindValue(':description', $description, PDO::PARAM_STR);
-           $insert->bindValue(':category_id', $categoryId, PDO::PARAM_STR);
-
-
-           return $insert->execute();
-
-           echo 'MarkerType' . $name . 'inserted';
-       } else {
-           echo 'Marker Code Required';
-       }
-
-   }
-
-   public static function getMarkerFormTopLevel() { //Returns everything from the marker_type table so we can generate a form from it.
-     $statement = Db::pdoConnect()->prepare("SELECT name FROM marker_category ORDER BY marker_category.id");
-
-     $statement->execute();
-
-     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-     return $results;
-   }
-
-   public static function getMarkerFormButtons() {
-     $statement = Db::pdoConnect()->prepare("SELECT marker_type.id, marker_type.name, marker_type.description, marker_category.name AS category
-     FROM marker_type INNER JOIN marker_category ON marker_category.id = marker_type.marker_category_id");
-
-     $statement->execute();
-
-     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-     return $results;
-   }
-
-
-}
-
 class FilmMarker {
-    /**
-    * Class that represents a film marker
-    * @param Array $array
-    * @return type
-    */
+
+    protected $id;
     protected $filmId;
     protected $markerId;
     protected $start;
     protected $end;
     protected $text;
     protected $target;
+    protected $userId;
+    
+    
+     public function __construct(Array $array){
 
+      $this->filmId = $array['filmId'];
 
-    public function __construct(Array $array){
+      $this->markerId = $array['markerId'];
 
-      $this->filmId = $arr['filmId'];
+      $this->start = $array['start'];
 
-      $this->markerId = $arr['markerId'];
+      $this->end = $array['end'];
 
-      $this->start = $arr['start'];
+      $this->text = $array['text'];
 
-      $this->end = $arr['end'];
-
-      $this->text = $arr['text'];
-
-      $this->target = $arr['target'];
+      $this->target = $array['target'];
+      
+      $this->userId = $array['userId'];
 
     }
 
+    function getId() {
+        return $this->id;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
+        
+    function getUserId() {
+        return $this->userId;
+    }
+
+    function setUserId($userId) {
+        $this->userId = $userId;
+    }
+    
     public function setFilmId($filmId) {
         $this->filmId = $filmId;
     }
@@ -168,9 +96,9 @@ class FilmMarker {
     public function getTarget() {
         return $this->target;
     }
+    
 
 }
-
 
 
 Class FilmMarkerDAO {
@@ -185,7 +113,7 @@ Class FilmMarkerDAO {
 
         if ($filmMarkerObj->getFilmId() != '') {
 
-            $insert = Db::pdoConnect()->prepare("INSERT INTO film_marker SET film_id=:film_id, marker_type_id=:marker_type_id, start=:start, end=:end, text=:text, target=:target");
+            $insert = Db::pdoConnect()->prepare("INSERT INTO film_marker SET film_id=:film_id, marker_type_id=:marker_type_id, start=:start, end=:end, text=:text, target=:target, user_id=:user_id");
 
             $filmId = $filmMarkerObj->getFilmId();
             $markerId = $filmMarkerObj->getMarkerId();
@@ -193,6 +121,7 @@ Class FilmMarkerDAO {
             $end = $filmMarkerObj->getEnd();
             $text = $filmMarkerObj->getText();
             $target = $filmMarkerObj->getTarget();
+            $userId = $filmMarkerObj->getUserId();
 
             $insert->bindValue(':film_id', $filmId, PDO::PARAM_INT);
             $insert->bindValue(':marker_type_id', $markerId, PDO::PARAM_INT);
@@ -200,8 +129,13 @@ Class FilmMarkerDAO {
             $insert->bindValue(':end', $end, PDO::PARAM_STR);
             $insert->bindValue(':text', $text, PDO::PARAM_STR);
             $insert->bindValue(':target', $target, PDO::PARAM_STR);
+            $insert->bindValue(':user_id', $userId, PDO::PARAM_INT);
 
             $insert->execute();
+            
+            $lastId = Db::pdoConnect()->lastInsertId();
+            $filmMarkerObj->setId($lastId);
+            return $filmMarkerObj;
         } else {
             echo 'Film ID required';
         }
@@ -255,5 +189,11 @@ Class FilmMarkerDAO {
 
         return $resultsJSON;
     }
-
+    
+    public static function delete($id){
+        $sql = "DELETE FROM film_marker WHERE id =  :id";
+        $stmt = Db::pdoConnect()->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);   
+        return $stmt->execute();
+    }
 }

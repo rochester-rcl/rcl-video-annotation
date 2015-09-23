@@ -108,7 +108,6 @@ class UserDAO{
         }
         $myResult = Db::pdoConnect()->prepare("SELECT * FROM user WHERE user_email = :email");
 
-        var_dump($email);
         $myResult->bindValue(':email', $email, PDO::PARAM_STR);
         $myResult->execute();
 

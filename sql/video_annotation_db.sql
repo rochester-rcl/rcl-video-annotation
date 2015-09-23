@@ -39,6 +39,7 @@ DROP TABLE IF EXISTS `film_marker`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `film_marker` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `film_id` int(11) NOT NULL,
   `marker_type_id` int(11) NOT NULL,
   `start` float NOT NULL,
@@ -46,6 +47,7 @@ CREATE TABLE `film_marker` (
   `text` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `target` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
+  FOREIGN KEY (user_id) REFERENCES `user`(id),
   KEY `film_id` (`film_id`),
   KEY `marker_type_id` (`marker_type_id`),
   CONSTRAINT `fk_film_id` FOREIGN KEY (`film_id`) REFERENCES `film` (`id`),
