@@ -175,7 +175,7 @@ Class FilmMarkerDAO {
    * @return type
    */
 
-    public function insertMarker(FilmMarker $filmMarkerObj) {
+    public static function insertMarker(FilmMarker $filmMarkerObj) {
 
         if ($filmMarkerObj->getFilmId() != '') {
 
@@ -220,7 +220,7 @@ Class FilmMarkerDAO {
         return $resultsJSON;
     }
 
-    public function getMarkerByType(FilmMarker $filmMarkerObj) {
+    public static function getMarkerByType(FilmMarker $filmMarkerObj) {
 
         $filmId = $filmMarkerObj->getFilmId();
         $markerId = $filmMarkerObj->getMarkerId();
@@ -238,7 +238,7 @@ Class FilmMarkerDAO {
         return $resultsJSON;
     }
 
-    public function getAllMarkers() {
+    public static function getAllMarkers() {
 
         $myResult = Db::pdoConnect()->prepare("SELECT * FROM film_marker ORDER BY start");
 
