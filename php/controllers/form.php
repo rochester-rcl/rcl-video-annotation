@@ -20,7 +20,7 @@ if ($postAction == 'getForm') {
 
       $lowerName = strtolower($name);
 
-      echo '<a class="category_' . $lowerName . '">' . $name . '</a>';
+      echo '<a href="#" class="category" id="' . $lowerName . '">' . $name . '</a>';
 
     }
 
@@ -31,13 +31,15 @@ if ($postAction == 'getForm') {
     $name = $button['name'];
     $description = $button['description'];
 
+    $lowerCategory = strtolower($category);
+
     if ($description != NULL) {
 
-      echo '<button value="' . $markerId . '" class="' . $category . '" title="' . $description . '">' . $name . '</button>';
+      echo '<button value="' . $markerId . '" class="' . $lowerCategory . '" title="' . $description . '">' . $name . '</button>';
 
     } else {
 
-      echo '<button value="' . $markerId . '" class="' . $category . '">' . $name . '</button>';
+      echo '<button value="' . $markerId . '" class="' . $lowerCategory . '">' . $name . '</button>';
 
     }
 

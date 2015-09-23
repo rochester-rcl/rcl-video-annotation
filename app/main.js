@@ -7,7 +7,7 @@ let frame = 1 / 24; //Most will be 29.97 fps
 
 $(document).ready( function() {
 
-let popcornSelector = "#testVideo";
+let popcornSelector = ".testVideo";
 
 let controls = new VideoController(frame, popcornSelector);
 
@@ -19,7 +19,7 @@ let markerId = 0;
 
 let start = 0;
 
-let text = 'blah'
+let text = 'blah';
 
 let target = '.markerControl';
 

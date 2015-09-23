@@ -10,30 +10,41 @@ export class VideoController {
         return self.popcornInstance.currentTime();
       }
 
+
       initControls() {
         let play = true;
         let frame =  self.frame;
 
         $(document).keydown(function(e) {
+
             switch (e.keyCode) {
+
                 case 37:  if (self.popcornInstance.currentTime() > 0) {
                 let decrement = self.popcornInstance.currentTime() - frame;
                 self.popcornInstance.currentTime(decrement);
+                e.stopPropagation();
+                e.preventDefault();
                 }
                 break;
 
                 case 39: if (self.popcornInstance.currentTime() < self.popcornInstance.duration()) {
                 let increment = Math.min(self.popcornInstance.duration(), self.popcornInstance.currentTime() + frame);
                 self.popcornInstance.currentTime(increment);
+                e.stopPropagation();
+                e.preventDefault();
                 }
                 break;
 
                 case 32: if (play) {
                 self.popcornInstance.pause();
                 play = false;
+                e.stopPropagation();
+                e.preventDefault();
                 } else {
                 self.popcornInstance.play();
                 play = true;
+                e.stopPropagation();
+                e.preventDefault(); //Have to do these for each keyboard event because we don't want to lose things like cmd+option+i
                 }
                 break;
 
@@ -41,6 +52,8 @@ export class VideoController {
             });
 
       }
+
+
 
       scrubMode(selector) {
           self.popcornInstance.on( "timeupdate", function() {
