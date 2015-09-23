@@ -34,7 +34,6 @@ ___________________________________________________
 ––––––––––––––––––––––––––––––––––––––––––––––––––
 */
 
-
 html {
     font-family: 'Raleway', sans-serif;
     height: 100%;
@@ -88,18 +87,20 @@ button {
 .header{
   height: 30px;
   background-color: black;
-  color: gray;
+  color: #5c6270;
   padding: 3px;
   padding: 7px 0px 0px 17px;
   font-size: 13px;
   font-weight: 100;
   position: fixed;
   width: 100%;
+  z-index: 1;
 }
 
 .logo{
   float: left;
   width: 80%;
+  font-weight: 700;
 }
 
 .user-info{
@@ -107,6 +108,7 @@ button {
   width: 20%;
   text-align: right;
   padding-right: 20px;
+  font-weight: bold;
 }
 
 .testVideo {
@@ -133,19 +135,24 @@ button {
   cursor: pointer;
 }
 
-
-
 ul li button {
   background: none;
   border: none;
-  color: black;
-  font-size: 19px;
-  padding: 10px 10px 10px 10px;
-  border-radius: 5px;
+  color: #9DA4B6;
+  font-size: 18px;
+  padding: 8px 10px 8px 10px;
+  border-radius: 0px 5px 5px 0px;
+  background-color: #21252b;
+  margin: 3px;
+  width: 100%;
+  text-align: left;
 }
-.content button:hover, .content button:active {
+.overlay-col100 button {font-size: 20px;}
+
+.popup button:hover, .popup  button:active {
   cursor: pointer;
-  background-color: lightgray;
+  background-color: #282c34;
+  border: none;
 }
 
 /* Annotation Col
@@ -163,16 +170,27 @@ ul li button {
   background-color: #21252b;
   border-right: 1px solid #4f4f4f;
 }
+/* hides arrow icon-right */
+.annotation-list i {
+  opacity: 0;
+}
 .annotation-list ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
  }
- .annotation-list ul li {
+.annotation-list ul li {
    padding: 10px 0px 10px 15px;
-   border-bottom: 1px solid #4f4f4f;
+   border-bottom: 2px solid #1b1c23;
   }
-
+.annotation-list ul li:hover {
+  background-color:#282c34;
+  cursor: pointer;
+}
+/* Displays arrow icon-right */
+ .annotation-list ul li:hover i{
+   opacity: 0.5;
+}
 .sub-cat-label{
   font-size: 14px;
   color: lightgray;
@@ -219,6 +237,7 @@ ul li button {
   line-height: 1.7;
 }
 
+
 /*Color Labels
 Not so DRY. Couldn't find a way to sperate the border-left
 color from the 6px & solid.
@@ -244,22 +263,13 @@ ____________________________________________________
 */
 
 
-h1 {
-  text-align: center;
-  font-family: Tahoma, Arial, sans-serif;
-  color: #06D85F;
-  margin: 80px 0;
+
+.overlay-col100, .overlay-col200, .overlay-col300, .overlay-col400 {
+  padding-left: 18px;
+  width: 25%;
+  float: right;
 }
 
-.box {
-  width: 40%;
-  margin: 0 auto;
-  background: rgba(255,255,255,0.2);
-  padding: 35px;
-  border: 2px solid #fff;
-  background-clip: padding-box;
-  text-align: center;
-}
 
 .button {
   font-size: 1em;
@@ -268,20 +278,21 @@ h1 {
   border: 2px solid #06D85F;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.3s ease-out;
+  transition: all 0.1s ease-out;
 }
 .button:hover {
   background: #06D85F;
 }
 
 .overlay {
+  min-width: 1100px;
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
+  background: rgba(27, 29, 36, 0.95);
+  transition: opacity 200ms;
   visibility: hidden;
   opacity: 0;
 }
@@ -291,51 +302,46 @@ h1 {
   z-index: 2;
 }
 
+/* Popup Content */
 .popup {
-  /* margin: 70px auto; */
   padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  width: 30%;
+  width: 100%;
   position: absolute;
   right: 10px;
   top: 40px;
-  transition: all 5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  margin: auto;
+}
+.popup h3 {
+  color: white;
+  padding-bottom: 10px;
 }
 
-.popup h2 {
-  margin-top: 0;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
-}
+/* Close Button */
 .popup .close {
   position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
+  top: 0px;
+  right: 0px;
+  /* transition: all 200ms; */
+  font-size: 50px;
+  color: white;
+  /* font-weight: bold; */
   text-decoration: none;
-  color: #333;
+  color: white;
 }
 .popup .close:hover {
   color: #06D85F;
 }
-.popup .content {
-  max-height: 30%;
-  /*overflow: auto;*/
+
+.annotation-group {
+  float: right;
+  width: 100%;
+  padding: 20px;
+  /* border: 2px solid #1b1c23; */
+  border-radius: 5px;
+  margin: 10px;
+  background-color: #1b1c23;
 }
-
-@media screen and (max-width: 700px){
-  .box{
-    width: 70%;
-  }
-  .popup{
-    width: 70%;
-  }
-}
-
-
 
 
 
@@ -355,6 +361,19 @@ ____________________________________________________
      font-size: 13px;
     }
 
+/* Changing the overlay text size based on space-color */
+    ul li button{
+      font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 1550px) {
+
+
+/* Changing the overlay text size based on space-color */
+    ul li button{
+      font-size: 16px;
+    }
 }
 
 /*

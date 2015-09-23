@@ -17,48 +17,124 @@
 <!-- Latest compiled and minified JavaScript -->
 
 
-  <!-- Annotate Button -->
-
-    <a class="button annotate-btn" href="#popup1">Annotate</a>
-
+    <!-- Annotate Button -->
+    <a class="button annotate-btn" href="#allannotations">Annotate</a>
 
 
-      <div id="popup1" class="overlay">
-      	<div class="popup">
-      		<a class="close" href="#">&times;</a>
-      		<div class="content">
-            <h3 class="group-heading">Credits</h3>
-        			<ul>
-                <li><button type="button">Opening begin/start</button></li>
-                <li><button type="button">Opening end/stop</button></li>
-                <li><button type="button">Closing begin/start</button></li>
-                <li><button type="button">Closing end/stop</button></li>
-              </ul>
-      		</div>
-      	</div>
-      </div>
+    <!-- Annotation Overlay  -->
+    <div id="allannotations" class="overlay">
+    	<div class="popup">
+    		<a class="close" href="#">&times;</a>
+
+          <div class="overlay-col100">
+            <div class="annotation-group">
+                <ul>
+                  <li><button id="shot-color" type="button">Shot</button></li>
+                  <li><button id="scene-color" type="button">Scene</button></li>
+                  <li><button id="sequence-color" type="button">Sequence</button></li>
+                  <li><button id="turning-points-color" type="button">Turning points</button></li>
+                  <li><button id="plot-color" type="button">Plot</button></li>
+                  <li><button id="space-color" type="button">Space</button></li>
+                </ul>
+            </div>
+          </div>
+
+          <div class="overlay-col200">
+            <div class="annotation-group">
+                <h3 class="group-heading">Credits</h3>
+                <ul>
+                  <li><button id="credits-color" type="button">Opening Start</button></li>
+                  <li><button id="credits-color" type="button">Opening Stop</button></li>
+                  <li><button id="credits-color" type="button">Closing Start</button></li>
+                  <li><button id="credits-color" type="button">Closing Stop</button></li>
+                </ul>
+            </div>
+            <div class="annotation-group">
+                <h3 class="group-heading">Time</h3>
+                <ul>
+                  <li><button id="time-color" type="button">Diegetic Time (Quantitative)</button></li>
+                  <li><button id="time-color" type="button">Diegetic Time (Qualitative)</button></li>
+                  <li><button id="time-color" type="button">Discursive Time: Linear</button></li>
+                  <li><button id="time-color" type="button">Discursive Time: Simultaneous</button></li>
+                  <li><button id="time-color" type="button">Discursive Time: Analeptic</button></li>
+                  <li><button id="time-color" type="button">Discursive Time: Proleptic</button></li>
+                </ul>
+            </div>
+          </div>
+
+          <div class="overlay-col300">
+            <div class="annotation-group">
+                <h3 class="group-heading">Transition</h3>
+                <ul>
+                  <li><button id="transition-color" type="button">Shot Transition: Spatial</button></li>
+                  <li><button id="transition-color" type="button">Shot Transition: Temporal</button></li>
+                  <li><button id="transition-color" type="button">Shot Transition: Spatial-Temporal</button></li>
+                  <li><button id="transition-color" type="button">Scene Transition: Spatial</button></li>
+                  <li><button id="transition-color" type="button">Scene Transition: Temporal</button></li>
+                  <li><button id="transition-color" type="button">Scene Transition: Spatial-Temporal</button></li>
+                </ul>
+            </div>
+            
+            <div class="annotation-group">
+                <h3 class="group-heading">Beat</h3>
+                <ul>
+                  <li><button id="beat-color" type="button">Emotion</button></li>
+                  <li><button id="beat-color" type="button">Event</button></li>
+                  <li><button id="beat-color" type="button">Revelation</button></li>
+                </ul>
+            </div>
+          </div>
+
+          <div class="overlay-col400">
+            <div class="annotation-group">
+                <h3 class="group-heading">Act</h3>
+                <ul>
+                  <li><button id="act-color" type="button">Act 1 (set up) begins</button></li>
+                  <li><button id="act-color" type="button">Act 1 (set up) ends</button></li>
+                  <li><button id="act-color" type="button">Act 2 (complicating action) begins</button></li>
+                  <li><button id="act-color" type="button">Act 2 (complicating action) ends</button></li>
+                  <li><button id="act-color" type="button">Act 3 (development) begins</button></li>
+                  <li><button id="act-color" type="button">Act 3 (development) ends</button></li>
+                  <li><button id="act-color" type="button">Act 4 (climax) begins</button></li>
+                  <li><button id="act-color" type="button">Act 4 (climax) ends</button></li>
+                  <li><button id="act-color" type="button">Prologue</button></li>
+                  <li><button id="act-color" type="button">Epilogue</button></li>
+                  <li><button id="act-color" type="button">Interlude</button></li>
+                </ul>
+            </div>
+          </div>
 
 
 
-<!-- POPUP CODE -->
 
 
-<div id="popup1" class="overlay">
-	<div class="popup">
-		<a class="close" href="#">&times;</a>
-		<div class="content">
-			Thank to pop me out of that button, but now i'm done so you can close this window.
-		</div>
-	</div>
-</div>
-<!-- END  -->
+          <!--
+
+
+
+
+
+
+
+
+
+
+   -->
+
+
+    		</div>
+    	</div>
+    </div>
+
+
+
 
 
 
 
 
   <div class="header">
-    <div class="logo">Annotate</div>
+    <div class="logo">annotate</div>
     <div class="user-info">Jane Doe <i class="fa fa-chevron-down"></i></div>
   </div>
 
