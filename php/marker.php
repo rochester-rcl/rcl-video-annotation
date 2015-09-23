@@ -202,7 +202,7 @@ Class FilmMarkerDAO {
 
     }
 
-    public function getMostRecent(FilmMarker $filmMarkerObj) {
+    public static function getMostRecent(FilmMarker $filmMarkerObj) {
 
         $filmId = $filmMarkerObj->getFilmId();
         $markerId = $filmMarkerObj->getMarkerId();
