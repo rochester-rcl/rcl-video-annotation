@@ -1,6 +1,6 @@
 <?php
 
-include_once '../marker.php';
+include_once '../markerType.php';
 
 header("content-type:application/json");
 error_reporting(E_ALL | E_STRICT);
@@ -14,43 +14,62 @@ if ($postAction == 'getForm') {
 
   $formButton = MarkerTypeDAO::getMarkerFormButtons();
 
-  foreach ($formTop as $topLevel){
+  $groupArray = [];
+  $buttonArray = [];
 
-      $name = $topLevel['name'];
 
-      $lowerName = strtolower($name);
+  foreach ($formTop as $form) {
+    $id = $form['id'];
+    $name = $form['name'];
 
-      echo '<a href="#" class="category" id="' . $lowerName . '">' . $name . '</a>';
+    $nameDashed= str_replace(' ','-',$name);
 
-    }
+    $lowerName = strtolower($nameDashed);
 
-  foreach ($formButton as $button){
-
-    $category = $button['category'];
-    $markerId = $button['id'];
-    $name = $button['name'];
-    $description = $button['description'];
-
-    $lowerCategory = strtolower($category);
-
-    if ($description != NULL) {
-
-      echo '<button value="' . $markerId . '" class="' . $lowerCategory . '" title="' . $description . '">' . $name . '</button>';
-
-    } else {
-
-      echo '<button value="' . $markerId . '" class="' . $lowerCategory . '">' . $name . '</button>';
-
-    }
-
+    $groupArray[$id] = $lowerName;
 
   }
 
 
+  foreach ($formButton as $button){
+
+    $category = $button['category'];
+    $categoryId = $button['category_id'];
+    $markerId = $button['id'];
+    $name = $button['name'];
+    $description = $button['description'];
+
+    $categoryDashed = str_replace(' ','-',$category);
+
+    $lowerCategory = strtolower($categoryDashed);
+
+    $nameDashed= str_replace(' ','-',$name);
+
+    $lowerName = strtolower($nameDashed);
+
+    if ($description != NULL) {
+
+      $buttonHtml = '<li><button value="' . $markerId . '" id="' . $lowerCategory . '-color">' . $name . '</button></li>';
+
+      $buttonArray[$markerId] = array('html' => $buttonHtml, 'category' => $lowerCategory);
+
+    } else {
+
+      $buttonHtml = '<li><button value="' . $markerId . '" id="' . $lowerCategory . '-color">' . $name . '</button></li>';
+
+      $buttonArray[$markerId] = array('html' => $buttonHtml, 'category' => $lowerCategory);
+
+    }
+  }
+
+  $overlayArray['button'] = $buttonArray;
+  $overlayArray['group'] = $groupArray;
+
+  $overlay = json_encode($overlayArray);
+
+  echo($overlay);
 
 
-
-  echo '<a href="#" id="insertMarkerButton">Insert Marker</a>';
 
 } else {
   echo "Can't connect to Database.";

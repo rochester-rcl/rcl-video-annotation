@@ -129,13 +129,8 @@ Class FilmMarkerDAO {
             $insert->bindValue(':end', $end, PDO::PARAM_STR);
             $insert->bindValue(':text', $text, PDO::PARAM_STR);
             $insert->bindValue(':target', $target, PDO::PARAM_STR);
-            $insert->bindValue(':user_id', $userId, PDO::PARAM_INT);
-
             $insert->execute();
-            
-            $lastId = Db::pdoConnect()->lastInsertId();
-            $filmMarkerObj->setId($lastId);
-            return $filmMarkerObj;
+
         } else {
             echo 'Film ID required';
         }
