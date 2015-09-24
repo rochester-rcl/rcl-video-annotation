@@ -3,7 +3,7 @@
 include_once 'db.php';
 
 class MarkerType {
-    
+
     protected $id;
     protected $name;
     protected $description;
@@ -23,7 +23,7 @@ class MarkerType {
     function setId($id) {
         $this->id = $id;
     }
-    
+
     public function setName($name) {
       $this->name = $name;
     }
@@ -78,7 +78,7 @@ class MarkerTypeDAO {
    }
 
    public static function getMarkerFormTopLevel() { //Returns everything from the marker_type table so we can generate a form from it.
-     $statement = Db::pdoConnect()->prepare("SELECT name FROM marker_category ORDER BY marker_category.id");
+     $statement = Db::pdoConnect()->prepare("SELECT name, id FROM marker_category ORDER BY marker_category.id");
 
      $statement->execute();
 
@@ -88,8 +88,8 @@ class MarkerTypeDAO {
    }
 
    public static function getMarkerFormButtons() {
-     $statement = Db::pdoConnect()->prepare("SELECT marker_type.id, marker_type.name, marker_type.description, marker_category.name AS category
-     FROM marker_type INNER JOIN marker_category ON marker_category.id = marker_type.marker_category_id");
+     $statement = Db::pdoConnect()->prepare("SELECT marker_type.id, marker_type.name, marker_type.description, marker_category.name AS category, marker_category.id AS category_id
+     FROM marker_type INNER JOIN marker_category ON marker_category.id = marker_type.marker_category_id ORDER BY marker_type.id");
 
      $statement->execute();
 
@@ -97,23 +97,23 @@ class MarkerTypeDAO {
 
      return $results;
    }
-   
+
    public static function getByName($name) {
        if(!$name || trim($name) == ""){
             return false;
         }
         $myResult = Db::pdoConnect()->prepare("SELECT * FROM marker_type WHERE name = :name");
 
-        
+
         $myResult->bindValue(':name', $name, PDO::PARAM_STR);
         $myResult->execute();
 
         $results = $myResult->fetch(PDO::FETCH_ASSOC);
         if($results){
             return new MarkerType($results['id'],
-                      $results['name'], 
-                      $results['description'], 
-                      $results['marker_category_id'] ); 
+                      $results['name'],
+                      $results['description'],
+                      $results['marker_category_id'] );
         } else {
             return false;
         }
