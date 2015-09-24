@@ -53,7 +53,10 @@ class Test {
             User::hash("password"));
         $updatedUser = UserDAO::add($user);
         $markerType = MarkerTypeDAO::getByName('Event');
-        print($markerType->getId() . "");
+        
+        UserDAO::addFilm($updatedUser->getUserId(), $updatedFilm->getId());
+        $myVideos = UserDAO::getFilms($updatedUser->getUserId());
+        var_dump($myVideos);
         
         
         $array = array( "id" => NULL, 
@@ -67,8 +70,9 @@ class Test {
         
         $marker = new FilmMarker($array);
         $markerWithId = FilmMarkerDAO::insertMarker($marker);
-        var_dump($markerWithId);
+        //var_dump($markerWithId);
         
+        UserDAO::removeFilm($updatedUser->getUserId(), $updatedFilm->getId());
         FilmMarkerDAO::delete($markerWithId->getId());
         UserDAO::delete($updatedUser->getUserId());
         FilmDAO::delete($film->getId());

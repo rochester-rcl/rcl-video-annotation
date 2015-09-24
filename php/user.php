@@ -131,4 +131,34 @@ class UserDAO{
             return false;
         }
     }
+    
+    public static function getFilms($userId){
+        $myResult = Db::pdoConnect()->prepare("SELECT film.* FROM film, user_film WHERE film.id = user_film.film_id AND user_film.user_id = :user_id");
+
+        $myResult->bindValue(':user_id', $userId, PDO::PARAM_INT);
+
+        $myResult->execute();
+
+        $results = $myResult->fetchAll(PDO::FETCH_ASSOC);
+        $resultsJSON = json_encode($results);
+
+        return $resultsJSON;
+
+    }
+    
+    public static function addFilm($userId, $filmId){
+        $insertUser = Db::pdoConnect()->prepare("INSERT INTO user_film SET user_id=:user_id, film_id=:film_id");
+        $insertUser->bindValue(':user_id', $userId, PDO::PARAM_INT);
+        $insertUser->bindValue(':film_id', $filmId, PDO::PARAM_INT);
+        
+        return $insertUser->execute();
+    }
+    
+    public static function removeFilm($userId, $filmId){
+        $sql = "DELETE FROM user_film WHERE user_id =  :user_id and film_id=:film_id";
+        $stmt = Db::pdoConnect()->prepare($sql);
+        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);  
+        $stmt->bindParam(':film_id', $filmId, PDO::PARAM_INT);  
+        return $stmt->execute();
+    }
 }
