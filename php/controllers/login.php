@@ -20,12 +20,14 @@ $userReturn = UserDAO::loginUser($email, $userPassword);
 
   if($userReturn){
 
-    $filmUrl = FilmDAO::getFilmUrl($userReturn->getUserFilmId());
+    $userFilm = UserDAO::getFilms($userReturn->getUserId());
+
+    $userFilmUrl = $userFilm[0]['film_url'];
 
     $userArray = [];
 
     $userArray['email'] = $userReturn->getUserEmail();
-    $userArray['filmUrl'] = $filmUrl;
+    $userArray['filmUrl'] = $userFilmUrl;
     $userArray['fullName'] = $userReturn->getFullName();
 
     echo(json_encode($userArray));
