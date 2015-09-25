@@ -1,5 +1,4 @@
 
-
 //Set up a prototype for the String class to convert seconds (float) to HHMMSS format for display
     export function toHHMMSS(theInt){
     let secNum = parseInt(theInt, 10);
