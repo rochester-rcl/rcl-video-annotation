@@ -1,0 +1,358 @@
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
+
+html {
+    font-family: 'Raleway', sans-serif;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+body {
+    min-width: 1100px;
+    height: 100%;
+    background-color: #282C34;
+    overflow: hidden;
+  }
+  * {
+    margin:0;
+    padding:0;
+}
+
+.lp-main-container {
+    text-align: center;
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 400px;
+    height: 420px;
+    margin: auto;
+}
+.lp-logo {
+  font-family: 'Raleway', sans-serif;
+  font-size: 75px;
+  color: white;
+
+}
+.ann-example{
+  background-color: #282C34;
+  border-radius: 0 5px 5px 0;
+  text-align: center;
+  opacity: 0.5;
+}
+
+.logo-marker{
+    color: #1f8dd6;
+}
+
+.colorbar{
+  overflow: hidden;
+  color: gray;
+}
+.colorbar ul li {
+  padding: 10px 10px 10px 0px;
+  /*border-bottom: 1px solid #282C34;*/
+  font-size: 12px;
+  color: #5c6270;
+}
+
+#blue                 { border-left: 6px solid #1f8dd6;           }
+#purple               { border-left: 6px solid rgb(128, 88, 165); }
+#green                { border-left: 6px solid #5eb95e;           }
+#red                  { border-left: 6px solid #DD514C;           }
+#orange               { border-left: 6px solid #F37B1D;           }
+#yellow               { border-left: 6px solid rgb(250, 210, 50); }
+#pink                 { border-left: 6px solid #FF85CB            }
+
+
+.marker-example {
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 3px;
+  color: #5c6270;
+}
+
+.developmentstage {
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: black;
+    border-radius: 3px;
+    padding: 2px 5px;
+    font-size: 11px;
+  }
+
+/*Footer*/
+.footer{
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  opacity: 0.5;
+  text-align: right;
+  color: #9DA4AB;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.footer img{
+  width: 30%;
+}
+
+input[type="text"],input[type="password"] {
+  display: block;
+  margin: auto;
+  border: none;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  outline: none;
+  padding: 15px;
+  font-size: 28px;
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  height: 75px;
+  color: white;
+  background-color: #9DA4AB;
+}
+
+/* Placeholder text */
+::-webkit-input-placeholder     { color: gray;}
+:-moz-placeholder               { color: gray;} /* Firefox 18- */
+::-moz-placeholder              { color: gray;}  /* Firefox 19+ */
+:-ms-input-placeholder          { color: gray;} /* Firefox 19+ */
+
+
+/* text field hovers */
+input[type="text"]:hover, input[type="password"]:hover {
+  background-color: #bac2ca;
+}
+input[type="text"]:focus, input[type="password"]:focus{
+  font-size: 28px;
+  font-family: 'Raleway', sans-serif;
+  background-color: #FFF;
+  border-radius: 0px 5px 5px 0px;
+  color: #9DA4AB;
+}
+/* text field focus */
+input[type="text"]:focus {
+  border-left: 6px solid rgb(128, 88, 165);
+}
+/* Password Field Focus */
+input[type="password"]:focus {
+  border-left: 6px solid rgb(250, 210, 50);
+}
+
+input[type="submit"] {
+  width: 200px;
+  outline: none;
+  border: none;
+  background-color: #1f8dd6;
+  font-size: 24px;
+  padding: 15px 50px 15px 50px;
+  color: white;
+  border-radius: 5px;
+  float: right;
+}
+input[type="submit"]:hover {background-color: #1f8dd6; cursor: pointer}
+
+.forgot-pass{
+  font-size: 20px;
+  color: #9DA4AB;
+  float: left;
+  padding: 18px 0px 0px 5px;
+}
+.forgot-pass:hover{ color: white; cursor: pointer}
+
+.tagline{
+  font-size: 30px;
+  color: #9DA4AB;
+  font-weight: 100;
+  padding: 5px 0px 25px 0px;
+}
+
+
+video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+    background-size: cover;
+    transition: 1s opacity;
+    opacity: 0.1;
+}
+.stopfade {
+   opacity: .5;
+}
+
+#polina {
+  font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
+  font-weight:100;
+  background: rgba(0,0,0,0.3);
+  color: white;
+  padding: 2rem;
+  width: 33%;
+  margin:2rem;
+  float: right;
+  font-size: 1.2rem;
+}
+h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-top: 0;
+  letter-spacing: .3rem;
+}
+#polina button {
+  display: block;
+  width: 80%;
+  padding: .4rem;
+  border: none;
+  margin: 1rem auto;
+  font-size: 1.3rem;
+  background: rgba(255,255,255,0.23);
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: .3s background;
+}
+#polina button:hover {
+   background: rgba(0,0,0,0.5);
+}
+
+a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  background:rgba(0,0,0,0.5);
+  padding: .5rem;
+  transition: .6s background;
+}
+a:hover{
+  background:rgba(0,0,0,0.9);
+}
+
+
+
+/*  Animation
+_____________________________________
+*/
+.logo-wrapper{
+  text-align: right;
+  width: 400px;
+  padding-left: 12px;
+}
+
+/*--- Animating the logo ---*/
+#bar1 {
+  position: relative;
+  background-color: #1f8dd6;
+  border-radius: 0 0 0 5px;
+}
+#bar2 {
+  position: relative;
+  background-color: rgb(128, 88, 165);
+  /*left: -10px;*/
+}
+#bar3 {
+  position: relative;
+  background-color: #5eb95e;
+  /*left:-20px;*/
+}
+#bar4 {
+  position: relative;
+  background-color:#DD514C;
+  /*left:-30px;*/
+}
+#bar5 {
+  position: relative;
+  background-color:#F37B1D;
+  /*left:-40px;*/
+}
+#bar6 {
+  position: relative;
+  background-color: rgb(250, 210, 50);
+  border-radius: 0 5px 0 0;
+  /*left:-50px;*/
+}
+
+#bar1, #bar2, #bar3, #bar4, #bar5, #bar6 {
+  height: 70px;
+  width: 10px;
+  float: left;
+  margin-top: 12px;
+}
+
+@-webkit-keyframes movingbara{from{left:0;border-radius: 0;}to{left:0;border-radius: 0 0 0 5px;}}
+@-webkit-keyframes movingbarb{from{left:-10px;}to{left:0;}}
+@-webkit-keyframes movingbarc{from{opacity: 0;left:-100px;}to{left:0;opacity: 1;}}
+@-webkit-keyframes movingbard{from{opacity: 0;right:-100px;}to{right:0;opacity: 1;}}
+@-webkit-keyframes movingbare{from{left:-40px;}to{left:0;}}
+@-webkit-keyframes movingbarf{from{left:-50px;border-radius: 0;}to{left:0;border-radius: 0 5px 0 0;}}
+
+#bar1{-webkit-animation:movingbara 1s forwards;fill-mode:forwards;}
+#bar2{-webkit-animation:movingbarb 1s forwards;fill-mode:forwards;}
+#bar3{-webkit-animation:movingbarc 1s forwards;fill-mode:forwards;}
+#bar4{-webkit-animation:movingbard 1s forwards;fill-mode:forwards;}
+#bar5{-webkit-animation:movingbare 1s forwards;fill-mode:forwards;}
+#bar6{-webkit-animation:movingbarf 1s forwards;fill-mode:forwards;}
+
+.box1{
+  width:200px;
+  height:200px;
+  background:rgba(255,0,0,0.5);
+  position:absolute;
+  top:100px;
+  left:50%;
+  margin-left:-100px;
+}
+
+
+.box2{
+  position:absolute;
+  top:-1000px;
+  left:0;
+}
+
+@-webkit-keyframes movingbox{
+  from{top:-1000px;}
+  to{top:0px;}
+}
+
+.box2{
+  -webkit-animation:movingbox 100s infinite;
+}
+
+
+
+@media screen and (max-width: 500px) {
+  div{width:70%;}
+}
+@media screen and (max-device-width: 800px) {
+  html { background: url(//demosthenes.info/assets/images/polina.jpg) #000 no-repeat center center fixed; }
+  #bgvid { display: none; }
+
+
+}
+
+/*@media screen and (max-width: 1000px) {
+  .lp-main-container {
+    width: 80%;
+    height: 75%;
+    margin: auto;
+  }*/
+}
