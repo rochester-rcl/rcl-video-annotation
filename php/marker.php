@@ -13,9 +13,9 @@ class FilmMarker {
     protected $text;
     protected $target;
     protected $userId;
-    
-    
-     public function __construct(Array $array){
+
+
+    public function __construct(Array $array){
 
       $this->filmId = $array['filmId'];
 
@@ -28,7 +28,7 @@ class FilmMarker {
       $this->text = $array['text'];
 
       $this->target = $array['target'];
-      
+
       $this->userId = $array['userId'];
 
     }
@@ -40,7 +40,7 @@ class FilmMarker {
     function setId($id) {
         $this->id = $id;
     }
-        
+
     function getUserId() {
         return $this->userId;
     }
@@ -48,7 +48,7 @@ class FilmMarker {
     function setUserId($userId) {
         $this->userId = $userId;
     }
-    
+
     public function setFilmId($filmId) {
         $this->filmId = $filmId;
     }
@@ -96,7 +96,7 @@ class FilmMarker {
     public function getTarget() {
         return $this->target;
     }
-    
+
 
 }
 
@@ -173,9 +173,10 @@ Class FilmMarkerDAO {
         return $resultsJSON;
     }
 
-    public static function getAllMarkers() {
+    public static function getAllMarkers($filmId) {
 
-        $myResult = Db::pdoConnect()->prepare("SELECT * FROM film_marker ORDER BY start");
+        $myResult = Db::pdoConnect()->prepare("SELECT * FROM film_marker WHERE film_marker.id=:filmId ORDER BY start");
+        $myResult->bindValue(':filmId', $filmId, PDO::PARAM_INT);
 
         $myResult->execute();
 
@@ -184,11 +185,11 @@ Class FilmMarkerDAO {
 
         return $resultsJSON;
     }
-    
+
     public static function delete($id){
         $sql = "DELETE FROM film_marker WHERE id =  :id";
         $stmt = Db::pdoConnect()->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);   
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
 }
