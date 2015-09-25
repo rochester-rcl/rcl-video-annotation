@@ -1,0 +1,65 @@
+
+/*
+COMMON STYLES
+________________________
+This file contains global styles that are used across the application
+*/
+
+html {
+    font-family: 'Raleway', sans-serif;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+      -webkit-box-sizing: inherit;
+      -moz-box-sizing: inherit;
+      box-sizing: inherit;
+    }
+    body {
+      min-width: 1100px;
+      height: 100%;
+      background-color: #282C34;
+      overflow: hidden;
+    }
+
+    * {
+      margin:0;
+      padding:0;
+    }
+
+    ul li{
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      font-family: 'Raleway', sans-serif;
+      outline: none;
+    }
+
+
+/*
+Colors
+________________________________
+*/
+
+.uigray                               { color:#282c34  } /* Main Page Background Color */
+
+
+/* Marker Colors */
+#blue, #shot-color                    { border-left: 6px solid #1f8dd6;           }
+#purple, #credits-color               { border-left: 6px solid rgb(128, 88, 165); }
+#green, #beat-color                   { border-left: 6px solid #5eb95e;           }
+#red, #characters-color               { border-left: 6px solid #DD514C;           }
+#orange, #space-color                 { border-left: 6px solid #F37B1D;           }
+#yellow, #scene-color                 { border-left: 6px solid rgb(250, 210, 50); }
+#pink, #act-color                     { border-left: 6px solid #FF85CB            }
+#limegreen, #turning-points-color     { border-left: 6px solid #BFF073;           }
+#slateblue, #plot-color               { border-left: 6px solid #638CA6;           }
+#beige, #time-color                   { border-left: 6px solid #F7EAC8;           }
+#maroon, #sequence-color              { border-left: 6px solid #8C4646;           }
+#peach, #transition-color             { border-left: 6px solid #F5A685;           }

@@ -1,0 +1,63 @@
+/*
+FORMS
+________________________
+Global form field styles. Currently they are just used on the login box.
+*/
+
+/* Default: Text and Password fields */
+input[type="text"],input[type="password"] {
+  display: block;
+  margin: auto;
+  border: none;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  outline: none;
+  padding: 15px;
+  font-size: 28px;
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  height: 75px;
+  color: white;
+  background-color: #9DA4AB;
+}
+
+/* Default: Special Code for Placeholder text */
+::-webkit-input-placeholder     { color: gray;}
+:-moz-placeholder               { color: gray;} /* Firefox 18- */
+::-moz-placeholder              { color: gray;}  /* Firefox 19+ */
+:-ms-input-placeholder          { color: gray;} /* Firefox 19+ */
+
+/* Text field hovers */
+input[type="text"]:hover, input[type="password"]:hover {
+  background-color: #bac2ca;
+}
+
+/* Focus: Input, Password fields */
+input[type="text"]:focus, input[type="password"]:focus{
+  font-size: 28px;
+  font-family: 'Raleway', sans-serif;
+  background-color: #FFF;
+  border-radius: 0px 5px 5px 0px;
+  color: #9DA4AB;
+}
+
+/* Focus: text field  */
+input[type="text"]:focus {border-left: 6px solid rgb(128, 88, 165);}
+/* Focus: Password Field  */
+input[type="password"]:focus { border-left: 6px solid rgb(250, 210, 50);}
+
+/* Default: Button Styles */
+input[type="submit"] {
+  width: 200px;
+  outline: none;
+  border: none;
+  background-color: #1f8dd6;
+  font-size: 24px;
+  padding: 15px 50px 15px 50px;
+  color: white;
+  border-radius: 5px;
+  float: right;
+}
+
+/* Hover: Button */
+input[type="submit"]:hover {background-color: #0769af; cursor: pointer}
