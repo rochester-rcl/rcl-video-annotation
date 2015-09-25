@@ -2,7 +2,7 @@ import * as functions from './functions';
 
 export class UserAjax {
 
-    constructor(email,filmId,fullName,password) {
+    constructor(email,filmUrl,fullName,password) {
 
       this.email = email;
       this.fullName = fullName;
