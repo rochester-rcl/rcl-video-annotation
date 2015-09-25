@@ -6,7 +6,8 @@ header("content-type:application/json");
 error_reporting(E_ALL | E_STRICT);
     ini_set("display_errors", 2);
 
-$postAction = 'getForm';
+$postAction = filter_input(INPUT_POST,'action');
+
 
 if ($postAction == 'getForm') {
 
@@ -19,7 +20,9 @@ if ($postAction == 'getForm') {
 
 
   foreach ($formTop as $form) {
+
     $id = $form['id'];
+
     $name = $form['name'];
 
     $nameDashed= str_replace(' ','-',$name);
