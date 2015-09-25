@@ -10,94 +10,46 @@ and open the template in the editor.
 
 /* TABLE OF CONTENTS
 ––––––––––––––––––––––––––––––––––––––––––––––––––
-- Imports
-- Base Styles
-- Grid
--
+- Main Grid
 ___________________________________________________
 */
 
 
 
 
-/* Imports
-––––––––––––––––––––––––––––––––––––––––––––––––––
-*/
+/* Main Grid
+Default grid structure which contains left and right col
+––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
+.grid {
+      width: 100%;
+      height: 100%;
+      min-width: 930px;
+      padding-top: 30px;}
+      .col100    {
+        width: 33%;
+        float: left;
+        overflow-y: auto;
+        max-height: 100%;
+        min-height: 100%;
+        min-width: 400px;
+        background-color: #21252b;
+        border-right: 1px solid #1b1c23;
+        min-width: 263px;
+      }
+      .col200    {
+        width: 67%;
+        float: left;
+        min-height: 100%;
+        overflow-y: scroll;
+      }
+      .clear { clear: both;}
 
-
-
-
-
-/* Base Styles
-––––––––––––––––––––––––––––––––––––––––––––––––––
-*/
-
-html {
-    font-family: 'Raleway', sans-serif;
-    height: 100%;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    overflow: hidden;
-    }
-
-*, *:before, *:after {
-    -webkit-box-sizing: inherit;
-    -moz-box-sizing: inherit;
-    box-sizing: inherit;
-}
-
-body {
-    min-width: 1100px;
-    height: 100%;
-    background-color: #282c34;
-    overflow: hidden;
-  }
-  * {
-    margin:0;
-    padding:0;
-}
-
-ul li{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-button {
-  font-family: 'Raleway', sans-serif;
-  outline: none;
-}
-
-/* Grid
-––––––––––––––––––––––––––––––––––––––––––––––––––
-*/
-
-/*div {outline: 1px solid red;}*/
-
-.grid      { width: 100%; height: 100%; min-width: 930px;padding-top: 30px;}
-
-.col100    {
-  width: 33%;
-  float: left;
-  overflow-y: auto;
-  max-height: 100%;
-  min-height: 100%;
-  min-width: 400px;
-  background-color: #21252b;
-  border-right: 1px solid #1b1c23;
-  min-width: 263px;
-}
-
-.col200    { width: 67%; float: left; min-height: 100%;overflow-y: scroll;}
-.clear     { clear: both;}
-
-
+      .video {
+        width: 100%;
+      }
 /* Header
-––––––––––––––––––––––––––––––––––––––––––––––––––
-*/
+––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
 .header{
   height: 30px;
@@ -110,26 +62,20 @@ button {
   position: fixed;
   width: 100%;
   z-index: 1;
-}
+  }
+  .logo{
+    float: left;
+    width: 80%;
+    font-weight: 700;
+  }
 
-.logo{
-  float: left;
-  width: 80%;
-  font-weight: 700;
-}
-
-.user-info{
-  float: right;
-  width: 20%;
-  text-align: right;
-  padding-right: 20px;
-  font-weight: bold;
-}
-
-.testVideo {
-  width: 100%;
-}
-
+  .user-info{
+    float: right;
+    width: 20%;
+    text-align: right;
+    padding-right: 20px;
+    font-weight: bold;
+  }
 
 /* Buttons
 ––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -162,29 +108,8 @@ button {
   background: #06D85F;
 }
 
-ul li button {
-  background: none;
-  border: none;
-  color: #9DA4B6;
-  font-size: 18px;
-  padding: 8px 10px 8px 10px;
-  border-radius: 0px 5px 5px 0px;
-  background-color: #21252b;
-  margin: 3px;
-  width: 100%;
-  text-align: left;
-}
-.overlay-col100 button {font-size: 20px;}
-
-.popup button:hover, .popup  button:active {
-  cursor: pointer;
-  background-color: #282c34;
-  border: none;
-}
-
 /* Annotation Col
-––––––––––––––––––––––––––––––––––––––––––––––––––
-*/
+––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
 .annotation-filter{
   width: 33%;
@@ -195,66 +120,53 @@ ul li button {
   border-bottom: 1px solid #5c6270;
   display: table;
   padding: 0px 21px 0px 20px;
-
-}
-
-.annotation-count{
-  font-size: 18px;
-  font-weight: 100;
-  color: #5c6270;
-  font-family: Helvetica, arial;
-  display: table-cell;
-  vertical-align: middle;
-}
+    }
+    .annotation-count{
+      font-size: 18px;
+      font-weight: 100;
+      color: #5c6270;
+      font-family: Helvetica, arial;
+      display: table-cell;
+      vertical-align: middle;
+    }
 
 
 .annotation-list{
   color: lightgray;
   font-size: 15px;
   padding-top: 40px;
-}
-/* hides arrow icon-right */
-.annotation-list i {
-  opacity: 0;
-  float: right;
-}
-.annotation-list ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
- }
-.annotation-list ul li {
-   padding: 10px 30px 10px 15px;
-   border-bottom: 2px solid #1b1c23;
   }
-.annotation-list ul li:hover {
-  background-color:#282c34;
-  cursor: pointer;
-}
-/* Displays arrow icon-right */
- .annotation-list ul li:hover i{
-   opacity: 0.5;
-}
- .annotation-list ul li i:hover{
-   opacity: 1;
-   color: red;
-}
-/* Just to show an active play state */
- .annotation-list ul li i:nth-child(5) {
-  background-color:#282c34;
-  opacity: 1;
-}
-
-
-
-
-.sub-cat-label{
-  color: #9DA4AB;
-}
-
-.sub-cat-label-active{
-
-}
+    /* hides arrow icon-right */
+    .annotation-list i  {
+      opacity: 0;
+      float: right;
+    }
+    .annotation-list ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    .annotation-list ul li {
+      padding: 10px 30px 10px 15px;
+      border-bottom: 2px solid #1b1c23;
+    }
+    .annotation-list ul li:hover {
+      background-color:#282c34;
+      cursor: pointer;
+    }
+    /* Displays arrow icon-right */
+    .annotation-list ul li:hover i {
+      opacity: 0.5;
+    }
+    .annotation-list ul li i:hover {
+      opacity: 1;
+      color: red;
+    }
+    /* Just to show an active play state */
+    .annotation-list ul li i:nth-child(5) {
+      background-color:#282c34;
+      opacity: 1;
+    }
 
 .icon-right{
   float: right;
@@ -271,8 +183,9 @@ ul li button {
   text-align: right;
 }
 
-
 /* Annotation Author UI element */
+
+/* User author */
 .annotation-author-me {
   font-size: 12px;
   font-weight: bold;
@@ -281,6 +194,7 @@ ul li button {
   padding: 6px;
   margin-right: 15px;
 }
+/* Other author */
 .annotation-author-others {
   font-size: 12px;
   font-weight: bold;
@@ -292,9 +206,8 @@ ul li button {
 }
 
 
-
-
 /* Help Text
+Used below the video
 ________________________________________________*/
 
 .helptext{
@@ -308,6 +221,7 @@ ________________________________________________*/
   display: inline;
   padding-right: 20px;
 }
+/* Shortcut key style */
 .keys{
   font-weight: 700;
   text-transform: uppercase;
@@ -319,32 +233,8 @@ ________________________________________________*/
 
 
 
-
-/*Color Labels
-Not so DRY. Couldn't find a way to sperate the border-left
-color from the 6px & solid.
-____________________________________________________
-*/
-#shot-color           { border-left: 6px solid #1f8dd6; }
-#credits-color        { border-left: 6px solid rgb(128, 88, 165); }
-#beat-color           { border-left: 6px solid #5eb95e; }
-#scene-color          { border-left: 6px solid rgb(243, 123, 29); }
-#sequence-color       { border-left: 6px solid rgb(250, 210, 50); }
-#act-color            { border-left: 6px solid #FF85CB; }
-#turning-points-color { border-left: 6px solid #BFF073; }
-#plot-color           { border-left: 6px solid #638CA6; }
-#time-color           { border-left: 6px solid #5F9DA1; }
-#transition-color     { border-left: 6px solid red; }
-#space-color          { border-left: 6px solid red; }
-#characters-color     { border-left: 6px solid red; }
-
-
-/* Annotation Popup
-"Basically" (wink) what happens after you click "annotate button"
-____________________________________________________
-*/
-
-
+/* Annotation Selection Overlay
+––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
 .overlay-col100, .overlay-col200, .overlay-col300, .overlay-col400 {
   padding-left: 18px;

@@ -1,34 +1,13 @@
 
+/*
+LANDING PAGE
+________________________
+These are styles specifically used on the landing page.
+*/
 
 
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
-
-html {
-    font-family: 'Raleway', sans-serif;
-    height: 100%;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    }
-
-*, *:before, *:after {
-    -webkit-box-sizing: inherit;
-    -moz-box-sizing: inherit;
-    box-sizing: inherit;
-}
-
-body {
-    min-width: 1100px;
-    height: 100%;
-    background-color: #282C34;
-    overflow: hidden;
-  }
-  * {
-    margin:0;
-    padding:0;
-}
-
-.lp-main-container {
+/* Contents logo, tagline, login */
+.lrg-center-aligned-container {
     text-align: center;
     display: inline-block;
     position: fixed;
@@ -39,51 +18,44 @@ body {
     width: 400px;
     height: 420px;
     margin: auto;
-}
-.lp-logo {
-  font-family: 'Raleway', sans-serif;
-  font-size: 75px;
-  color: white;
+    }
+    .lp-logo {
+    font-family: 'Raleway', sans-serif;
+    font-size: 75px;
+    color: white;
+    }
 
-}
-.ann-example{
-  background-color: #282C34;
-  border-radius: 0 5px 5px 0;
-  text-align: center;
-  opacity: 0.5;
-}
 
-.logo-marker{
-    color: #1f8dd6;
-}
+/* Code specific to the annimation on the homepage */
+
+
+/* Left side color bar animation
+_______________________________*/
 
 .colorbar{
-  overflow: hidden;
-  color: gray;
-}
-.colorbar ul li {
-  padding: 10px 10px 10px 0px;
-  /*border-bottom: 1px solid #282C34;*/
-  font-size: 12px;
-  color: #5c6270;
-}
+      overflow: hidden;
+      color: gray;
+      }
+      .colorbar ul li {
+        padding: 10px 10px 10px 0px;
+        font-size: 12px;
+        color: #5c6270;
+        }
+      .marker-graphic{
+        background-color: #282C34;
+        border-radius: 0 5px 5px 0;
+        text-align: center;
+        }
+      .marker-example {
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 5px;
+        padding: 3px;
+        color: #5c6270;
+        }
 
-#blue                 { border-left: 6px solid #1f8dd6;           }
-#purple               { border-left: 6px solid rgb(128, 88, 165); }
-#green                { border-left: 6px solid #5eb95e;           }
-#red                  { border-left: 6px solid #DD514C;           }
-#orange               { border-left: 6px solid #F37B1D;           }
-#yellow               { border-left: 6px solid rgb(250, 210, 50); }
-#pink                 { border-left: 6px solid #FF85CB            }
 
 
-.marker-example {
-  font-size: 20px;
-  font-weight: bold;
-  border-radius: 5px;
-  padding: 3px;
-  color: #5c6270;
-}
 
 .developmentstage {
     font-weight: 700;
@@ -109,61 +81,7 @@ body {
   width: 30%;
 }
 
-input[type="text"],input[type="password"] {
-  display: block;
-  margin: auto;
-  border: none;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  outline: none;
-  padding: 15px;
-  font-size: 28px;
-  font-family: 'Raleway', sans-serif;
-  width: 100%;
-  height: 75px;
-  color: white;
-  background-color: #9DA4AB;
-}
 
-/* Placeholder text */
-::-webkit-input-placeholder     { color: gray;}
-:-moz-placeholder               { color: gray;} /* Firefox 18- */
-::-moz-placeholder              { color: gray;}  /* Firefox 19+ */
-:-ms-input-placeholder          { color: gray;} /* Firefox 19+ */
-
-
-/* text field hovers */
-input[type="text"]:hover, input[type="password"]:hover {
-  background-color: #bac2ca;
-}
-input[type="text"]:focus, input[type="password"]:focus{
-  font-size: 28px;
-  font-family: 'Raleway', sans-serif;
-  background-color: #FFF;
-  border-radius: 0px 5px 5px 0px;
-  color: #9DA4AB;
-}
-/* text field focus */
-input[type="text"]:focus {
-  border-left: 6px solid rgb(128, 88, 165);
-}
-/* Password Field Focus */
-input[type="password"]:focus {
-  border-left: 6px solid rgb(250, 210, 50);
-}
-
-input[type="submit"] {
-  width: 200px;
-  outline: none;
-  border: none;
-  background-color: #1f8dd6;
-  font-size: 24px;
-  padding: 15px 50px 15px 50px;
-  color: white;
-  border-radius: 5px;
-  float: right;
-}
-input[type="submit"]:hover {background-color: #0769af; cursor: pointer}
 
 .forgot-pass{
   font-size: 20px;
@@ -181,7 +99,7 @@ input[type="submit"]:hover {background-color: #0769af; cursor: pointer}
 }
 
 
-video {
+.large-video-container video {
     position: fixed;
     top: 50%;
     left: 50%;
