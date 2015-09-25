@@ -148,9 +148,8 @@ class UserDAO{
         $myResult->execute();
 
         $results = $myResult->fetchAll(PDO::FETCH_ASSOC);
-        $resultsJSON = json_encode($results);
 
-        return $resultsJSON;
+        return $results;
 
     }
 
@@ -169,4 +168,6 @@ class UserDAO{
         $stmt->bindParam(':film_id', $filmId, PDO::PARAM_INT);
         return $stmt->execute();
     }
+
+
 }
