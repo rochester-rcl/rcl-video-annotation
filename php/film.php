@@ -82,7 +82,11 @@ class FilmDAO{
 
         $filmUrl = $results['film_url'];
 
-        return $filmUrl;
+        return $results;
 
     }
 }
+
+/*$blah = FilmDAO::getFilmUrl(8);
+
+echo $blah[0]['film_url'];*/
