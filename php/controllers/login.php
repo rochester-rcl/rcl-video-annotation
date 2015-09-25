@@ -2,25 +2,37 @@
 
 
 include_once '../user.php';
+include_once '../film.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-$email = $_POST["email"];
-$userPassword = $_POST["password"];
+$postAction = filter_input(INPUT_POST,'action');
+
+$email = filter_input(INPUT_POST,"email");
+$userPassword = filter_input(INPUT_POST,"password");
+
+if ($postAction == 'login') {
+
+$userReturn = UserDAO::loginUser($email, $userPassword);
+
+  if($userReturn){
+
+    $filmUrl = FilmDAO::getFilmUrl($userReturn->getUserFilmId());
+
+    $userArray = [];
+
+    $userArray['email'] = $userReturn->getUserEmail();
+    $userArray['filmUrl'] = $filmUrl;
+    $userArray['fullName'] = $userReturn->getFullName();
+
+    echo(json_encode($userArray));
 
 
-//echo("Email = " . $email . " password = " . $password);
-//echo("hello");
-
-$user = UserDAO::loginUser('test@test.com', $userPassword);
-
-if( $user){
-    echo("User Found!!!!");
-} else {
+  } else {
     echo("USER NOT found!!!!");
+  }
+
 }
-
-

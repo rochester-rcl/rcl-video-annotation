@@ -6,17 +6,17 @@ include_once 'db.php';
  *
  */
 class Film {
-    
+
     protected $id;
     protected $name;
     protected $url;
-    
+
     public function __construct($id, $name, $url) {
         $this->id = $id;
         $this->name = $name;
         $this->url = $url;
     }
-    
+
     function setId($id) {
         $this->id = $id;
     }
@@ -45,10 +45,10 @@ class Film {
 }
 
 class FilmDAO{
-    
+
     /**
      * Insert a new film
-     *  
+     *
      * @param Film $film
      * @return type
      */
@@ -58,17 +58,31 @@ class FilmDAO{
         $insertFilm->bindValue(':name', $film->getName(), PDO::PARAM_STR);
         $insertFilm->bindValue(':url', $film->getUrl(), PDO::PARAM_STR);
         $insertFilm->execute();
-        
+
         $lastId = Db::pdoConnect()->lastInsertId();
         $film->setId($lastId);
         return $film;
-        
+
     }
-    
+
     public static function delete($id){
         $sql = "DELETE FROM film WHERE id =  :id";
         $stmt = Db::pdoConnect()->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);   
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
+    }
+
+    public static function getFilmUrl($filmId){
+        $statement = Db::pdoConnect()->prepare("SELECT film.film_url FROM film WHERE film.id=:filmId");
+        $statement->bindValue(':filmId', $filmId, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $filmUrl = $results['film_url'];
+
+        return $filmUrl;
+
     }
 }
