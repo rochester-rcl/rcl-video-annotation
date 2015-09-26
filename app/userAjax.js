@@ -102,8 +102,10 @@ export class UserAjax {
         success: function(json) {
           if (json) {
             console.log(json);
-
-            $('.overlay-login').swing("slow");
+            $('.video').attr('src', json.filmUrl);
+            $('.user-info').text(json.fullName);
+            $('.overlay-login').hide("slow");
+            $('.main-page').show("slow");
           }
 
         },
