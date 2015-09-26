@@ -102,6 +102,8 @@ export class UserAjax {
         success: function(json) {
           if (json) {
             console.log(json);
+
+            $('.overlay-login').swing("slow");
           }
 
         },
