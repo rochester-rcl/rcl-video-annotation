@@ -17,10 +17,9 @@ let text = 'blah';
 let target = '.markerControl';
 let userId = 1;
 
-//User properties
-let email = 'jromphf@library.rochester.edu';
-let password = 'DigitalHum15';
-let fullName = 'Josh Romphf';
+//User properties -- base these on login - write a function in functions.js
+
+let fullName = null;
 
 
 //The main program
@@ -28,15 +27,22 @@ let fullName = 'Josh Romphf';
 $(document).ready( function() {
 
   //Login
-  let user = new UserAjax(email,filmId,fullName,password);
 
-  let userPassword = user.getPassword();
+  $('.user-login').submit(function(event){
 
-  console.log(userPassword);
+    let email = $('#user-email').val();
+    let password = $('#user-password').val();
+    let user = new UserAjax(email,filmId,fullName,password);
 
-  user.userLogin();
+    user.userLogin();
 
-  let popcornSelector = ".testVideo";
+  //Only working once?
+
+
+  });
+
+
+  let popcornSelector = ".video";
 
   let controls = new VideoController(frame, popcornSelector);
 
@@ -48,3 +54,5 @@ $(document).ready( function() {
 
 
 });
+
+//1. login - change interface 2. insert 3. filter returned markers 4. delete markers
