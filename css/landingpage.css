@@ -6,8 +6,12 @@ These are styles specifically used on the landing page.
 */
 
 .overlay-login {
-  z-index: 2;
+  z-index: 8000;
   background-color: rgba(0,0,0,0.9);
+}
+
+.main-page {
+  display: none;
 }
 
 /* Contents logo, tagline, login */
