@@ -26,10 +26,11 @@ $userReturn = UserDAO::loginUser($email, $userPassword);
 
     $userArray = [];
 
+    $userArray['userId'] = $userReturn->getUserId();
     $userArray['email'] = $userReturn->getUserEmail();
     $userArray['filmUrl'] = $userFilmUrl;
     $userArray['fullName'] = $userReturn->getFullName();
-
+    $userArray['userFilmId'] = $userFilm[0]['id'];
     echo(json_encode($userArray));
 
 
