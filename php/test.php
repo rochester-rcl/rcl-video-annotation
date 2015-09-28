@@ -26,19 +26,29 @@ class Test {
         $user = new User(null,
             "test@test.com",
             "john doe",
-            User::hash("password"));
+            User::hash("password")); //Change this info to reflect your user info you want to enter
 
         $updatedUser = UserDAO::add($user);
+
+        //Comment out lines 34 - 42 so user is saved
 
         $emailUser = UserDAO::loginUser("test@test.com", "bad");
 
         var_dump($emailUser);
 
 
-
         $numDeleted = UserDAO::delete($updatedUser->getUserId());
 
         var_dump($numDeleted);
+    }
+
+    public static function addUserFilm($userObject){
+      //Need to match the film we want to assign to the user, I'm using big buck bunny for now. Before you do this make sure you run insert_data.sql so the films are in there
+      $userId = $userObject->getUserId();
+
+      $filmId = 8;
+
+      $insertFilm = UserDAO::addFilm($userId, $filmId);
     }
 
     public static function addMarker(){
@@ -84,5 +94,7 @@ class Test {
 
 
 }
-
-Test::addMarker();
+/* Uncomment to add user and add a film for that user 
+$user = Test::addUser();
+Test::addUserFilm($user);
+*/
