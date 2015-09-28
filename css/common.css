@@ -41,6 +41,25 @@ html {
       outline: none;
     }
 
+    ul li button {
+      background: none;
+      border: none;
+      color: #9DA4B6;
+      font-size: 18px;
+      padding: 8px 10px 8px 10px;
+      border-radius: 0px 5px 5px 0px;
+      background-color: #21252b;
+      margin: 3px;
+      width: 100%;
+      text-align: left;
+}
+
+    .popup button:hover, .popup  button:active {
+      cursor: pointer;
+      background-color: #282c34;
+      border: none;
+}
+
 
 /*
 Colors
