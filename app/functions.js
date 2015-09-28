@@ -1,6 +1,7 @@
-
+import {MarkerAjax} from './markerAjax';
+import {UserAjax} from './userAjax';
 //Set up a prototype for the String class to convert seconds (float) to HHMMSS format for display
-    export function toHHMMSS(theInt){
+export function toHHMMSS(theInt){
     let secNum = parseInt(theInt, 10);
     let hours = Math.floor(secNum / 3600);
     let minutes = Math.floor((secNum - (hours * 3600)) / 60);
@@ -19,61 +20,58 @@
     return time;
 };
 
-export function appendHTML(selector,text,start){
-    $(selector).append('<div href="#" class="sceneChangeMark"><div class="sceneChangeText">' + text + '&nbsp' + start.toHHMMSS() + '</div><div class="sceneChangeTimeSec">'+ start +'</div></div>');
-    return this;
-    };
+export function userAjaxSubmit(callback) {
+      let fullName = null;
+      let filmId = null;
+      let id = null;
+      $('.user-login').submit(function(event){
 
-export function changeHTML(selector,text,start){
-    $(selector).html('<h4 class="recentMarker">Most Recent Marker Selected: &nbsp;</h2><div href="#" class="sceneChangeMark"><div class="sceneChangeText">' + text + '&nbsp' + start.toHHMMSS() + '</div><div class="sceneChangeTimeSec">'+ start +'</div></div>');
-    return this;
-    };
+        let email = $('#user-email').val();
+        let password = $('#user-password').val();
 
-export function iteratorCallback(selector,sliceMin,sliceMax) {
-    return function() {
-        $(selector).hide();
-        $(selector).slice(sliceMin,sliceMax).show();
+        var user = new UserAjax(id,email,filmId,fullName,password);
 
-        };
-    };
+        let newUserAjax = user.userLogin();
+
+        let markerPromise = newUserAjax.success(function(json) {
+
+          if (json) {
+            console.log(json);
+            //Dynamically set video, display username, hide login, and show the main page
+            $('.video').attr('src', json.filmUrl);
+            $('.user-info').text(json.fullName);
+            $('.overlay-login').hide("slow");
+            $('.main-page').show("slow");
+
+            var markerAjax = new MarkerAjax(json.userFilmId, null, null, null, null, json.userId);
+            console.log(markerAjax);
+            callback(markerAjax);
+            user = null;
+          }
+      });
+    });
+    }
+
+export function logAjax(markerAjax) {
+
+      $('.annotation-group ul li button').click(function(){
+        let $buttonVal = $(this).val();
+        let $text = $(this).text()
+        let $time = controls.getTime();
+        let $target = controls.getSelector();
+        markerAjax.setMarkerType($buttonVal);
+        markerAjax.setStart($time);
+        markerAjax.setText($text);
+        markerAjax.setTarget($target);
+        //pull up a submit button once the button is clicked (maybe another function ^)
+        //send it to insert.php controller if submit is selected
+
+        console.log(markerAjax.getStart());
+        console.log(markerAjax.getMarkerType());
+        console.log(markerAjax.getText());
+        console.log(markerAjax.getTarget());
 
 
-export function addPagination(selector,maxResults){
+      });
 
-    let $maxNoOfResults = maxResults;
-    let $totalResults = $(selector).length;
-    let $totalPages = Math.ceil($totalResults / $maxNoOfResults);
-
-    $(selector).hide();
-
-    console.log('Total pages'+' '+$totalPages);
-
-    for (i=0; i < $totalPages; i++) {
-        let $tempNo = $maxNoOfResults + 1;
-        let $pageOne = i + 1;
-        $pageButton = '#page-' + i + '-button';
-        if(i === 0) {
-
-            console.log('Should be first loop');
-            console.log('0 '+$maxNoOfResults);
-            $('.markerSelectButtons').append('<a id="page-'+i+'-button">Page '+$pageOne+'</a>');
-            $('.markerSelectButtons').on('click', '#page-'+i+'-button', iteratorCallback(selector,0,$tempNo));
-
-        }
-
-        if (i > 0) {
-            $tempNo = i + 1;
-            $sliceMax = ($tempNo * $maxNoOfResults) + 1;
-            $sliceMin = $sliceMax - $maxNoOfResults;
-
-            $('.page-'+i).css('display', 'none');
-            console.log('Should be loop'+' '+i);
-            console.log($sliceMin, $sliceMax);
-            $('.markerSelectButtons').append('<a id="page-'+i+'-button">Page '+$pageOne+'</a>');
-            $('.markerSelectButtons').on('click', '#page-'+i+'-button', iteratorCallback(selector,$sliceMin,$sliceMax));
-
-        }
-    };
-
-    return this;
     }
