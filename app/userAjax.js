@@ -1,14 +1,25 @@
 import * as functions from './functions';
+import {MarkerAjax} from './markerAjax';
+
 
 export class UserAjax {
 
-    constructor(email,filmUrl,fullName,password) {
+    constructor(id,email,filmUrl,fullName,password) {
 
+      this.id = id;
       this.email = email;
       this.fullName = fullName;
       this.password = password;
       this.filmUrl = filmUrl;
 
+      }
+
+      setUserId(id) {
+        this.id = id;
+      }
+
+      getUserId() {
+        return this.id;
       }
 
       setEmail(email) {
@@ -93,26 +104,17 @@ export class UserAjax {
       }
 
     userLogin() {
-      $.ajax({
+      return $.ajax({
         url: 'php/controllers/login.php',
         type: 'POST',
         cache: 'false',
         data: {'action': 'login', 'email': this.email, 'password': this.password },
         dataType: 'json',
-        success: function(json) {
-          if (json) {
-            console.log(json);
-            $('.video').attr('src', json.filmUrl);
-            $('.user-info').text(json.fullName);
-            $('.overlay-login').hide("slow");
-            $('.main-page').show("slow");
-          }
-
-        },
         error: function(xhr, desc, err) {
         console.log(xhr);
         console.log("Details: " + desc + "\nError:" + err);
       }
+
       });
 
     }
