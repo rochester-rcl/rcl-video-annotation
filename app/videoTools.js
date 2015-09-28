@@ -6,6 +6,14 @@ export class VideoController {
           self.popcornInstance = Popcorn(self.popcornSelector);
       }
 
+      getFrame(frame) {
+        return self.frame;
+      }
+
+      getSelector() {
+        return self.popcornSelector;
+      }
+
       getTime() {
         return self.popcornInstance.currentTime();
       }
