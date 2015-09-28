@@ -134,7 +134,6 @@ Default grid structure which contains left and right col
 .annotation-list{
   color: lightgray;
   font-size: 15px;
-  padding-top: 40px;
   }
     /* hides arrow icon-right */
     .annotation-list i  {

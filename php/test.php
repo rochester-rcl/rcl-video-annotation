@@ -23,23 +23,25 @@ class Test {
 
     public static function addUser(){
 
+
         $user = new User(null,
-            "test@test.com",
-            "john doe",
+            "John Doe",
+            "johndoe@test.com",
             User::hash("password")); //Change this info to reflect your user info you want to enter
 
+        var_dump($user);
         $updatedUser = UserDAO::add($user);
-
+        return $user;
         //Comment out lines 34 - 42 so user is saved
 
-        $emailUser = UserDAO::loginUser("test@test.com", "bad");
-
-        var_dump($emailUser);
-
-
-        $numDeleted = UserDAO::delete($updatedUser->getUserId());
-
-        var_dump($numDeleted);
+        // $emailUser = UserDAO::loginUser("test@test.com", "bad");
+        //
+        // var_dump($emailUser);
+        //
+        //
+        // $numDeleted = UserDAO::delete($updatedUser->getUserId());
+        //
+        // var_dump($numDeleted);
     }
 
     public static function addUserFilm($userObject){
@@ -94,7 +96,6 @@ class Test {
 
 
 }
-/* Uncomment to add user and add a film for that user 
+ // Uncomment to add user and add a film for that user
 $user = Test::addUser();
 Test::addUserFilm($user);
-*/

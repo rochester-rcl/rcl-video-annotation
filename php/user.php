@@ -10,7 +10,6 @@ class User {
 
     protected $userId;
     protected $userEmail;
-    protected $userFilmId;
     protected $fullName;
     protected $password;
 

@@ -25,30 +25,12 @@ export function userAjaxSubmit(callback) {
       let filmId = null;
       let id = null;
       $('.user-login').submit(function(event){
-
+        event.preventDefault();
         let email = $('#user-email').val();
         let password = $('#user-password').val();
-
         var user = new UserAjax(id,email,filmId,fullName,password);
+        user.userLogin(callback);
 
-        let newUserAjax = user.userLogin();
-
-        let markerPromise = newUserAjax.success(function(json) {
-
-          if (json) {
-            console.log(json);
-            //Dynamically set video, display username, hide login, and show the main page
-            $('.video').attr('src', json.filmUrl);
-            $('.user-info').text(json.fullName);
-            $('.overlay-login').hide("slow");
-            $('.main-page').show("slow");
-
-            var markerAjax = new MarkerAjax(json.userFilmId, null, null, null, null, json.userId);
-            console.log(markerAjax);
-            callback(markerAjax);
-            user = null;
-          }
-      });
     });
     }
 
