@@ -45,6 +45,8 @@ export function logAjax(markerAjax) {
         markerAjax.setStart($time);
         markerAjax.setText($text);
         markerAjax.setTarget($target);
+        markerAjax.setEnd($time);
+        markerAjax.insertMarker();
         //pull up a submit button once the button is clicked (maybe another function ^)
         //send it to insert.php controller if submit is selected
 
@@ -52,6 +54,7 @@ export function logAjax(markerAjax) {
         console.log(markerAjax.getMarkerType());
         console.log(markerAjax.getText());
         console.log(markerAjax.getTarget());
+        console.log(markerAjax.getEnd());
 
 
       });

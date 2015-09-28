@@ -15,37 +15,37 @@ class FilmMarker {
     protected $userId;
 
 
-    public function __construct(Array $array){
+    public function __construct($filmId, $markerId, $start, $end, $text, $target, $userId){
 
-      $this->filmId = $array['filmId'];
+      $this->filmId = $filmId;
 
-      $this->markerId = $array['markerId'];
+      $this->markerId = $markerId;
 
-      $this->start = $array['start'];
+      $this->start = $start;
 
-      $this->end = $array['end'];
+      $this->end = $end;
 
-      $this->text = $array['text'];
+      $this->text = $text;
 
-      $this->target = $array['target'];
+      $this->target = $target;
 
-      $this->userId = $array['userId'];
+      $this->userId = $userId;
 
     }
 
-    function getId() {
+    public function getId() {
         return $this->id;
     }
 
-    function setId($id) {
+    public function setId($id) {
         $this->id = $id;
     }
 
-    function getUserId() {
+    public function getUserId() {
         return $this->userId;
     }
 
-    function setUserId($userId) {
+    public function setUserId($userId) {
         $this->userId = $userId;
     }
 
@@ -57,7 +57,7 @@ class FilmMarker {
         return $this->filmId;
     }
 
-    public function setMarkerType($markerId) {
+    public function setMarkerId($markerId) {
         $this->markerId = $markerId;
     }
 
@@ -97,6 +97,27 @@ class FilmMarker {
         return $this->target;
     }
 
+    //Don't know where else to put this so it'll go here for now ;)
+
+    public function startToHHMMSS() {
+
+          $secNum = intVal($this->start);
+          $hours = floor($secNum / 3600);
+          $minutes = floor(($secNum / 60) % 60);
+          $seconds = $secNum % 60;
+
+          if ($hours < 10) {
+              $hours = "0" . $hours;
+          }
+          if ($minutes < 10) {
+              $minutes = "0" . $minutes;
+          }
+           if ($seconds < 10) {
+              $seconds = "0" . $seconds;
+          }
+          $time = $hours . ":" . $minutes . ":" . $seconds;
+          return $time;
+      }
 
 }
 
@@ -113,7 +134,7 @@ Class FilmMarkerDAO {
 
         if ($filmMarkerObj->getFilmId() != '') {
 
-            $insert = Db::pdoConnect()->prepare("INSERT INTO film_marker SET film_id=:film_id, marker_type_id=:marker_type_id, start=:start, end=:end, text=:text, target=:target, user_id=:user_id");
+            $insert = Db::pdoConnect()->prepare("INSERT INTO film_marker SET film_id=:film_id, user_id=:user_id, marker_type_id=:marker_type_id, start=:start, end=:end, text=:text, target=:target");
 
             $filmId = $filmMarkerObj->getFilmId();
             $markerId = $filmMarkerObj->getMarkerId();
@@ -129,7 +150,14 @@ Class FilmMarkerDAO {
             $insert->bindValue(':end', $end, PDO::PARAM_STR);
             $insert->bindValue(':text', $text, PDO::PARAM_STR);
             $insert->bindValue(':target', $target, PDO::PARAM_STR);
+            $insert->bindValue(':user_id', $userId, PDO::PARAM_INT);
             $insert->execute();
+
+            $lastId = Db::pdoConnect()->lastInsertId();
+
+            $filmMarkerObj->setId($lastId);
+
+            return $filmMarkerObj;
 
         } else {
             echo 'Film ID required';

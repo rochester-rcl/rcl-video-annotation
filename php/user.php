@@ -139,6 +139,17 @@ class UserDAO{
         }
     }
 
+    public static function getUserFullName($userId) {
+        $myResult = Db::pdoConnect()->prepare("SELECT full_name FROM user WHERE user.id=:user_id");
+        $myResult->bindValue(':user_id', $userId, PDO::PARAM_INT);
+
+        $myResult->execute();
+
+        $results = $myResult->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
+    }
+
     public static function getFilms($userId){
         $myResult = Db::pdoConnect()->prepare("SELECT film.* FROM film, user_film WHERE film.id = user_film.film_id AND user_film.user_id = :user_id");
 

@@ -98,6 +98,19 @@ class MarkerTypeDAO {
      return $results;
    }
 
+   public static function getCategoryByMarker($markerId) {
+     $statement = Db::pdoConnect()->prepare("SELECT marker_category.name, marker_type.name AS marker_name FROM marker_category INNER JOIN marker_type ON marker_type.marker_category_id = marker_category.id
+       WHERE marker_type.id = :marker_type_id");
+
+     $statement->bindValue('marker_type_id', $markerId, PDO::PARAM_INT);
+
+     $statement->execute();
+
+     $results = $statement->fetch(PDO::FETCH_ASSOC);
+
+     return $results;
+   }
+
    public static function getByName($name) {
        if(!$name || trim($name) == ""){
             return false;

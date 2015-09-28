@@ -62,6 +62,14 @@ export class MarkerAjax {
     return this.target;
   }
 
+  setEnd(start) {
+    this.end = start + 1;
+  }
+
+  getEnd() {
+    return this.end;
+  }
+
   static retrieveMarkers() {
      $.ajax({
      url: 'php/pdoConnect.php',
@@ -70,8 +78,8 @@ export class MarkerAjax {
         data: {'action': this.action, 'filmId': this.filmId, 'markerType': this.markerType},
         dataType:'html',
         success: function(json) {
-                if (html) {
-                    console.log(html);
+                if (json) {
+                    console.log(json);
                 }
             },
         error: function(xhr, desc, err) {
@@ -87,8 +95,14 @@ export class MarkerAjax {
       url: 'php/controllers/insert.php',
       type: 'POST',
       cache: 'false',
-      data: {'action': 'insert', 'email': this.email, 'password': this.password }, //film id marker start end target user id - check php object
+      data: {'action': 'insertMarker', 'filmId': this.filmId, 'markerId': this.markerType, 'start': this.start,
+      'end': this.end, 'text': this.text, 'target': this.target, 'userId': this.userId }, //film id marker start end target user id - check php object
       dataType: 'json',
+      success: function(json) {
+        $('.annotation-list ul').append(json.html);
+        console.log(json.html);
+
+      },
       error: function(xhr, desc, err) {
       console.log(xhr);
       console.log("Details: " + desc + "\nError:" + err);

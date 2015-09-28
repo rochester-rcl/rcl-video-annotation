@@ -123,7 +123,6 @@ export class UserAjax {
             var markerAjax = new MarkerAjax(json.userFilmId, null, null, null, null, json.userId);
             console.log(markerAjax);
             callback(markerAjax);
-            user = null;
           }
         },
         error: function(xhr, desc, err) {

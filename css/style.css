@@ -43,6 +43,7 @@ Default grid structure which contains left and right col
         min-height: 100%;
         overflow-y: scroll;
       }
+
       .clear { clear: both;}
 
       .video {
