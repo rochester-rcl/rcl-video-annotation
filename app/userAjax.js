@@ -98,7 +98,7 @@ export class UserAjax {
               });
 
             }
-            
+
           },
             error: function(xhr, desc, err) {
             console.log(xhr);
@@ -123,8 +123,18 @@ export class UserAjax {
             $('.user-info').text(json.fullName);
             $('.overlay-login').hide("slow");
             $('.main-page').show("slow");
+            let $markers = json.markerArray;
 
+            $.each($markers,function(i, $marker) {
+
+              $('.annotation-list ul').append($marker.html);
+              console.log($marker.html);
+
+            });
+
+            //$('.annotation-list ul').append(json.html);
             var markerAjax = new MarkerAjax(json.userFilmId, null, null, null, null, json.userId);
+            //MarkerAjax.retrieveMarkers(json.userFilmId);
             console.log(markerAjax);
             callback(markerAjax);
           }

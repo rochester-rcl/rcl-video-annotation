@@ -75,11 +75,12 @@ export class MarkerAjax {
      url: 'php/pdoConnect.php',
         type: 'POST',
         cache: 'false',
-        data: {'action': this.action, 'filmId': this.filmId, 'markerType': this.markerType},
+        data: {'action': this.action, 'filmId': this.filmId},
         dataType:'html',
         success: function(json) {
                 if (json) {
-                    console.log(json);
+                    console.log(json); //Make sure we do some popcorn stuff w/ the markers so when you click them they take you to that point in the video
+                    //plus handle user info based on insert.php return - should be the same just a loop
                 }
             },
         error: function(xhr, desc, err) {

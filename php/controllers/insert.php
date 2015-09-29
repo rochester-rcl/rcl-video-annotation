@@ -31,7 +31,7 @@ if ($postAction == 'insertMarker') {
 
   $markerCategory = MarkerTypeDAO::getCategoryByMarker($markerInsert->getMarkerId());
 
-  $displayTime = $markerInsert->startToHHMMSS();
+  $displayTime = FilmMarker::startToHHMMSS($markerInsert->getStart());
 
   $category = $markerCategory['name'];
 

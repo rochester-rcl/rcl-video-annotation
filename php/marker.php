@@ -99,9 +99,9 @@ class FilmMarker {
 
     //Don't know where else to put this so it'll go here for now ;)
 
-    public function startToHHMMSS() {
+    public static function startToHHMMSS($start) {
 
-          $secNum = intVal($this->start);
+          $secNum = intVal($start);
           $hours = floor($secNum / 3600);
           $minutes = floor(($secNum / 60) % 60);
           $seconds = $secNum % 60;
@@ -203,15 +203,14 @@ Class FilmMarkerDAO {
 
     public static function getAllMarkers($filmId) {
 
-        $myResult = Db::pdoConnect()->prepare("SELECT * FROM film_marker WHERE film_marker.id=:filmId ORDER BY start");
+        $myResult = Db::pdoConnect()->prepare("SELECT * FROM film_marker WHERE film_marker.film_id=:filmId ORDER BY film_marker.start ASC");
         $myResult->bindValue(':filmId', $filmId, PDO::PARAM_INT);
 
         $myResult->execute();
 
         $results = $myResult->fetchAll(PDO::FETCH_ASSOC);
-        $resultsJSON = json_encode($results);
 
-        return $resultsJSON;
+        return $results;
     }
 
     public static function delete($id){
