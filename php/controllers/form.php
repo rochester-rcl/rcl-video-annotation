@@ -44,23 +44,34 @@ if ($postAction == 'getForm') {
 
     $categoryDashed = str_replace(' ','-',$category);
 
-    $lowerCategory = strtolower($categoryDashed);
-
     $nameDashed= str_replace(' ','-',$name);
 
     $lowerName = strtolower($nameDashed);
 
-    if ($description != NULL) {
+    $lowerCategory = strtolower($categoryDashed);
+
+    if ($name == $category) {
+
+      $arrayCategory = 'top-level';
+
+    } else {
+
+      $arrayCategory = $lowerCategory;
+
+    }
+
+    if ($description != NULL) { //
 
       $buttonHtml = '<li><button value="' . $markerId . '" id="' . $lowerCategory . '-color">' . $name . '</button></li>';
 
-      $buttonArray[$markerId] = array('html' => $buttonHtml, 'category' => $lowerCategory);
+      $buttonArray[$markerId] = array('html' => $buttonHtml, 'category' => $arrayCategory, 'markerName' => $lowerName);
+
 
     } else {
 
       $buttonHtml = '<li><button value="' . $markerId . '" id="' . $lowerCategory . '-color">' . $name . '</button></li>';
 
-      $buttonArray[$markerId] = array('html' => $buttonHtml, 'category' => $lowerCategory);
+      $buttonArray[$markerId] = array('html' => $buttonHtml, 'category' => $arrayCategory, 'markerName' => $lowerName);
 
     }
   }

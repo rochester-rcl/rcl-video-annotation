@@ -67,14 +67,15 @@ export class UserAjax {
               let $group = json['group'];
               let $button = json['button'];
 
-              $('.overlay-col100').find('.annotation-group').eq(0).attr('id', 'top-level');
+              $('.overlay-col100').find('.annotation-group').eq(0).attr('id', $group['14']);
               $('.overlay-col200').find('.annotation-group').eq(0).attr('id', $group['3']);
               $('.overlay-col200').find('.annotation-group').eq(1).attr('id', $group['10']);
               $('.overlay-col300').find('.annotation-group').eq(0).attr('id', $group['11']);
               $('.overlay-col300').find('.annotation-group').eq(1).attr('id', $group['4']);
               $('.overlay-col400').find('.annotation-group').eq(0).attr('id', $group['7']);
 
-              $('.annotation-group').each(function(i, elem){
+
+              $('.annotation-group').each(function(){
 
                 let $this = $(this);
 
@@ -87,7 +88,9 @@ export class UserAjax {
                   let $html = $button['html'];
 
                   if ($category == $attrId) {
+
                     $this.find('ul').append($html);
+
                   }
 
                 });
@@ -95,6 +98,7 @@ export class UserAjax {
               });
 
             }
+            
           },
             error: function(xhr, desc, err) {
             console.log(xhr);
