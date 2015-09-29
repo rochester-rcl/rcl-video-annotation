@@ -11,6 +11,7 @@ These are styles specifically used on the landing page.
 }
 
 .main-page {
+  height: 100%;   
   display: none;
 }
 
