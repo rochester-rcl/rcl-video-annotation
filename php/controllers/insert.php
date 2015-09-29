@@ -88,4 +88,6 @@ if ($postAction == 'insertMarker') {
   echo $results;
 
 
+} else {
+  echo "Can't connect to database";
 }

@@ -15,7 +15,7 @@ export class MarkerAjax {
 
    }
 
-  setId() {
+  setId(id) {
     this.id = id;
   }
   getId() {
@@ -95,6 +95,27 @@ export class MarkerAjax {
         console.log("Details: " + desc + "\nError:" + err);
         }
     });
+
+}
+
+deleteMarker() {
+  return $.ajax({
+    url: 'php/controllers/delete.php',
+    type: 'POST',
+    cache: 'false',
+    data: {'action': 'deleteMarker', 'filmMarkerId': this.id }, //film id marker start end target user id - check php object
+    dataType: 'json',
+    success: function(json) {
+
+      console.log(json.message);
+
+    },
+    error: function(xhr, desc, err) {
+    console.log(xhr);
+    console.log("Details: " + desc + "\nError:" + err);
+  }
+
+  });
 
 }
 

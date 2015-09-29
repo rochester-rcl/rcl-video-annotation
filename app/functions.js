@@ -59,12 +59,13 @@ export function logAjax(markerAjax) {
 
       $('.annotation-list ul').on('click', 'li i', function () {
 
-           $(this).parent().append('<br /><span class="delete-option"> Are you sure? <button id="yes-option" val="yes">Yes</button> <button id="no-option" val="no">No</button> </span>');
+           $(this).parent().append('<br /><br /><span class="delete-option"> Are you sure? <button id="yes-option" val="yes">Yes</button> <button id="no-option" val="no">No</button> </span>');
            $(this).parent().on('click', '.delete-option #yes-option', function() {
              $(this).parent().parent().hide();
              let $id = $(this).parent().parent().data("film-marker-id");
-             markerAjax.set
-             console.log($id);
+             markerAjax.setId($id);
+             console.log(markerAjax.getId());
+             markerAjax.deleteMarker();
            });
            $(this).parent().on('click', '.delete-option #no-option', function() {
              $(this).parent().hide();
