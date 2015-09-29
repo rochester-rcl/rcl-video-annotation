@@ -133,7 +133,7 @@ export class UserAjax {
             });
 
             //$('.annotation-list ul').append(json.html);
-            var markerAjax = new MarkerAjax(json.userFilmId, null, null, null, null, json.userId);
+            var markerAjax = new MarkerAjax(null,json.userFilmId, null, null, null, null, json.userId);
             //MarkerAjax.retrieveMarkers(json.userFilmId);
             console.log(markerAjax);
             callback(markerAjax);

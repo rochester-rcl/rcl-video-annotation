@@ -1,8 +1,9 @@
 import * as functions from './functions';
 export class MarkerAjax {
 
-  constructor(filmId, markerType, start, text, target, userId) {
+  constructor(id,filmId, markerType, start, text, target, userId) {
 
+     this.id = id;
      this.filmId = filmId;
      this.markerType = markerType;
      this.start = start;
@@ -11,9 +12,15 @@ export class MarkerAjax {
      this.target = target;
      this.userId = userId;
 
+
    }
 
-
+  setId() {
+    this.id = id;
+  }
+  getId() {
+    return this.id;
+  }
   setAction(action) {
     this.action = action;
   }

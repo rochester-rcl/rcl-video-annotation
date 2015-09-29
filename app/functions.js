@@ -1,5 +1,6 @@
 import {MarkerAjax} from './markerAjax';
 import {UserAjax} from './userAjax';
+import {VideoController} from './videoTools';
 //Set up a prototype for the String class to convert seconds (float) to HHMMSS format for display
 export function toHHMMSS(theInt){
     let secNum = parseInt(theInt, 10);
@@ -35,7 +36,7 @@ export function userAjaxSubmit(callback) {
     }
 
 export function logAjax(markerAjax) {
-
+      // the majority of the interactivity is handled in this callback
       $('.annotation-group ul li button').click(function(){
         let $buttonVal = $(this).val();
         let $text = $(this).text()
@@ -50,13 +51,29 @@ export function logAjax(markerAjax) {
         //pull up a submit button once the button is clicked (maybe another function ^)
         //send it to insert.php controller if submit is selected
 
-        console.log(markerAjax.getStart());
-        console.log(markerAjax.getMarkerType());
-        console.log(markerAjax.getText());
-        console.log(markerAjax.getTarget());
-        console.log(markerAjax.getEnd());
-
-
       });
+
+      VideoController.timeScrubbing('.annotation-list ul', 'li .time-stamp');
+
+      VideoController.activeMarker('.annotation-list ul');
+
+      $('.annotation-list ul').on('click', 'li i', function () {
+
+           $(this).parent().append('<br /><span class="delete-option"> Are you sure? <button id="yes-option" val="yes">Yes</button> <button id="no-option" val="no">No</button> </span>');
+           $(this).parent().on('click', '.delete-option #yes-option', function() {
+             $(this).parent().parent().hide();
+             let $id = $(this).parent().parent().data("film-marker-id");
+             markerAjax.set
+             console.log($id);
+           });
+           $(this).parent().on('click', '.delete-option #no-option', function() {
+             $(this).parent().hide();
+           });
+           console.log('test');
+
+           });
+
+
+
 
     }

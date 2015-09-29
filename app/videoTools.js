@@ -63,23 +63,24 @@ export class VideoController {
 
 
 
-      scrubMode(selector) {
+      static activeMarker(selector) {
           self.popcornInstance.on( "timeupdate", function() {
+
                   let time = self.popcornInstance.currentTime();
 
-                  if ($(selector+':contains('+time+')')){
+                  if ($(selector).find('li').data("start") == time) {
                       console.log(time);
-                      $(selector+':contains('+time+')').css({'color': 'red'});
+                      $(selector).append('<i class=fa fa-film />');
                       }
 
               });
 
       };
 
-      timeScrubbing(selector1,selector2) {
+      static timeScrubbing(selector1,selector2) {
 
              $(selector1).on('click', selector2, function () {
-                  let $timeSec = $(this).find('.sceneChangeTimeSec').text();
+                  let $timeSec = $(this).parent().data("start");
                   console.log($timeSec);
                   self.popcornInstance.currentTime($timeSec);
 
