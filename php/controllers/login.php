@@ -29,8 +29,8 @@ $userFilmUrl = $userFilm[0]['film_url'];
 
 
 
-$userArray = [];
-$markerArray = [];
+$userArray = array();
+$markerArray = array();
 
 $iterator = 0;
 

@@ -15,8 +15,8 @@ if ($postAction == 'getForm') {
 
   $formButton = MarkerTypeDAO::getMarkerFormButtons();
 
-  $groupArray = [];
-  $buttonArray = [];
+  $groupArray = array();
+  $buttonArray = array();
 
 
   foreach ($formTop as $form) {
