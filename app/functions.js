@@ -39,7 +39,7 @@ export function logAjax(markerAjax) {
       // the majority of the interactivity is handled in this callback
       $('.annotation-group ul li button').click(function(){
         let $buttonVal = $(this).val();
-        let $text = $(this).text()
+        let $text = $(this).text()//this will be the note
         let $time = controls.getTime();
         let $target = controls.getSelector();
         markerAjax.setMarkerType($buttonVal);
@@ -59,20 +59,38 @@ export function logAjax(markerAjax) {
 
       $('.annotation-list ul').on('click', 'li i', function () {
 
-           $(this).parent().append('<br /><br /><span class="delete-option"> Are you sure? <button id="yes-option" val="yes">Yes</button> <button id="no-option" val="no">No</button> </span>');
+        $(this).off('click').next().hide();
+
+           $(this).parent().append('<div class="delete-option"> Delete Marker | Are you sure? <button id="yes-option" val="yes">Yes</button> <button id="no-option" val="no">No</button> </div>');
            $(this).parent().on('click', '.delete-option #yes-option', function() {
              $(this).parent().parent().hide();
+
              let $id = $(this).parent().parent().data("film-marker-id");
-             markerAjax.setId($id);
-             console.log(markerAjax.getId());
-             markerAjax.deleteMarker();
+             let $start = $(this).parent().parent().data("start");
+             let $time = controls.getTime();
+             let $displayTime = toHHMMSS($start);
+             let $message = ' Marker at ' + $displayTime + ' deleted forever';
+             console.log($message);
+              $('.helptext').append('<span class="delete-message">'+$message+'</span>');
+              setTimeout(function(){
+                $('.delete-message').remove();
+              }, 2000);
+              markerAjax.setId($id);
+              console.log(markerAjax.getId());
+              markerAjax.deleteMarker();
+
            });
+
            $(this).parent().on('click', '.delete-option #no-option', function() {
-             $(this).parent().hide();
+             $(this).parent().remove();
+             let $id, $start, $time, $end, $displayTime, $message = null;
+
            });
            console.log('test');
 
            });
+
+
 
 
 

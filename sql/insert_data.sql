@@ -22,6 +22,7 @@ INSERT INTO marker_category (name, description) VALUES ('Space', '');
 
 INSERT INTO marker_category (name, description) VALUES ('Characters', '');
 
+INSERT INTO marker_category (name, description) VALUES ('Top Level', '');
 
 INSERT INTO marker_type (marker_category_id, name, description)
 SELECT id, 'Shot', '' FROM marker_category

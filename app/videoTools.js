@@ -92,7 +92,7 @@ export class VideoController {
           self.popcornInstance.footnote({
                                       start: start,
                                       end: end,
-                                      text: text + '&nbsp;' + '|' + '&nbsp',
+                                      text: text, //+ '&nbsp;' + '|' + '&nbsp',
                                       target: target
                                   });
       }

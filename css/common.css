@@ -54,6 +54,19 @@ html {
       text-align: left;
 }
 
+    div.delete-option {
+      position: relative;
+      padding-top: 20px;
+    }
+
+    div.delete-option button {
+      padding-top: 10px;
+    }
+
+    .delete-message {
+      font-size: 15px;
+    }
+
     .popup button:hover, .popup  button:active {
       cursor: pointer;
       background-color: #282c34;
