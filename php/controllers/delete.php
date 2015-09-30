@@ -11,7 +11,7 @@ if ($postAction == 'deleteMarker') {
 
   FilmMarkerDAO::delete($id);
 
-  $message = [];
+  $message = array();
 
   $message['message'] = 'Marker ' . $id . ' deleted forever.';
 

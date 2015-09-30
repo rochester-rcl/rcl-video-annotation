@@ -65,7 +65,7 @@ if ($postAction == 'insertMarker') {
 
   }
 
-  $markerReturnArray = [];
+  $markerReturnArray = array();
 
   //last thing we need is category name
 

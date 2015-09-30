@@ -57,20 +57,47 @@ html {
     div.delete-option {
       position: relative;
       padding-top: 20px;
+      text-align: center;
     }
 
     div.delete-option button {
       padding-top: 10px;
+      display: block;
+      width: 100%;
+      cursor: pointer;
+      font-size: 18px;
+      background-color: #3a3e4a;
+      color: #FFF;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .delete-option button:hover {
+      background-color: #5c6270;
     }
 
     .delete-message {
       font-size: 15px;
     }
 
+    button#yes-option{
+      color: white;
+    }
+
+
+
     .popup button:hover, .popup  button:active {
       cursor: pointer;
       background-color: #282c34;
       border: none;
+}
+
+
+.annotation-notes {
+    position: absolute;
+    float: right;
+    padding: 15px 150px 150px 15px;
+    color: #FFF;
 }
 
 
@@ -95,3 +122,17 @@ ________________________________
 #beige, #time-color                   { border-left: 6px solid #F7EAC8;           }
 #maroon, #sequence-color              { border-left: 6px solid #8C4646;           }
 #peach, #transition-color             { border-left: 6px solid #F5A685;           }
+
+
+/*
+Gradients
+________________________________
+*/
+
+.vertical-gradient{
+background-image:-webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2) 35%, rgba(0, 0, 0, 0.7));
+background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2) 35%, rgba(0, 0, 0, 0.7));
+background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2) 35%, rgba(0, 0, 0, 0.7));
+background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2) 35%, rgba(0, 0, 0, 0.7));
+background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2) 35%, rgba(0, 0, 0, 0.7));
+}

@@ -25,9 +25,15 @@ class Test {
 
 
         $user = new User(null,
+<<<<<<< HEAD
             "Sean Morris",
             "smorris@library.rochester.edu",
             User::hash("password")); //Change this info to reflect your user info you want to enter
+=======
+            "Josh Romphf",
+            "jromphf@library.rochester.edu",
+            User::hash("DigitalHum15")); //Change this info to reflect your user info you want to enter
+>>>>>>> ca210538293add484994ff66a09270e8867ea525
 
         var_dump($user);
         $updatedUser = UserDAO::add($user);

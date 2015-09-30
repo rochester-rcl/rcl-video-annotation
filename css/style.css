@@ -8,13 +8,6 @@ and open the template in the editor.
 */
 
 
-/* TABLE OF CONTENTS
-––––––––––––––––––––––––––––––––––––––––––––––––––
-- Main Grid
-___________________________________________________
-*/
-
-
 
 
 /* Main Grid
@@ -147,7 +140,7 @@ Default grid structure which contains left and right col
       padding: 0;
     }
     .annotation-list ul li {
-      padding: 10px 30px 10px 15px;
+      padding: 10px 20px 10px 8px;
       border-bottom: 2px solid #1b1c23;
     }
     .annotation-list ul li:hover {
@@ -178,6 +171,7 @@ Default grid structure which contains left and right col
   font-size: 12px;
   color: #5c6270;
   padding: 0px 10px 0px 0px;
+  margin-right: 5px;
   display: inline-block;
   width: 50px;
   text-align: right;
@@ -192,7 +186,7 @@ Default grid structure which contains left and right col
   background-color: black;
   border-radius: 5px;
   padding: 6px;
-  margin-right: 15px;
+  margin-right: 8px;
 }
 /* Other author */
 .annotation-author-others {
@@ -334,57 +328,3 @@ ____________________________________________________
       font-size: 16px;
     }
 }
-
-/*
-
-#videoNote {
-    font-family: 'Raleway', sans-serif;
-    position: absolute;
-    top: 50px;
-    background-color: rgba(16,16,16,0.7);
-    color: #fff;
-    padding-left: 10px;
-    width: 58%;
-
-}
-
-.sceneChangeMarkers {
-    -webkit-columns: 25px 3;
-    -moz-columns: 25px 3;
-    columns: 25px 3;
-    position: absolute;
-    top: 500px;
-    left: 20px;
-    background-color: #ccc;
-    cursor: pointer;
-    padding: 15px;
-}
-
-
-#markersDiv2 .sceneChangeMark {
-    cursor: pointer;
-}
-
-#markersDiv2 .sceneChangeMark:hover {
-    color: red;
-}
-
-.sceneChangeMark:hover {
-    color: #fff;
-}
-
-.sceneChangeTimeSec{
-    display: none;
-}
-
-.markerSelectButtons a {
-    padding-left: 20px;
-    cursor: pointer;
-}
-
-#markersDiv2 {
-    position: relative;
-    left: 570px;
-    top: 0px;
-
-}*/
