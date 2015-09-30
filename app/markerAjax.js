@@ -1,14 +1,14 @@
 import * as functions from './functions';
 export class MarkerAjax {
 
-  constructor(id,filmId, markerType, start, text, target, userId) {
+  constructor(id,filmId, markerType, start, note, target, userId) {
 
      this.id = id;
      this.filmId = filmId;
      this.markerType = markerType;
      this.start = start;
      this.end = start + 1;
-     this.text = text;
+     this.note = note;
      this.target = target;
      this.userId = userId;
 
@@ -53,12 +53,12 @@ export class MarkerAjax {
     return this.start;
   }
 
-  setText(text) {
-    this.text = text;
+  setNote(note) {
+    this.note = note;
   }
 
-  getText() {
-    return this.text;
+  getNote() {
+    return this.note;
   }
 
   setTarget(target) {
@@ -125,7 +125,7 @@ deleteMarker() {
       type: 'POST',
       cache: 'false',
       data: {'action': 'insertMarker', 'filmId': this.filmId, 'markerId': this.markerType, 'start': this.start,
-      'end': this.end, 'text': this.text, 'target': this.target, 'userId': this.userId }, //film id marker start end target user id - check php object
+      'end': this.end, 'note': this.note, 'target': this.target, 'userId': this.userId }, //film id marker start end target user id - check php object
       dataType: 'json',
       success: function(json) {
         $('.annotation-list ul').append(json.html);
