@@ -38,7 +38,7 @@ html {
 
     button {
       font-family: 'Raleway', sans-serif;
-      outline: none;
+
     }
 
     ul li button {
@@ -86,11 +86,14 @@ html {
 
 
 
-    .popup button:hover, .popup  button:active {
+    .popup button:hover {
       cursor: pointer;
       background-color: #282c34;
       border: none;
 }
+    .popup button:active {
+      border: 1px solid #06D85F;
+    }
 
 
 .annotation-notes {
