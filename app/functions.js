@@ -37,14 +37,14 @@ export function userAjaxSubmit(callback) {
 
 export function logAjax(markerAjax) {
       // the majority of the interactivity is handled in this callback
-      $('.annotation-group ul li button').click(function(){
+      $('.annotation-group ul li button').on('click',function(){
         let $buttonVal = $(this).val();
-        let $text = $(this).text()//this will be the note
+        let $note = $(this).text()//this will be the note
         let $time = controls.getTime();
         let $target = controls.getSelector();
         markerAjax.setMarkerType($buttonVal);
         markerAjax.setStart($time);
-        markerAjax.setText($text);
+        markerAjax.setNote($note);
         markerAjax.setTarget($target);
         markerAjax.setEnd($time);
         markerAjax.insertMarker();
@@ -59,34 +59,43 @@ export function logAjax(markerAjax) {
 
       $('.annotation-list ul').on('click', 'li i', function () {
 
-        $(this).off('click').next().hide();
+        if ($('.delete-option').length === 0) {
 
            $(this).parent().append('<div class="delete-option"> Delete Marker | Are you sure? <button id="yes-option" val="yes">Yes</button> <button id="no-option" val="no">No</button> </div>');
-           $(this).parent().on('click', '.delete-option #yes-option', function() {
-             $(this).parent().parent().hide();
 
-             let $id = $(this).parent().parent().data("film-marker-id");
-             let $start = $(this).parent().parent().data("start");
-             let $time = controls.getTime();
-             let $displayTime = toHHMMSS($start);
-             let $message = ' Marker at ' + $displayTime + ' deleted forever';
-             console.log($message);
-              $('.helptext').append('<span class="delete-message">'+$message+'</span>');
-              setTimeout(function(){
-                $('.delete-message').remove();
-              }, 2000);
-              markerAjax.setId($id);
-              console.log(markerAjax.getId());
-              markerAjax.deleteMarker();
+         }
+         $(this).parent().on('click', '.delete-option #yes-option', function() {
 
-           });
+           var $id = $(this).parent().parent().data("film-marker-id");
+           var $start = $(this).parent().parent().data("start");
+           var $time = controls.getTime();
+           var $displayTime = toHHMMSS($start);
+           var $message = ' Marker at ' + $displayTime + ' deleted forever';
+           console.log($message);
+            $('.helptext').append('<span class="delete-message">'+$message+'</span>');
+            setTimeout(function(){
+              $('.delete-message').remove();
+            }, 2000);
+            markerAjax.setId($id);
+            console.log(markerAjax.getId());
+            markerAjax.deleteMarker();
+            $(this).parent().parent().remove();
 
-           $(this).parent().on('click', '.delete-option #no-option', function() {
-             $(this).parent().remove();
-             let $id, $start, $time, $end, $displayTime, $message = null;
+         });
 
-           });
-           console.log('test');
+
+             $(this).parent().on('click', '.delete-option #no-option', function() {
+               $(this).parent().remove();
+                var $id, $start, $time, $end, $displayTime, $message = null;
+
+
+
+             });
+
+
+
+
+           console.log($message);
 
            });
 
