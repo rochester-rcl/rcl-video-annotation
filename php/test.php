@@ -25,8 +25,8 @@ class Test {
 
 
         $user = new User(null,
-            "Nate Sarr",
-            "nsarr@library.rochester.edu",
+            "Sean Morris",
+            "smorris@library.rochester.edu",
             User::hash("password")); //Change this info to reflect your user info you want to enter
 
         var_dump($user);
@@ -73,11 +73,11 @@ class Test {
         //$filmId, $markerId, $start, $end, $note, $target, $userId
         $marker = new FilmMarker(NULL,
                 $updatedFilm->getId(),
-                $markerType->getId(), 
-                0.5, 
-                0.6, 
-                "this is stuff", 
-                "target",  
+                $markerType->getId(),
+                0.5,
+                0.6,
+                "this is stuff",
+                "target",
                 $updatedUser->getUserId());
         $markerWithId = FilmMarkerDAO::insertMarker($marker);
         var_dump($markerWithId);
