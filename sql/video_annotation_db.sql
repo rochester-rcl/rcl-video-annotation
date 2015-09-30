@@ -44,7 +44,7 @@ CREATE TABLE `film_marker` (
   `marker_type_id` int(11) NOT NULL,
   `start` float NOT NULL,
   `end` float NOT NULL,
-  `text` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `note` varchar(1000) COLLATE utf8_unicode_ci,
   `target` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (user_id) REFERENCES `user`(id),

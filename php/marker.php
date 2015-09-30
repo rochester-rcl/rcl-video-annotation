@@ -10,13 +10,15 @@ class FilmMarker {
     protected $markerId;
     protected $start;
     protected $end;
-    protected $text;
+    protected $note;
     protected $target;
     protected $userId;
 
 
-    public function __construct($filmId, $markerId, $start, $end, $text, $target, $userId){
+    public function __construct($id, $filmId, $markerId, $start, $end, $note, $target, $userId){
 
+      $this->id = $id; 
+        
       $this->filmId = $filmId;
 
       $this->markerId = $markerId;
@@ -25,7 +27,7 @@ class FilmMarker {
 
       $this->end = $end;
 
-      $this->text = $text;
+      $this->note = $note;
 
       $this->target = $target;
 
@@ -81,12 +83,12 @@ class FilmMarker {
         return $this->end;
     }
 
-    public function setText($text) {
-        $this->text = $text;
+    public function setNote($note) {
+        $this->note = $note;
     }
 
-    public function getText() {
-        return $this->text;
+    public function getNote() {
+        return $this->note;
     }
 
     public function setTarget($target) {
@@ -134,13 +136,13 @@ Class FilmMarkerDAO {
 
         if ($filmMarkerObj->getFilmId() != '') {
 
-            $insert = Db::pdoConnect()->prepare("INSERT INTO film_marker SET film_id=:film_id, user_id=:user_id, marker_type_id=:marker_type_id, start=:start, end=:end, text=:text, target=:target");
+            $insert = Db::pdoConnect()->prepare("INSERT INTO film_marker SET film_id=:film_id, user_id=:user_id, marker_type_id=:marker_type_id, start=:start, end=:end, note=:note, target=:target");
 
             $filmId = $filmMarkerObj->getFilmId();
             $markerId = $filmMarkerObj->getMarkerId();
             $start = $filmMarkerObj->getStart();
             $end = $filmMarkerObj->getEnd();
-            $text = $filmMarkerObj->getText();
+            $note = $filmMarkerObj->getNote();
             $target = $filmMarkerObj->getTarget();
             $userId = $filmMarkerObj->getUserId();
 
@@ -148,7 +150,7 @@ Class FilmMarkerDAO {
             $insert->bindValue(':marker_type_id', $markerId, PDO::PARAM_INT);
             $insert->bindValue(':start', $start, PDO::PARAM_STR);
             $insert->bindValue(':end', $end, PDO::PARAM_STR);
-            $insert->bindValue(':text', $text, PDO::PARAM_STR);
+            $insert->bindValue(':note', $note, PDO::PARAM_STR);
             $insert->bindValue(':target', $target, PDO::PARAM_STR);
             $insert->bindValue(':user_id', $userId, PDO::PARAM_INT);
             $insert->execute();

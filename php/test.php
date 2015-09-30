@@ -25,8 +25,8 @@ class Test {
 
 
         $user = new User(null,
-            "John Doe",
-            "johndoe@test.com",
+            "Nate Sarr",
+            "nsarr@library.rochester.edu",
             User::hash("password")); //Change this info to reflect your user info you want to enter
 
         var_dump($user);
@@ -70,19 +70,17 @@ class Test {
         $myVideos = UserDAO::getFilms($updatedUser->getUserId());
         var_dump($myVideos);
 
-
-        $array = array( "id" => NULL,
-                "filmId" => $updatedFilm->getId(),
-                "markerId" => $markerType->getId(),
-                "start" => 0.5,
-                "end" => 0.6,
-                "text" => "this is stuff",
-                "target" => "target",
-                "userId" => $updatedUser->getUserId());
-
-        $marker = new FilmMarker($array);
+        //$filmId, $markerId, $start, $end, $note, $target, $userId
+        $marker = new FilmMarker(NULL,
+                $updatedFilm->getId(),
+                $markerType->getId(), 
+                0.5, 
+                0.6, 
+                "this is stuff", 
+                "target",  
+                $updatedUser->getUserId());
         $markerWithId = FilmMarkerDAO::insertMarker($marker);
-        //var_dump($markerWithId);
+        var_dump($markerWithId);
 
         UserDAO::removeFilm($updatedUser->getUserId(), $updatedFilm->getId());
         FilmMarkerDAO::delete($markerWithId->getId());
@@ -99,3 +97,4 @@ class Test {
  // Uncomment to add user and add a film for that user
 $user = Test::addUser();
 Test::addUserFilm($user);
+//Test::addMarker();

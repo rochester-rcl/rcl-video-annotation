@@ -14,7 +14,7 @@ $filmId = filter_input(INPUT_POST, 'filmId');
 $markerId = filter_input(INPUT_POST, 'markerId');
 $start = filter_input(INPUT_POST, 'start');
 $end = filter_input(INPUT_POST, 'end');
-$text = filter_input(INPUT_POST, 'text');
+$note = filter_input(INPUT_POST, 'note');
 $target = filter_input(INPUT_POST, 'target');
 $userId = filter_input(INPUT_POST, 'userId');
 
@@ -23,7 +23,7 @@ if ($postAction == 'insertMarker') {
 
   //construct from input_post array
 
-  $filmMarker = new FilmMarker($filmId, $markerId, $start, $end, $text, $target, $userId);
+  $filmMarker = new FilmMarker(NULL, $filmId, $markerId, $start, $end, $note, $target, $userId);
 
   $markerInsert = FilmMarkerDAO::insertMarker($filmMarker);
 
@@ -74,7 +74,7 @@ if ($postAction == 'insertMarker') {
   $markerReturnArray['markerId'] = $markerInsert->getMarkerId();
   $markerReturnArray['start'] = $markerInsert->getStart();
   $markerReturnArray['end'] = $markerInsert->getEnd();
-  $markerReturnArray['text'] = $markerInsert->getText();
+  $markerReturnArray['note'] = $markerInsert->getNote();
   $markerReturnArray['target'] = $markerInsert->getTarget();
   $markerReturnArray['userId'] = $markerInsert->getUserId();
   $markerReturnArray['userFullName'] = $userFullNameString;

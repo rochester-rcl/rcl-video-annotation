@@ -48,7 +48,7 @@ $iterator = 0;
       $markerId = $results['marker_type_id'];
       $start = $results['start'];
       $end = $results['end'];
-      $text = $results['text'];
+      $note = $results['note'];
       $target = $results['target'];
 
       $markerCategoryInfo = MarkerTypeDAO::getCategoryByMarker($markerId);
