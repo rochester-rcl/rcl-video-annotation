@@ -63,35 +63,35 @@ export function logAjax(markerAjax) {
       $('.annotation-list ul').on('click', 'li i', function () {
 
 
-        var $count = 0;
+        console.log($mouseCount);
         if ($('.delete-option').length === 0) {
 
            $(this).parent().append('<div class="delete-option"> Delete Marker | Are you sure? <button id="yes-option" val="yes">Yes</button> <button id="no-option" val="no">No</button> </div>');
 
          }
-         $(this).parent().on('click', '.delete-option #yes-option', function() {
-           $count += 1;
+         $('#yes-option').on('click', function() {
+
            var $id = $(this).parent().parent().data("film-marker-id");
            var $start = $(this).parent().parent().data("start");
            var $time = controls.getTime();
            var $displayTime = toHHMMSS($start);
            var $message = ' Marker at ' + $displayTime + ' deleted forever';
-           console.log($count);
-           console.log($message);
+
             $('.helptext').append('<span class="delete-message">'+$message+'</span>');
             setTimeout(function(){
               $('.delete-message').remove();
-            }, 2000);
+            }, 500);
             markerAjax.setId($id);
             console.log(markerAjax.getId());
             markerAjax.deleteMarker();
             $(this).parent().parent().remove();
 
          });
-         console.log($mouseCount);
+
 
              $('#no-option').on('click', function() {
                $(this).parent().remove();
+                $mouseCount += 1;
                 var $id, $start, $time, $end, $displayTime, $message = null;
 
              });
