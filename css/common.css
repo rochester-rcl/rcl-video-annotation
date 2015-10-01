@@ -116,16 +116,18 @@ html {
   top: 40px;
 }
 
-#saved-message {
+.saved-message {
   color: #fff;
+  padding-top: 5px;
 }
 .annotation-notes div  {
     position: relative;
-    font-size: 14px;
+    font-size: 16px;
     float: left;
     padding: 5px 5px 5px 5px;
-    color: #FFF;
-    background-color: #1f8dd6;
+    color: #1f8dd6;
+    text-shadow: 1px 0px #ccc;
+    /*background-color: #1f8dd6;*/
 
 
 }

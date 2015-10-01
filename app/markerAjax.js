@@ -139,7 +139,7 @@ deleteMarker() {
           $('.annotation-list ul').append($marker.html);
           //console.log($marker.html);
 
-          if ($marker.note !== null) {
+          if ($marker.note !== "") {
 
           controls.addFootnote($marker.start, $marker.end, $marker.note, '.annotation-notes');
 
