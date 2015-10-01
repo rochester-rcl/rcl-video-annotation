@@ -39,19 +39,24 @@ export function logAjax(markerAjax) {
       // the majority of the interactivity is handled in this callback
       $('.annotation-group ul li button').on('click',function(){
         let $buttonVal = $(this).val();
-        let $note = $(this).text()//this will be the note
         let $time = controls.getTime();
         let $target = controls.getSelector();
+
         markerAjax.setMarkerType($buttonVal);
         markerAjax.setStart($time);
-        markerAjax.setNote($note);
+
         markerAjax.setTarget($target);
         markerAjax.setEnd($time);
-        markerAjax.insertMarker();
         //$('.annotation-list ul li').hide();
         //pull up a submit button once the button is clicked (maybe another function ^)
         //send it to insert.php controller if submit is selected
 
+      });
+
+      $('#marker-submit').on('click',function() {  
+        let $note = $('#marker-note').val();
+        markerAjax.setNote($note);
+        markerAjax.insertMarker();
       });
 
       VideoController.timeScrubbing('.annotation-list ul', 'li .time-stamp');
@@ -80,7 +85,7 @@ export function logAjax(markerAjax) {
             $('.helptext').append('<span class="delete-message">'+$message+'</span>');
             setTimeout(function(){
               $('.delete-message').remove();
-            }, 500);
+            }, 1000);
             markerAjax.setId($id);
             console.log(markerAjax.getId());
             markerAjax.deleteMarker();

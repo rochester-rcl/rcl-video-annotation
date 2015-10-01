@@ -89,6 +89,18 @@ html {
       font-size: 12px;
       height: 5em;
     }
+    #marker-submit {
+      width: 100px;
+      outline: none;
+      border: none;
+      background-color: #1f8dd6;
+      font-size: 24px;
+      padding: 8px 25px 8px 25px;
+      color: white;
+      border-radius: 5px;
+
+    }
+    #marker-submit:hover {background-color: #0769af; cursor: pointer}
     .popup button:hover {
       cursor: pointer;
       background-color: #282c34;
@@ -100,10 +112,22 @@ html {
 
 
 .annotation-notes {
-    position: absolute;
-    float: right;
-    padding: 15px 150px 150px 15px;
+  position: absolute;
+  top: 40px;
+}
+
+#saved-message {
+  color: #fff;
+}
+.annotation-notes div  {
+    position: relative;
+    font-size: 14px;
+    float: left;
+    padding: 5px 5px 5px 5px;
     color: #FFF;
+    background-color: #1f8dd6;
+
+
 }
 
 

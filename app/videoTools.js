@@ -83,7 +83,7 @@ export class VideoController {
 
               });
 
-      };
+      }
 
       static timeScrubbing(selector1,selector2) {
 
@@ -94,13 +94,14 @@ export class VideoController {
 
                   });
                       return this;
-      };
+      }
 
-      addFootnote(start,end,text,target){
+
+      addFootnote(start,end,note,target){
           self.popcornInstance.footnote({
                                       start: start,
                                       end: end,
-                                      text: text, //+ '&nbsp;' + '|' + '&nbsp',
+                                      text: note + '&nbsp;' + '|' + '&nbsp',
                                       target: target
                                   });
       }

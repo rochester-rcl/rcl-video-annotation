@@ -81,7 +81,7 @@ $iterator = 0;
           '" data-start="' . $start .  '" data-marker-type-id="' . $markerId . '"><span class="annotation-author-me">ME</span><span class="time-stamp">' . $displayTime .
           '</span>' . $markerTypeName . '<i class="fa fa-times"></i></li>';
 
-          $markerArray[$iterator] = array('html' => $formattedHTML );
+          $markerArray[$iterator] = array('html' => $formattedHTML, 'start' => $start, 'end' => $end, 'note' => $note );
 
       } else {
 
@@ -89,7 +89,7 @@ $iterator = 0;
           '" data-start="' . $start . '" data-marker-type-id="' . $markerId . '"><span class="annotation-author-me">' . $initials . '</span><span class="time-stamp">' . $displayTime .
           '</span>' . $markerTypeName . '</li>';
 
-          $markerArray[$iterator] = array('html' => $formattedHTML );
+          $markerArray[$iterator] = array('html' => $formattedHTML, 'start' => $start, 'end' => $end, 'note' => $note );
 
       }
 

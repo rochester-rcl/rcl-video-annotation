@@ -74,7 +74,7 @@ export class UserAjax {
               $('.overlay-col300').find('.annotation-group').eq(1).attr('id', $group['4']);
               $('.overlay-col400').find('.annotation-group').eq(0).attr('id', $group['7']);
 
-              $('.overlay-col100').append('<div class="notes"><textarea id="marker-note" type="text" cols="2" rows="2" maxlength="1000" name="note" placeholder="Enter some notes here ..."></textarea></div>');
+              $('.overlay-col100').append('<h3 class"group-heading">Notes :</h3><div class="notes"><textarea id="marker-note" type="text" cols="2" rows="2" maxlength="1000" name="note" placeholder="Enter some notes here ..."></textarea></div><button id="marker-submit">Save</button>');
 
               $('.annotation-group').each(function(){
 
@@ -129,7 +129,14 @@ export class UserAjax {
             $.each($markers,function(i, $marker) {
 
               $('.annotation-list ul').append($marker.html);
-              console.log($marker.html);
+
+              if ($marker.note !== "") {
+
+                controls.addFootnote($marker.start, $marker.end, $marker.note, '.annotation-notes');
+
+              }
+
+              //console.log($marker.html);
 
             });
 

@@ -128,16 +128,29 @@ deleteMarker() {
       'end': this.end, 'note': this.note, 'target': this.target, 'userId': this.userId }, //film id marker start end target user id - check php object
       dataType: 'json',
       success: function(json) {
-
+        console.log(json);
         let $markers = json.markerArray;
+
+        $('.annotation-notes div').empty();
 
         $('.annotation-list ul').empty();
         $.each($markers,function(i, $marker) {
 
           $('.annotation-list ul').append($marker.html);
-          console.log($marker.html);
+          //console.log($marker.html);
+
+          if ($marker.note !== null) {
+
+          controls.addFootnote($marker.start, $marker.end, $marker.note, '.annotation-notes');
+
+        }
 
         });
+
+        $('.overlay-col100').append('<div class="saved-message">Marker Saved!</div>');
+        setTimeout(function(){
+          $('.saved-message').remove();
+        }, 500);
 
 
 
