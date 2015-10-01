@@ -57,20 +57,25 @@ export function logAjax(markerAjax) {
 
       VideoController.activeMarker('.annotation-list ul');
 
-      $('.annotation-list ul').on('click', 'li i', function () {
+      var $mouseCount = 0;
 
+      $('.annotation-list ul li i').on('click', function () {
+
+
+        var $count = 0;
         if ($('.delete-option').length === 0) {
 
            $(this).parent().append('<div class="delete-option"> Delete Marker | Are you sure? <button id="yes-option" val="yes">Yes</button> <button id="no-option" val="no">No</button> </div>');
 
          }
-         $(this).parent().on('click', '.delete-option #yes-option', function() {
-
+         $('#yes-option').on('click', function() {
+           $count += 1;
            var $id = $(this).parent().parent().data("film-marker-id");
            var $start = $(this).parent().parent().data("start");
            var $time = controls.getTime();
            var $displayTime = toHHMMSS($start);
            var $message = ' Marker at ' + $displayTime + ' deleted forever';
+           console.log($count);
            console.log($message);
             $('.helptext').append('<span class="delete-message">'+$message+'</span>');
             setTimeout(function(){
@@ -82,20 +87,13 @@ export function logAjax(markerAjax) {
             $(this).parent().parent().remove();
 
          });
+         console.log($mouseCount);
 
-
-             $(this).parent().on('click', '.delete-option #no-option', function() {
+             $('#no-option').on('click', function() {
                $(this).parent().remove();
                 var $id, $start, $time, $end, $displayTime, $message = null;
 
-
-
              });
-
-
-
-
-           console.log($message);
 
            });
 
