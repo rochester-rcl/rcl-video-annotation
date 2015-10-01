@@ -48,7 +48,15 @@ export class VideoController {
                 play = false;
                 e.stopPropagation();
                 e.preventDefault();
-                } else {
+                }
+
+                else if ($('#marker-note').is(':focus')) {
+
+                  break;
+
+                }
+
+                else {
                 self.popcornInstance.play();
                 play = true;
                 e.stopPropagation();

@@ -5,7 +5,7 @@ Global form field styles. Currently they are just used on the login box.
 */
 
 /* Default: Text and Password fields */
-input[type="text"],input[type="password"] {
+input[type="text"],input[type="password"], textarea {
   display: block;
   margin: auto;
   border: none;

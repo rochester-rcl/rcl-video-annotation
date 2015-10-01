@@ -85,7 +85,10 @@ html {
     }
 
 
-
+    #marker-note {
+      font-size: 12px;
+      height: 20em;
+    }
     .popup button:hover {
       cursor: pointer;
       background-color: #282c34;
