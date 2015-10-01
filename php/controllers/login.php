@@ -28,7 +28,6 @@ $userFilm = UserDAO::getFilms($userReturn->getUserId());
 $userFilmUrl = $userFilm[0]['film_url'];
 
 
-
 $userArray = array();
 $markerArray = array();
 

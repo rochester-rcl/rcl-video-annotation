@@ -48,6 +48,7 @@ export function logAjax(markerAjax) {
         markerAjax.setTarget($target);
         markerAjax.setEnd($time);
         markerAjax.insertMarker();
+        //$('.annotation-list ul li').hide();
         //pull up a submit button once the button is clicked (maybe another function ^)
         //send it to insert.php controller if submit is selected
 
@@ -59,7 +60,7 @@ export function logAjax(markerAjax) {
 
       var $mouseCount = 0;
 
-      $('.annotation-list ul li i').on('click', function () {
+      $('.annotation-list ul').on('click', 'li i', function () {
 
 
         var $count = 0;
@@ -68,7 +69,7 @@ export function logAjax(markerAjax) {
            $(this).parent().append('<div class="delete-option"> Delete Marker | Are you sure? <button id="yes-option" val="yes">Yes</button> <button id="no-option" val="no">No</button> </div>');
 
          }
-         $('#yes-option').on('click', function() {
+         $(this).parent().on('click', '.delete-option #yes-option', function() {
            $count += 1;
            var $id = $(this).parent().parent().data("film-marker-id");
            var $start = $(this).parent().parent().data("start");
@@ -96,10 +97,6 @@ export function logAjax(markerAjax) {
              });
 
            });
-
-
-
-
 
 
     }

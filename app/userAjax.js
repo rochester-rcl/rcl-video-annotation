@@ -74,8 +74,8 @@ export class UserAjax {
               $('.overlay-col300').find('.annotation-group').eq(1).attr('id', $group['4']);
               $('.overlay-col400').find('.annotation-group').eq(0).attr('id', $group['7']);
 
-              $('.overlay-col100').append('<div class="notes"><textarea id="marker-note" type="text" cols="2" rows="20" maxlength="1000" name="note" placeholder="Enter some notes here ..."></textarea></div>');
-              
+              $('.overlay-col100').append('<div class="notes"><textarea id="marker-note" type="text" cols="2" rows="2" maxlength="1000" name="note" placeholder="Enter some notes here ..."></textarea></div>');
+
               $('.annotation-group').each(function(){
 
                 let $this = $(this);

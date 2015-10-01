@@ -85,6 +85,17 @@ class FilmDAO{
         return $results;
 
     }
+
+    public static function getFilmName($filmId) {
+      $statement = Db::pdoConnect()->prepare("SELECT film.film_name FROM film WHERE film.id=:filmId");
+      $statement->bindValue(':filmId', $filmId, PDO::PARAM_INT);
+
+      $statement->execute();
+
+      $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+      return $results;
+    }
 }
 
 /*$blah = FilmDAO::getFilmUrl(8);

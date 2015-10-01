@@ -128,8 +128,18 @@ deleteMarker() {
       'end': this.end, 'note': this.note, 'target': this.target, 'userId': this.userId }, //film id marker start end target user id - check php object
       dataType: 'json',
       success: function(json) {
-        $('.annotation-list ul').append(json.html);
-        console.log(json.html);
+
+        let $markers = json.markerArray;
+
+        $('.annotation-list ul').empty();
+        $.each($markers,function(i, $marker) {
+
+          $('.annotation-list ul').append($marker.html);
+          console.log($marker.html);
+
+        });
+
+
 
       },
       error: function(xhr, desc, err) {
