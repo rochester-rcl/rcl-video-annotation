@@ -30,8 +30,6 @@ if ($postAction == 'insertMarker') {
 
   $markerInsert = FilmMarkerDAO::insertMarker($filmMarker);
 
-  $userFullName = UserDAO::getUserFullName($markerInsert->getUserId());
-
   $markerCategory = MarkerTypeDAO::getCategoryByMarker($markerInsert->getMarkerId());
 
   $filmName = FilmDAO::getFilmName($markerInsert->getFilmId());
@@ -62,6 +60,8 @@ if ($postAction == 'insertMarker') {
     $markerCategoryInfo = MarkerTypeDAO::getCategoryByMarker($markerId);
 
     $userFullName = UserDAO::getUserFullName($userId);
+
+    $userFullName = UserDAO::getUserFullName($filmUserId);
 
     $category = $markerCategoryInfo['name'];
     $markerTypeName = $markerCategoryInfo['marker_name'];
