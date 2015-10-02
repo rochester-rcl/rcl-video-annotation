@@ -107,7 +107,7 @@ deleteMarker() {
     dataType: 'json',
     success: function(json) {
 
-      $('.annotation-notes div').empty();
+      $('.annotation-notes div').remove();
 
       $.each(json, function(i, $note){
 
@@ -145,7 +145,7 @@ deleteMarker() {
         console.log(json);
         let $markers = json.markerArray;
 
-        $('.annotation-notes div').empty();
+        $('.annotation-notes div').remove();
 
         $('.annotation-list ul').empty();
         $.each($markers,function(i, $marker) {
