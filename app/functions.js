@@ -53,10 +53,11 @@ export function logAjax(markerAjax) {
 
       });
 
-      $('#marker-submit').on('click',function() {  
+      $('#marker-submit').on('click',function() {
         let $note = $('#marker-note').val();
         markerAjax.setNote($note);
         markerAjax.insertMarker();
+        $('#marker-note').val('');
       });
 
       VideoController.timeScrubbing('.annotation-list ul', 'li .time-stamp');

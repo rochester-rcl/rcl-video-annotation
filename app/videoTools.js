@@ -18,6 +18,10 @@ export class VideoController {
         return self.popcornInstance.currentTime();
       }
 
+      getLastFootnoteId() {
+        return self.popcornInstance.getLastTrackEventId();
+      }
+
 
       initControls() {
         let play = true;

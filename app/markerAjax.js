@@ -103,11 +103,25 @@ deleteMarker() {
     url: 'php/controllers/delete.php',
     type: 'POST',
     cache: 'false',
-    data: {'action': 'deleteMarker', 'filmMarkerId': this.id }, //film id marker start end target user id - check php object
+    data: {'action': 'deleteMarker', 'filmMarkerId': this.id, 'filmId': this.filmId}, //film id marker start end target user id - check php object
     dataType: 'json',
     success: function(json) {
 
-      console.log(json.message);
+      $('.annotation-notes div').empty();
+
+      $.each(json, function(i, $note){
+
+        if ($note.note !== "") {
+
+        controls.addFootnote($note.start, $note.end, $note.note, '.annotation-notes');
+
+
+      }
+
+
+      });
+
+      console.log(json);
 
     },
     error: function(xhr, desc, err) {
