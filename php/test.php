@@ -25,15 +25,11 @@ class Test {
 
 
         $user = new User(null,
-<<<<<<< HEAD
-            "Sean Morris",
-            "smorris@library.rochester.edu",
-            User::hash("password")); //Change this info to reflect your user info you want to enter
-=======
-            "Josh Romphf",
-            "jromphf@library.rochester.edu",
+
+            "Gen",
+            "genuser",
             User::hash("DigitalHum15")); //Change this info to reflect your user info you want to enter
->>>>>>> ca210538293add484994ff66a09270e8867ea525
+
 
         var_dump($user);
         $updatedUser = UserDAO::add($user);
@@ -50,9 +46,9 @@ class Test {
         // var_dump($numDeleted);
     }
 
-    public static function addUserFilm($userObject){
+    public static function addUserFilm($userId){
       //Need to match the film we want to assign to the user, I'm using big buck bunny for now. Before you do this make sure you run insert_data.sql so the films are in there
-      $userId = $userObject->getUserId();
+      $userNameId = $userId;
 
       $filmId = 8;
 
@@ -101,6 +97,6 @@ class Test {
 
 }
  // Uncomment to add user and add a film for that user
-$user = Test::addUser();
-Test::addUserFilm($user);
+//$user = Test::addUser();
+Test::addUserFilm(2);
 //Test::addMarker();

@@ -54,6 +54,8 @@ export class VideoController {
                 e.preventDefault();
                 }
 
+                //add switch for annotate panel
+
                 else if ($('#marker-note').is(':focus')) {
 
                   break;

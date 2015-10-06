@@ -75,6 +75,8 @@ export class UserAjax {
               $('.overlay-col400').find('.annotation-group').eq(0).attr('id', $group['7']);
 
               $('.overlay-col100').append('<h3 class"group-heading">Notes :</h3><div class="notes"><textarea id="marker-note" type="text" cols="2" rows="2" maxlength="1000" name="note" placeholder="Enter some notes here ..."></textarea></div><button id="marker-submit">Save</button>');
+              //Add save and close button
+              //Add save and start playing option
 
               $('.annotation-group').each(function(){
 
@@ -129,6 +131,8 @@ export class UserAjax {
             $.each($markers,function(i, $marker) {
 
               $('.annotation-list ul').append($marker.html);
+
+              //Add filtering for markers
 
               if ($marker.note !== "") {
 
