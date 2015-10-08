@@ -86,7 +86,7 @@ if ($postAction == 'insertMarker') {
 
     if ($markerInsert->getUserId() == $filmUserId) {
 
-        $formattedHTML = '<li id="' . $lowerCategory . '-color" data-film-marker-id="' . $id . '" data-user-id="' . $userId .
+        $formattedHTML = '<li class="' . $lowerCategory . '-color" data-film-marker-id="' . $id . '" data-user-id="' . $userId .
         '" data-start="' . $start .  '" data-marker-type-id="' . $markerId . '"><span class="annotation-author-me">ME</span><span class="time-stamp">' . $displayTime .
         '</span>' . $markerTypeName . '<i class="fa fa-times"></i></li>';
 
@@ -94,7 +94,7 @@ if ($postAction == 'insertMarker') {
 
     } elseif($userFullNameString == 'Gen') {
 
-      $formattedHTML = '<li id="' . $lowerCategory . '-color" data-film-marker-id="' . $id . '" data-user-id="' . $userId .
+      $formattedHTML = '<li class="' . $lowerCategory . '-color" data-film-marker-id="' . $id . '" data-user-id="' . $userId .
       '" data-start="' . $start .  '" data-marker-type-id="' . $markerId . '"><span class="annotation-author-others">GEN</span><span class="time-stamp">' . $displayTime .
       '</span>' . $markerTypeName . '<i class="fa fa-times"></i></li>';
 
@@ -103,7 +103,7 @@ if ($postAction == 'insertMarker') {
 
     } else {
 
-        $formattedHTML = '<li id="' . $lowerCategory . '-color" data-filmMarkerId="' . $id . '" data-userId="' . $userId .
+        $formattedHTML = '<li class="' . $lowerCategory . '-color" data-filmMarkerId="' . $id . '" data-userId="' . $userId .
         '" data-start="' . $start . '" data-marker-type-id="' . $markerId . '"><span class="annotation-author-others">' . $initials . '</span><span class="time-stamp">' . $displayTime .
         '</span>' . $markerTypeName . '</li>';
 

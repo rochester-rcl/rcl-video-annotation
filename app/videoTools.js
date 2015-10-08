@@ -78,14 +78,27 @@ export class VideoController {
 
 
       static activeMarker(selector) {
+
+          console.log($(selector).data("start"));
+
           self.popcornInstance.on( "timeupdate", function() {
 
                   let time = self.popcornInstance.currentTime();
+                  //console.log(time);
 
-                  if ($(selector).find('li').data("start") == time) {
-                      console.log(time);
-                      $(selector).append('<i class=fa fa-film />');
-                      }
+                  if ($(selector).children().data("start") == time) {
+
+                    //test = $(selector).data("start");
+
+                    console.log('it works!');
+
+                  }
+
+
+                  /*if ($(selector).data("start") == time) {
+                      console.log('it works');
+                      $(selector).find('li').append('<i class=fa fa-film />');
+                    }*/
 
               });
 

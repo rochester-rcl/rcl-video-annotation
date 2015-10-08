@@ -32,11 +32,50 @@ export function userAjaxSubmit(callback) {
         var user = new UserAjax(id,email,filmId,fullName,password);
         user.userLogin(callback);
 
+
     });
     }
 
+export function filterMarker(selector1, selector2) {
+
+  $(selector1).on('click', function() {
+
+    let $text = $(this).text()
+    let $color = $text + '-color';
+
+    /*if ($text == 'all') {
+       $('.annotation-markers li').show();
+       console.log($text);
+    }*/
+
+
+    $(selector2).each(function(){
+
+      let $liClass = $(this).attr('class');
+
+      if ($color == $liClass) {
+          $(this).show();
+      } else if ($text == 'all') {
+        $(this).show();
+        console.log($liClass);
+      }
+       else {
+         $(this).hide();
+      }
+
+    });
+
+    //console.log($test);
+
+    //if ($color == )
+
+  });
+
+}
+
 export function logAjax(markerAjax) {
       // the majority of the interactivity is handled in this callback
+
       $('.annotation-group ul li button').on('click',function(){
         let $buttonVal = $(this).val();
         let $time = controls.getTime();
@@ -53,6 +92,8 @@ export function logAjax(markerAjax) {
 
       });
 
+      filterMarker('.filter-button', '.annotation-markers li');
+
       $('#marker-submit').on('click',function() {
         let $note = $('#marker-note').val();
         markerAjax.setNote($note);
@@ -61,8 +102,7 @@ export function logAjax(markerAjax) {
       });
 
       VideoController.timeScrubbing('.annotation-list ul', 'li .time-stamp');
-
-      VideoController.activeMarker('.annotation-list ul');
+      //VideoController.activeMarker('.annotation-list ul li');
 
       var $mouseCount = 0;
 
@@ -103,6 +143,8 @@ export function logAjax(markerAjax) {
              });
 
            });
+
+
 
 
     }

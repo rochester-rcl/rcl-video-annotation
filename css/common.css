@@ -129,7 +129,27 @@ html {
     text-shadow: 1px 0px #ccc;
     /*background-color: #1f8dd6;*/
 
+}
 
+.filter-container {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  column-gap: 0px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  -moz-column-fill: balance;
+  column-fill: balance;
+}
+
+.filter-button {
+  padding-left: 2px;
+}
+
+.filter-button:hover {
+  cursor: pointer;
+  background-color: #5c6270;
 }
 
 
@@ -142,18 +162,18 @@ ________________________________
 
 
 /* Marker Colors */
-#blue, #shot-color                    { border-left: 6px solid #1f8dd6;           }
-#purple, #credits-color               { border-left: 6px solid rgb(128, 88, 165); }
-#green, #beat-color                   { border-left: 6px solid #5eb95e;           }
-#red, #characters-color               { border-left: 6px solid #DD514C;           }
-#orange, #space-color                 { border-left: 6px solid #F37B1D;           }
-#yellow, #scene-color                 { border-left: 6px solid rgb(250, 210, 50); }
-#pink, #act-color                     { border-left: 6px solid #FF85CB            }
-#limegreen, #turning-points-color     { border-left: 6px solid #BFF073;           }
-#slateblue, #plot-color               { border-left: 6px solid #638CA6;           }
-#beige, #time-color                   { border-left: 6px solid #F7EAC8;           }
-#maroon, #sequence-color              { border-left: 6px solid #8C4646;           }
-#peach, #transition-color             { border-left: 6px solid #F5A685;           }
+#blue, .shot-color, #shot-filter                    { border-left: 6px solid #1f8dd6;           }
+#purple, .credits-color, #credits-filter                { border-left: 6px solid rgb(128, 88, 165); }
+#green, .beat-color, #beat-filter                    { border-left: 6px solid #5eb95e;           }
+#red, .characters-color, #characters-filter              { border-left: 6px solid #DD514C;           }
+#orange, .space-color, #space-filter                 { border-left: 6px solid #F37B1D;           }
+#yellow, .scene-color, #scene-filter                 { border-left: 6px solid rgb(250, 210, 50); }
+#pink, .act-color, #act-filter                     { border-left: 6px solid #FF85CB            }
+#limegreen, .turning-points-color, #turning-points-filter    { border-left: 6px solid #BFF073;           }
+#slateblue, .plot-color, #plot-filter           { border-left: 6px solid #638CA6;           }
+#beige, .time-color, #time-filter                  { border-left: 6px solid #F7EAC8;           }
+#maroon, .sequence-color, #sequence-filter              { border-left: 6px solid #8C4646;           }
+#peach, .transition-color, #transition-filter             { border-left: 6px solid #F5A685;           }
 
 
 /*

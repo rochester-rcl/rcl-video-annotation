@@ -62,14 +62,14 @@ if ($postAction == 'getForm') {
 
     if ($description != NULL) { //
 
-      $buttonHtml = '<li><button value="' . $markerId . '" id="' . $lowerCategory . '-color">' . $name . '</button></li>';
+      $buttonHtml = '<li><button value="' . $markerId . '" class="' . $lowerCategory . '-color">' . $name . '</button></li>';
 
       $buttonArray[$markerId] = array('html' => $buttonHtml, 'category' => $arrayCategory, 'markerName' => $lowerName);
 
 
     } else {
 
-      $buttonHtml = '<li><button value="' . $markerId . '" id="' . $lowerCategory . '-color">' . $name . '</button></li>';
+      $buttonHtml = '<li><button value="' . $markerId . '" class="' . $lowerCategory . '-color">' . $name . '</button></li>';
 
       $buttonArray[$markerId] = array('html' => $buttonHtml, 'category' => $arrayCategory, 'markerName' => $lowerName);
 

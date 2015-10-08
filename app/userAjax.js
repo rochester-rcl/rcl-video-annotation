@@ -1,5 +1,6 @@
 import * as functions from './functions';
 import {MarkerAjax} from './markerAjax';
+import {VideoController} from './videoTools';
 
 
 export class UserAjax {
@@ -73,6 +74,19 @@ export class UserAjax {
               $('.overlay-col300').find('.annotation-group').eq(0).attr('id', $group['11']);
               $('.overlay-col300').find('.annotation-group').eq(1).attr('id', $group['4']);
               $('.overlay-col400').find('.annotation-group').eq(0).attr('id', $group['7']);
+
+              //Set up filtering buttons
+              $.each($group, function(i,item){
+
+                if (i != '14') {
+                  $('.annotation-list').prepend('<div class="filter-button" id="'+item+'-filter">'+item+'</div>');
+                }
+
+              });
+
+              $('.filter-button').wrapAll('<div class="filter-container" />');
+
+              $('.filter-container').prepend('<div class="filter-button" id="all-filter">all</div>');
 
               $('.overlay-col100').append('<h3 class"group-heading">Notes :</h3><div class="notes"><textarea id="marker-note" type="text" cols="2" rows="2" maxlength="1000" name="note" placeholder="Enter some notes here ..."></textarea></div><button id="marker-submit">Save</button>');
               //Add save and close button
@@ -149,6 +163,7 @@ export class UserAjax {
             //MarkerAjax.retrieveMarkers(json.userFilmId);
             console.log(markerAjax);
             callback(markerAjax);
+
           }
         },
         error: function(xhr, desc, err) {
