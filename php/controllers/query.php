@@ -46,7 +46,7 @@ foreach ($filmIdArray as $filmId){
 
         $markerId = $marker['markerId'];
 
-        $query = FilmMarkerDAO::getAllMarkersByTypeFilm($filmId, $markerId);
+        $query = FilmMarkerDAO::getAllMarkersByTypeFilm(8, $markerId);
 
         array_push($allMarkers, $query);
 
@@ -92,9 +92,15 @@ if ($filetype == 'csv') {
 
       foreach($markers as $marker){
 
+        $newlineChar = "\r\n";
+
+        $note = $marker['note'];
+
+        $cleaned = str_replace(array($newlineChar, ','),'', $marker);
+
         $seconds = ',' . FilmMarker::startToHHMMSS($marker['time_seconds']);
 
-        $commaSeparated = implode(",", $marker);
+        $commaSeparated = implode(",", $cleaned);
 
         $newline = $commaSeparated . $seconds . "," . "\r\n";
 
