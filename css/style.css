@@ -225,8 +225,6 @@ ________________________________________________*/
   line-height: 1.7;
 }
 
-
-
 /* Annotation Selection Overlay
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
@@ -235,7 +233,6 @@ ________________________________________________*/
   width: 25%;
   float: right;
 }
-
 
 .overlay {
   min-width: 1100px;
@@ -249,11 +246,26 @@ ________________________________________________*/
   visibility: hidden;
   opacity: 0;
 }
-.overlay:target {
+/*.overlay:target {
   visibility: visible;
   opacity: 1;
   z-index: 2;
+}*/
+
+.overlay-show {
+  visibility: visible;
+  opacity: 1;
+  z-index: 2;
+  min-width: 1100px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(27, 29, 36, 0.95);
+  transition: opacity 200ms;
 }
+
 
 /* Popup Content */
 .popup {
@@ -286,6 +298,37 @@ ________________________________________________*/
   color: #06D85F;
 }
 
+/* Popup Content */
+.overlay-show .popup {
+  padding: 40px 20px 20px 30px;
+  width: 100%;
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  transition: all 0.5s ease-in-out;
+  margin: auto;
+}
+.overlay-show .popup h3 {
+  color: white;
+  padding-bottom: 10px;
+}
+
+/* Close Button */
+.overlay-show .popup .close {
+  position: absolute;
+  top: -12px;
+  right: 35px;
+  /* transition: all 200ms; */
+  font-size: 50px;
+  color: white;
+  /* font-weight: bold; */
+  text-decoration: none;
+  color: white;
+}
+.overlay-show .popup .close:hover {
+  color: #06D85F;
+}
+
 .annotation-group {
   float: right;
   width: 100%;
@@ -295,11 +338,6 @@ ________________________________________________*/
   margin: 10px;
   background-color: #1b1c23;
 }
-
-
-
-
-
 
 /* Media Queries
 ____________________________________________________

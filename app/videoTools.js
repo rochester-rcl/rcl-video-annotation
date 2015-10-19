@@ -54,8 +54,6 @@ export class VideoController {
                 e.preventDefault();
                 }
 
-                //add switch for annotate panel
-
                 else if ($('#marker-note').is(':focus')) {
 
                   break;
@@ -70,12 +68,22 @@ export class VideoController {
                 }
                 break;
 
+                case 13:
+                e.preventDefault();
+                e.stopPropagation();
+                $('#allannotations').attr('class', 'overlay-show');
+                break;
+
+                case 27:
+                e.preventDefault();
+                e.stopPropagation();
+                $('#allannotations').attr('class', 'overlay');
+                break;
+
             }
             });
 
       }
-
-
 
       static activeMarker(selector) {
 

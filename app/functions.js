@@ -132,6 +132,15 @@ export function logAjax(markerAjax) {
 
       });
 
+      $('#allannotations .popup .close').on('click', function(){
+         $('#allannotations').attr('class', 'overlay');
+      });
+
+      $('.annotate-btn').on('click', function(){
+         $('#allannotations').attr('class', 'overlay-show');
+      });
+
+
       filterMarker('.filter-button', '.annotation-markers li');
 
       $('#marker-submit').on('click',function() {

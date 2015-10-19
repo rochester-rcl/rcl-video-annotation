@@ -2,7 +2,7 @@
 
 include_once 'db.php';
 //Uncomment for php < 5.4
-//require 'password.php';
+require 'password.php';
 /**
  * Represents a user class
  *
