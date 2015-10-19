@@ -67,6 +67,8 @@ export class UserAjax {
 
               let $group = json['group'];
               let $button = json['button'];
+              let $films = json['films'];
+              let $markerGroups = json['markers'];
 
               $('.overlay-col100').find('.annotation-group').eq(0).attr('id', $group['14']);
               $('.overlay-col200').find('.annotation-group').eq(0).attr('id', $group['3']);
@@ -113,6 +115,20 @@ export class UserAjax {
                 });
 
               });
+
+              $.each($films, function($i, $name){
+                let $optionHTML = $name.html;
+                if ($i != 'Big Buck Bunny') { //Filtering out test film
+                $('#film-select').append($optionHTML);
+              }
+
+              });
+              $.each($markerGroups, function($i, $marker){
+                let $optionHTML = $marker.html;
+                if ($i != 'Top Level') { //Filtering out test film
+                $('#marker-select').append($optionHTML);
+              }
+            });
 
             }
 

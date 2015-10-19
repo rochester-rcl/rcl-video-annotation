@@ -12,7 +12,6 @@ export class MarkerAjax {
      this.target = target;
      this.userId = userId;
 
-
    }
 
   setId(id) {
@@ -115,9 +114,7 @@ deleteMarker() {
 
         controls.addFootnote($note.start, $note.end, $note.note, '.annotation-notes');
 
-
       }
-
 
       });
 
@@ -166,8 +163,6 @@ deleteMarker() {
           $('.saved-message').remove();
         }, 500);
 
-
-
       },
       error: function(xhr, desc, err) {
       console.log(xhr);
@@ -175,6 +170,60 @@ deleteMarker() {
     }
 
     });
+
+  }
+
+  static queryDb($filmIdObject, $filetype) {
+      $.ajax({
+      url: 'php/controllers/query.php',
+      type: 'POST',
+      cache: 'false',
+      data: {'action': 'queryDb', 'filetype': $filetype, 'queryObject': JSON.stringify($filmIdObject)},
+      dataType: 'json',
+      success: function(json) {
+        console.log(json);
+
+        if (json.data != 'none') {
+
+          let $dataType = json.dataType;
+
+          if ($dataType == 'csv') {
+
+            let $csvData = json.data;
+
+            let $csvMIME = 'application/csv';
+
+            functions.saveData($csvData, json.filename, $csvMIME);
+
+          } else if ($dataType == 'json') {
+
+            let $data = json.data;
+
+            let $jsonMIME = 'application/json'
+
+            let $jsonData = JSON.stringify($data);
+
+            functions.saveData($jsonData, json.filename, $jsonMIME);
+
+          }
+        } else {
+
+          let $message = 'No associated data found!';
+
+          $('.helptext').append('<span class="delete-message">'+$message+'</span>');
+          setTimeout(function(){
+            $('.delete-message').remove();
+          }, 1500);
+
+        }
+      },
+      error: function(xhr, desc, err) {
+      console.log(xhr);
+      console.log("Details: " + desc + "\nError:" + err);
+    }
+
+    });
+
 
   }
 

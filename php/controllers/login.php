@@ -8,11 +8,6 @@ include_once '../user.php';
 include_once '../film.php';
 include_once '../marker.php';
 include_once '../markerType.php';
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 $postAction = filter_input(INPUT_POST,'action');
 
@@ -86,6 +81,14 @@ $iterator = 0;
       }
 
       elseif($userFullNameString == 'Gen') {
+
+        $formattedHTML = '<li class="' . $lowerCategory . '-color" data-film-marker-id="' . $id . '" data-user-id="' . $userId .
+        '" data-start="' . $start .  '" data-marker-type-id="' . $markerId . '"><span class="annotation-author-others">GEN</span><span class="time-stamp">' . $displayTime .
+        '</span>' . $markerTypeName . '<i class="fa fa-times"></i></li>';
+
+        $markerArray[$iterator] = array('html' => $formattedHTML, 'start' => $start, 'end' => $end, 'note' => $note);
+
+      } elseif($userFullNameString == 'Chris Patrello') {
 
         $formattedHTML = '<li class="' . $lowerCategory . '-color" data-film-marker-id="' . $id . '" data-user-id="' . $userId .
         '" data-start="' . $start .  '" data-marker-type-id="' . $markerId . '"><span class="annotation-author-others">GEN</span><span class="time-stamp">' . $displayTime .

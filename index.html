@@ -261,7 +261,6 @@
 
   <div class="col200 myVideo">
 
-
       <video src="" class="video" controls></video><br>
 
       <div class="helptext">
@@ -271,6 +270,31 @@
           <li><span class="keys">Spacebar</span> Stops/starts video </li>
           <li><span class="keys"><i class="fa fa-caret-left"></i></span> <span class="keys"><i class="fa fa-caret-right"></i></span> Single frame advance </li>
       </ul>
+
+      <div class="query-ui">
+          <h3>Query Database</h3><br>
+          <div class="query-select">
+            <span id="film-title">Select Film</span>
+            <select multiple name="film-title[]" id="film-select">
+            </select>
+          </div>
+          <div class="query-select">
+            <span id="marker-title">Select Marker</span>
+            <select multiple name="marker-title[]" id="marker-select">
+          </select>
+          </div>
+
+          <div class="filetype">
+            <input class="filetype-button" id="csv" type="radio" name="filetype" value="csv" checked>
+            <label for="csv">CSV</label>
+            <input class="filetype-button" id="json" type="radio" name="filetype" value="json">
+            <label for="json">JSON</label>
+            <button class="filetype-download" name="download" value="submit">Download</button>
+          </div>
+
+          </div>
+
+    </div>
       <div class="annotation-notes">
 
         </div>

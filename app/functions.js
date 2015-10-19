@@ -21,6 +21,21 @@ export function toHHMMSS(theInt){
     return time;
 };
 
+export function saveData (data, fileName, dataType) { //pure JS workaround for client side download data - either csv or json - wrote without jQuery becasue we can probably reuse it
+    console.log('test');
+    let a = document.createElement("a");
+    document.body.appendChild(a);
+    a.setAttribute('style', "display: none");
+    let blob = new Blob([data], {type: dataType});
+    let url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = fileName;
+    a.click();
+    window.URL.revokeObjectURL(url);
+};
+
+/******jQuery functions (to be rewritten) ****/
+
 export function userAjaxSubmit(callback) {
       let fullName = null;
       let filmId = null;
@@ -65,16 +80,44 @@ export function filterMarker(selector1, selector2) {
 
     });
 
-    //console.log($test);
-
-    //if ($color == )
 
   });
 
 }
 
+export function getSelectMultiple($selector1, $selector2, $key1, $key2){
+
+  let $optionObject = {}; // the main object we want to return
+
+  let $selector2Array = [];
+
+  let $selector1Array = [];
+
+  $($selector1).each(function($i, $option){
+
+    let $optionVal = $($option).attr('value'); //film id
+
+    $selector1Array.push($optionVal);
+
+  });
+
+  $($selector2).each(function($j, $option2){
+
+    let $optionVal = $($option2).attr('value'); //marker category id
+
+    $selector2Array.push($optionVal);
+
+  });
+
+  $optionObject[$key1] = $selector1Array;
+
+  $optionObject[$key2] = $selector2Array;
+
+  return $optionObject; // returns an object which contains indexical arrays of filmIds and markerCategoryIds
+}
+
 export function logAjax(markerAjax) {
-      // the majority of the interactivity is handled in this callback
+      // the majority of the interactivity is handled in this callback -- should write all of these as separate functions but who cares since we're changing it ;)
 
       $('.annotation-group ul li button').on('click',function(){
         let $buttonVal = $(this).val();
@@ -86,9 +129,6 @@ export function logAjax(markerAjax) {
 
         markerAjax.setTarget($target);
         markerAjax.setEnd($time);
-        //$('.annotation-list ul li').hide();
-        //pull up a submit button once the button is clicked (maybe another function ^)
-        //send it to insert.php controller if submit is selected
 
       });
 
@@ -108,8 +148,6 @@ export function logAjax(markerAjax) {
 
       $('.annotation-list ul').on('click', 'li i', function () {
 
-
-        console.log($mouseCount);
         if ($('.delete-option').length === 0) {
 
            $(this).parent().append('<div class="delete-option"> Delete Marker | Are you sure? <button id="yes-option" val="yes">Yes</button> <button id="no-option" val="no">No</button> </div>');
@@ -145,6 +183,20 @@ export function logAjax(markerAjax) {
            });
 
 
+      $('.filetype-download').on('click', function(){
 
+
+          let $filetype = $('.filetype input[type="radio"]:checked').attr('value');
+
+          let $filmIdObject = getSelectMultiple('#film-select :selected', '#marker-select :selected', 'filmIds', 'markerCategoryIds');
+
+          console.log($filmIdObject);
+
+          console.log($filetype);
+
+          MarkerAjax.queryDb($filmIdObject, $filetype);
+
+
+      });
 
     }

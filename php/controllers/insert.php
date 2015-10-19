@@ -101,7 +101,16 @@ if ($postAction == 'insertMarker') {
       $markerArray[$iterator] = array('html' => $formattedHTML, 'start' => $start, 'end' => $end, 'note' => $note);
 
 
-    } else {
+    } elseif($userFullNameString == 'Chris Patrello') {
+
+      $formattedHTML = '<li class="' . $lowerCategory . '-color" data-film-marker-id="' . $id . '" data-user-id="' . $userId .
+      '" data-start="' . $start .  '" data-marker-type-id="' . $markerId . '"><span class="annotation-author-others">GEN</span><span class="time-stamp">' . $displayTime .
+      '</span>' . $markerTypeName . '<i class="fa fa-times"></i></li>';
+
+      $markerArray[$iterator] = array('html' => $formattedHTML, 'start' => $start, 'end' => $end, 'note' => $note);
+
+
+    }  else {
 
         $formattedHTML = '<li class="' . $lowerCategory . '-color" data-filmMarkerId="' . $id . '" data-userId="' . $userId .
         '" data-start="' . $start . '" data-marker-type-id="' . $markerId . '"><span class="annotation-author-others">' . $initials . '</span><span class="time-stamp">' . $displayTime .

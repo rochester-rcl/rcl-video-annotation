@@ -102,7 +102,7 @@ class MarkerTypeDAO {
      $statement = Db::pdoConnect()->prepare("SELECT marker_category.name, marker_type.name AS marker_name FROM marker_category INNER JOIN marker_type ON marker_type.marker_category_id = marker_category.id
        WHERE marker_type.id = :marker_type_id");
 
-     $statement->bindValue('marker_type_id', $markerId, PDO::PARAM_INT);
+     $statement->bindValue(':marker_type_id', $markerId, PDO::PARAM_INT);
 
      $statement->execute();
 
@@ -111,12 +111,26 @@ class MarkerTypeDAO {
      return $results;
    }
 
+   public static function getMarkerTypeByCategory($categoryId) {
+
+     $statement = Db::pdoConnect()->prepare("SELECT marker_type.id AS markerId, marker_category.id AS categoryId FROM marker_type INNER JOIN marker_category ON
+       marker_type.marker_category_id = marker_category.id WHERE marker_type.marker_category_id = :marker_category_id");
+
+     $statement->bindValue(':marker_category_id', $categoryId, PDO::PARAM_INT);
+
+     $statement->execute();
+
+     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+     return $results;
+
+   }
+
    public static function getByName($name) {
        if(!$name || trim($name) == ""){
             return false;
         }
         $myResult = Db::pdoConnect()->prepare("SELECT * FROM marker_type WHERE name = :name");
-
 
         $myResult->bindValue(':name', $name, PDO::PARAM_STR);
         $myResult->execute();

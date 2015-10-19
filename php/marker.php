@@ -17,8 +17,8 @@ class FilmMarker {
 
     public function __construct($id, $filmId, $markerId, $start, $end, $note, $target, $userId){
 
-      $this->id = $id; 
-        
+      $this->id = $id;
+
       $this->filmId = $filmId;
 
       $this->markerId = $markerId;
@@ -213,6 +213,26 @@ Class FilmMarkerDAO {
         $results = $myResult->fetchAll(PDO::FETCH_ASSOC);
 
         return $results;
+    }
+
+    public static function getAllMarkersByTypeFilm($filmId, $markerId) {
+
+      $sql = Db::pdoConnect()->prepare("SELECT film.film_name AS film_name, film_marker.start AS time_seconds, film_marker.note, marker_type.name as marker_name, marker_category.name as marker_category
+        FROM film_marker
+        INNER JOIN film ON film_marker.film_id = film.id
+        INNER JOIN marker_type ON film_marker.marker_type_id = marker_type.id
+        INNER JOIN marker_category ON marker_type.marker_category_id = marker_category.id
+        WHERE film_marker.film_id = :filmId AND film_marker.marker_type_id = :markerId ");
+
+      $sql->bindValue(':filmId', $filmId, PDO::PARAM_INT);
+      $sql->bindValue(':markerId', $markerId, PDO::PARAM_INT);
+
+      $sql->execute();
+
+      $results = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+      return $results;
+
     }
 
     public static function delete($id){

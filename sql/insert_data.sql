@@ -10,7 +10,7 @@ INSERT INTO marker_category (name, description) VALUES ('Sequence', 'A series of
 
 INSERT INTO marker_category (name, description) VALUES ('Act', 'A series of scenes and sequences that typically culminates in some significant shift in the plot and/or tone (depending on the mode of the film), turning the narrative and/or affect in new direction. In much cinema, especially out of Hollywood, that direction is often causally determined, moving from set up to complicating action to development to climax, but some of the films we are watching may not adhere to this causal notion of acts. Moreover, some films may have some sort of prologue, epilogue, or interlude that is not itself an act. Markers are listed for the above below. Should yours deviate in their definitions, please take note of that.');
 
-INSERT INTO marker_category (name, description) VALUES ('Turning points', 'Significant or notable turn occurs in the story of the film, or perhaps in the film on some other level that you note down and define. We are not looking for every micro development, but when significant or notable turning points. Take some notes on this matter so you can say how you thought about this.');
+INSERT INTO marker_category (name, description) VALUES ('Turning Point', 'Significant or notable turn occurs in the story of the film, or perhaps in the film on some other level that you note down and define. We are not looking for every micro development, but when significant or notable turning points. Take some notes on this matter so you can say how you thought about this.');
 
 INSERT INTO marker_category (name, description) VALUES ('Plot', 'Define major and minor plots within the film');
 
@@ -24,9 +24,15 @@ INSERT INTO marker_category (name, description) VALUES ('Characters', '');
 
 INSERT INTO marker_category (name, description) VALUES ('Top Level', '');
 
+INSERT INTO marker_category (name, description) VALUES ('Theme', '');
+
 INSERT INTO marker_type (marker_category_id, name, description)
 SELECT id, 'Shot', '' FROM marker_category
 WHERE name = 'Shot';
+
+INSERT INTO marker_type (marker_category_id, name, description)
+SELECT id, 'Theme', '' FROM marker_category
+WHERE name = 'Theme';
 
 
 -- Credits
@@ -125,7 +131,7 @@ WHERE name = 'Act';
 
 INSERT INTO marker_type (marker_category_id, name, description)
 SELECT id, 'Turning Point', '' FROM marker_category
-WHERE name = 'Turning Points';
+WHERE name = 'Turning Point';
 
 -- Plot
 

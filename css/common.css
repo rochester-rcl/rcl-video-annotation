@@ -54,6 +54,7 @@ html {
       text-align: left;
 }
 
+
     div.delete-option {
       position: relative;
       padding-top: 20px;
@@ -152,6 +153,102 @@ html {
   background-color: #5c6270;
 }
 
+.query-ui {
+  position: relative;
+  top: -25px;
+  width: 570px;
+  border-bottom: 1px solid #1b1c23;
+  border-left: 1px solid #1b1c23;
+  height: 200px;
+  padding: 12px;
+  border-radius: 2px;
+}
+
+#marker-title  {
+  font-size: 14px;
+  float: left;
+  padding: 2px 0px 2px 0px;
+}
+
+#film-title {
+  font-size: 14px;
+  float: left;
+  padding: 2px 0px 2px 0px;
+}
+
+
+.query-ui h3 {
+  float: left;
+  padding-bottom: 2px;
+}
+
+.query-select {
+  padding: 10px;
+}
+
+.query-ui select {
+  position: relative;
+  -webkit-appearance: none;
+  font-family: 'Raleway', sans-serif;
+   -moz-appearance: none;
+   appearance: none;
+   width: 300px;
+   height: 45px;
+   left: -100px;
+   background-color: #000;
+   border: none;
+   color: #ccc;
+   padding: 5px;
+   border-radius: 1px;
+
+}
+
+.filetype-download {
+  background: none;
+  border: none;
+  color: #9DA4B6;
+  font-size: 14px;
+  padding: 8px 10px 8px 10px;
+  border-radius: 0px 5px 5px 0px;
+  background-color: #21252b;
+  margin: 3px;
+  width: 100px;
+  text-align: left;
+
+}
+
+.filetype-download:hover {
+  background-color: #000;
+  cursor: pointer;
+}
+
+.filetype-label {
+  float: left;
+}
+
+input[type=radio]{
+  display: none;
+  margin: 10px;
+}
+
+input[type=radio] + label {
+  display:inline-block;
+  color: #9DA4B6;
+  margin:-2px;
+  padding: 4px 12px;
+  background-color: #21252b;
+  border-color: #ddd;
+}
+
+input[type=radio] + label:hover{
+  cursor: pointer;
+}
+
+input[type=radio]:checked + label {
+   background-image: none;
+   background-color: #000;
+}
+
 
 /*
 Colors
@@ -174,6 +271,7 @@ ________________________________
 #beige, .time-color, #time-filter                  { border-left: 6px solid #F7EAC8;           }
 #maroon, .sequence-color, #sequence-filter              { border-left: 6px solid #8C4646;           }
 #peach, .transition-color, #transition-filter             { border-left: 6px solid #F5A685;           }
+#pinkish, .theme-color, #theme-filter             { border-left: 6px solid #eab6b6;           }
 
 
 /*

@@ -1,6 +1,7 @@
 <?php
 
 include_once '../markerType.php';
+include_once '../film.php';
 
 header("content-type:application/json");
 error_reporting(E_ALL | E_STRICT);
@@ -15,9 +16,23 @@ if ($postAction == 'getForm') {
 
   $formButton = MarkerTypeDAO::getMarkerFormButtons();
 
+  $filmNames = FilmDAO::getAllFilmNames();
+
+  $films = array();
   $groupArray = array();
   $buttonArray = array();
+  $markerGroup = array();
 
+  foreach ($filmNames as $names) {
+
+    $name = $names['film_name'];
+    $filmId = $names['id'];
+
+    $optionHTML = '<option class="film-select-option" value="' . $filmId . '">' . $name . '</option>';
+
+    $films[$name] = array('html' => $optionHTML);
+
+  }
 
   foreach ($formTop as $form) {
 
@@ -30,6 +45,10 @@ if ($postAction == 'getForm') {
     $lowerName = strtolower($nameDashed);
 
     $groupArray[$id] = $lowerName;
+
+    $groupHTML = '<option class="marker-title-select" value="' . $id . '">' . $name . '</option>';
+
+    $markerGroup[$name] = array("html" => $groupHTML);
 
   }
 
@@ -54,7 +73,11 @@ if ($postAction == 'getForm') {
 
       $arrayCategory = 'top-level';
 
-    } else {
+    } elseif ($name == 'Turning Point') {
+
+        $arrayCategory = 'top-level';
+
+      } else {
 
       $arrayCategory = $lowerCategory;
 
@@ -67,7 +90,7 @@ if ($postAction == 'getForm') {
       $buttonArray[$markerId] = array('html' => $buttonHtml, 'category' => $arrayCategory, 'markerName' => $lowerName);
 
 
-    } else {
+  } else {
 
       $buttonHtml = '<li><button value="' . $markerId . '" class="' . $lowerCategory . '-color">' . $name . '</button></li>';
 
@@ -78,6 +101,8 @@ if ($postAction == 'getForm') {
 
   $overlayArray['button'] = $buttonArray;
   $overlayArray['group'] = $groupArray;
+  $overlayArray['films'] = $films;
+  $overlayArray['markers'] = $markerGroup;
 
   $overlay = json_encode($overlayArray);
 

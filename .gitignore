@@ -1,4 +1,5 @@
 php/config.php
+php/password.php
 php/.DS_Store
 js/.DS_Store
 resources/*
@@ -9,3 +10,4 @@ nbproject/
 node_modules
 /nbproject/private/
 videos/*
+temp/
