@@ -72,6 +72,11 @@ export class VideoController {
                 e.preventDefault();
                 e.stopPropagation();
                 $('#allannotations').attr('class', 'overlay-show');
+                if ($('#marker-note').is(':focus')) {
+
+                  $('#marker-submit').click();
+
+                }
                 break;
 
                 case 27:
