@@ -85,6 +85,16 @@ export function filterMarker(selector1, selector2) {
 
 }
 
+export function toggleAnnotatePanel() {
+  $('#allannotations .popup .close').on('click', function(){
+     $('#allannotations').attr('class', 'overlay');
+  });
+
+  $('.annotate-btn').on('click', function(){
+     $('#allannotations').attr('class', 'overlay-show');
+  });
+}
+
 export function getSelectMultiple($selector1, $selector2, $key1, $key2){
 
   let $optionObject = {}; // the main object we want to return
@@ -131,15 +141,6 @@ export function logAjax(markerAjax) {
         markerAjax.setEnd($time);
 
       });
-
-      $('#allannotations .popup .close').on('click', function(){
-         $('#allannotations').attr('class', 'overlay');
-      });
-
-      $('.annotate-btn').on('click', function(){
-         $('#allannotations').attr('class', 'overlay-show');
-      });
-
 
       filterMarker('.filter-button', '.annotation-markers li');
 

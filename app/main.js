@@ -28,6 +28,8 @@ $(document).ready( function() {
 
   UserAjax.getForm(); //Statically calling getForm to get our buttons for the overlay
 
+  functions.toggleAnnotatePanel();
+
   //Login
 
 
