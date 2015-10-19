@@ -70,7 +70,8 @@ export class UserAjax {
               let $films = json['films'];
               let $markerGroups = json['markers'];
 
-              $('.overlay-col100').find('.annotation-group').eq(0).attr('id', $group['14']);
+              $('.overlay-col100').find('.annotation-group').eq(0).attr('id', $group['12']);
+              $('.overlay-col100').find('.annotation-group').eq(1).attr('id', $group['14']);
               $('.overlay-col200').find('.annotation-group').eq(0).attr('id', $group['3']);
               $('.overlay-col200').find('.annotation-group').eq(1).attr('id', $group['10']);
               $('.overlay-col300').find('.annotation-group').eq(0).attr('id', $group['11']);
