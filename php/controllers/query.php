@@ -46,7 +46,7 @@ foreach ($filmIdArray as $filmId){
 
         $markerId = $marker['markerId'];
 
-        $query = FilmMarkerDAO::getAllMarkersByTypeFilm($filmId, $markerId);
+        $query = FilmMarkerDAO::getAllMarkersByTypeFilm(8, $markerId);
 
         array_push($allMarkers, $query);
 
@@ -75,10 +75,17 @@ if ($filetype == 'csv') {
       break;
     }
     foreach($value as $headings){
-      $headerRow = array_keys($headings);
-      array_push($headerRow, 'time_hhmmss');
+      $headingsFilter = array_filter($headings);
+
+      if (!empty($headingsFilter)){
+        $headerRow = array_keys($headings);
+        array_push($headerRow, 'time_hhmmss');
+        $i++;
+
+      }
+
     }
-      $i++;
+
     }
 
   $headerImplode = implode(',', $headerRow);
