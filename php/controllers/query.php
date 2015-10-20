@@ -68,15 +68,23 @@ if ($filetype == 'csv') {
 
   $i = 0;
   foreach ($allMarkers as $key => $value){
+
+    $valueErrors = array_filter($value);
+    if (!empty($valueErrors)) {
+      $i = 0;
+    }
     if ($i > 1){
       break;
+    } if (!empty($valueErrors)) {
+      $i = 0;
     }
     foreach($value as $headings){
       $headerRow = array_keys($headings);
       array_push($headerRow, 'time_hhmmss');
     }
       $i++;
-  }
+    }
+  
 
   $headerImplode = implode(',', $headerRow);
 
