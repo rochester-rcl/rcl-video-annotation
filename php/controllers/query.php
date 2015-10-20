@@ -46,7 +46,7 @@ foreach ($filmIdArray as $filmId){
 
         $markerId = $marker['markerId'];
 
-        $query = FilmMarkerDAO::getAllMarkersByTypeFilm(8, $markerId);
+        $query = FilmMarkerDAO::getAllMarkersByTypeFilm($filmId, $markerId);
 
         array_push($allMarkers, $query);
 
@@ -61,6 +61,8 @@ if (!empty($errors)) {
 
 /******CSV EXPORT******************/
 if ($filetype == 'csv') {
+
+  $newlineChar = "\r\n";
 
   $filename = uniqid('markerData') . '.csv';
 
@@ -80,13 +82,14 @@ if ($filetype == 'csv') {
     }
     foreach($value as $headings){
       $headerRow = array_keys($headings);
+
       array_push($headerRow, 'time_hhmmss');
     }
       $i++;
     }
-  
 
-  $headerImplode = implode(',', $headerRow);
+  $cleaned = str_replace(array($newlineChar, ',','\r','\n'),'', $headerRow);
+  $headerImplode = implode(',', $cleaned);
 
   $headerImplode .= ",\r\n";
 
@@ -104,7 +107,7 @@ if ($filetype == 'csv') {
 
         $note = $marker['note'];
 
-        $cleaned = str_replace(array($newlineChar, ','),'', $marker);
+        $cleaned = str_replace(array($newlineChar, ',','\r','\n'),'', $marker);
 
         $seconds = ',' . FilmMarker::startToHHMMSS($marker['time_seconds']);
 
