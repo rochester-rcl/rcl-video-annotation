@@ -72,9 +72,7 @@ if ($filetype == 'csv') {
   foreach ($allMarkers as $key => $value){
 
     $valueErrors = array_filter($value);
-    if (!empty($valueErrors)) {
-      $i = 0;
-    }
+    
     if ($i > 1){
       break;
     } if (!empty($valueErrors)) {
