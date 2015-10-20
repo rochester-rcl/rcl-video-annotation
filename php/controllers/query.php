@@ -82,14 +82,12 @@ if ($filetype == 'csv') {
     }
     foreach($value as $headings){
       $headerRow = array_keys($headings);
-
       array_push($headerRow, 'time_hhmmss');
     }
       $i++;
     }
 
-  $cleaned = str_replace(array($newlineChar, ',','\r','\n'),'', $headerRow);
-  $headerImplode = implode(',', $cleaned);
+  $headerImplode = implode(',', $headerRow);
 
   $headerImplode .= ",\r\n";
 
@@ -105,9 +103,11 @@ if ($filetype == 'csv') {
 
         $newlineChar = "\r\n";
 
+        $searchArray = array($newlineChar,',',"\r","\n");
+
         $note = $marker['note'];
 
-        $cleaned = str_replace(array($newlineChar, ',','\r','\n'),'', $marker);
+        $cleaned = str_replace($searchArray,'', $marker);
 
         $seconds = ',' . FilmMarker::startToHHMMSS($marker['time_seconds']);
 
