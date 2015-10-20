@@ -75,18 +75,11 @@ if ($filetype == 'csv') {
       break;
     }
     foreach($value as $headings){
-      $headerErrors = array_filter($headings);
-
-      if (!empty($headerErrors))
-      {
-        $i = 0;
-      } else {
-        $headerRow = array_keys($headings);
-        array_push($headerRow, 'time_hhmmss');
-        $i++;
-      }
+      $headerRow = array_keys($headings);
+      array_push($headerRow, 'time_hhmmss');
     }
-  }
+      $i++;
+    }
 
   $headerImplode = implode(',', $headerRow);
 
