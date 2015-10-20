@@ -71,19 +71,22 @@ if ($filetype == 'csv') {
   $i = 0;
   foreach ($allMarkers as $key => $value){
 
-    $valueErrors = array_filter($value);
-    
     if ($i > 1){
       break;
-    } if (!empty($valueErrors)) {
-      $i = 0;
     }
     foreach($value as $headings){
-      $headerRow = array_keys($headings);
-      array_push($headerRow, 'time_hhmmss');
+      $headerErrors = array_filter($headings);
+
+      if (!empty($headerErrors))
+      {
+        $i = 0;
+      } else {
+        $headerRow = array_keys($headings);
+        array_push($headerRow, 'time_hhmmss');
+        $i++;
+      }
     }
-      $i++;
-    }
+  }
 
   $headerImplode = implode(',', $headerRow);
 
